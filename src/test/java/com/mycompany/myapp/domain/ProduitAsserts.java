@@ -47,22 +47,9 @@ public class ProduitAsserts {
     public static void assertProduitUpdatableFieldsEquals(Produit expected, Produit actual) {
         assertThat(actual)
             .as("Verify Produit relevant properties")
-            .satisfies(a -> assertThat(a.getCodeProduit()).as("check codeProduit").isEqualTo(expected.getCodeProduit()))
-            .satisfies(a ->
-                assertThat(a.getDateAdhesionProduit()).as("check dateAdhesionProduit").isEqualTo(expected.getDateAdhesionProduit())
-            )
-            .satisfies(a ->
-                assertThat(a.getDateRadiationProduit()).as("check dateRadiationProduit").isEqualTo(expected.getDateRadiationProduit())
-            )
-            .satisfies(a -> assertThat(a.getCodeFormule()).as("check codeFormule").isEqualTo(expected.getCodeFormule()))
-            .satisfies(a ->
-                assertThat(a.getCodeFamilleRisqueFormule())
-                    .as("check codeFamilleRisqueFormule")
-                    .isEqualTo(expected.getCodeFamilleRisqueFormule())
-            )
-            .satisfies(a -> assertThat(a.getTitreFormule()).as("check titreFormule").isEqualTo(expected.getTitreFormule()))
-            .satisfies(a -> assertThat(a.getTypeFormule()).as("check typeFormule").isEqualTo(expected.getTypeFormule()))
-            .satisfies(a -> assertThat(a.getCodeEtat()).as("check codeEtat").isEqualTo(expected.getCodeEtat()));
+            .satisfies(a -> assertThat(a.getTypeMEG()).as("check typeMEG").isEqualTo(expected.getTypeMEG()))
+            .satisfies(a -> assertThat(a.getCodeOffre()).as("check codeOffre").isEqualTo(expected.getCodeOffre()))
+            .satisfies(a -> assertThat(a.getDateEffet()).as("check dateEffet").isEqualTo(expected.getDateEffet()));
     }
 
     /**

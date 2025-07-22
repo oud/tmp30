@@ -26,56 +26,16 @@ public class Garantie implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "code_garantie_technique", nullable = false)
-    private String codeGarantieTechnique;
+    @Column(name = "type_meg", nullable = false)
+    private String typeMEG;
 
     @NotNull
-    @Column(name = "code_etat_garantie", nullable = false)
-    private String codeEtatGarantie;
+    @Column(name = "code_offre", nullable = false)
+    private String codeOffre;
 
     @NotNull
-    @Column(name = "date_adhesion_garantie", nullable = false)
-    private LocalDate dateAdhesionGarantie;
-
-    @NotNull
-    @Column(name = "date_radiation_garantie", nullable = false)
-    private LocalDate dateRadiationGarantie;
-
-    @NotNull
-    @Column(name = "code_assureur", nullable = false)
-    private String codeAssureur;
-
-    @NotNull
-    @Column(name = "code_formule", nullable = false)
-    private String codeFormule;
-
-    @NotNull
-    @Column(name = "code_pack", nullable = false)
-    private String codePack;
-
-    @NotNull
-    @Column(name = "type_pack", nullable = false)
-    private String typePack;
-
-    @NotNull
-    @Column(name = "titre_pack", nullable = false)
-    private String titrePack;
-
-    @NotNull
-    @Column(name = "code_sous_pack", nullable = false)
-    private String codeSousPack;
-
-    @NotNull
-    @Column(name = "type_sous_pack", nullable = false)
-    private String typeSousPack;
-
-    @NotNull
-    @Column(name = "titre_sous_pack", nullable = false)
-    private String titreSousPack;
-
-    @NotNull
-    @Column(name = "code_type_prestations", nullable = false)
-    private String codeTypePrestations;
+    @Column(name = "date_effet", nullable = false)
+    private LocalDate dateEffet;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "groupe" }, allowSetters = true)
@@ -96,173 +56,43 @@ public class Garantie implements Serializable {
         this.id = id;
     }
 
-    public String getCodeGarantieTechnique() {
-        return this.codeGarantieTechnique;
+    public String getTypeMEG() {
+        return this.typeMEG;
     }
 
-    public Garantie codeGarantieTechnique(String codeGarantieTechnique) {
-        this.setCodeGarantieTechnique(codeGarantieTechnique);
+    public Garantie typeMEG(String typeMEG) {
+        this.setTypeMEG(typeMEG);
         return this;
     }
 
-    public void setCodeGarantieTechnique(String codeGarantieTechnique) {
-        this.codeGarantieTechnique = codeGarantieTechnique;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public String getCodeEtatGarantie() {
-        return this.codeEtatGarantie;
+    public String getCodeOffre() {
+        return this.codeOffre;
     }
 
-    public Garantie codeEtatGarantie(String codeEtatGarantie) {
-        this.setCodeEtatGarantie(codeEtatGarantie);
+    public Garantie codeOffre(String codeOffre) {
+        this.setCodeOffre(codeOffre);
         return this;
     }
 
-    public void setCodeEtatGarantie(String codeEtatGarantie) {
-        this.codeEtatGarantie = codeEtatGarantie;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public LocalDate getDateAdhesionGarantie() {
-        return this.dateAdhesionGarantie;
+    public LocalDate getDateEffet() {
+        return this.dateEffet;
     }
 
-    public Garantie dateAdhesionGarantie(LocalDate dateAdhesionGarantie) {
-        this.setDateAdhesionGarantie(dateAdhesionGarantie);
+    public Garantie dateEffet(LocalDate dateEffet) {
+        this.setDateEffet(dateEffet);
         return this;
     }
 
-    public void setDateAdhesionGarantie(LocalDate dateAdhesionGarantie) {
-        this.dateAdhesionGarantie = dateAdhesionGarantie;
-    }
-
-    public LocalDate getDateRadiationGarantie() {
-        return this.dateRadiationGarantie;
-    }
-
-    public Garantie dateRadiationGarantie(LocalDate dateRadiationGarantie) {
-        this.setDateRadiationGarantie(dateRadiationGarantie);
-        return this;
-    }
-
-    public void setDateRadiationGarantie(LocalDate dateRadiationGarantie) {
-        this.dateRadiationGarantie = dateRadiationGarantie;
-    }
-
-    public String getCodeAssureur() {
-        return this.codeAssureur;
-    }
-
-    public Garantie codeAssureur(String codeAssureur) {
-        this.setCodeAssureur(codeAssureur);
-        return this;
-    }
-
-    public void setCodeAssureur(String codeAssureur) {
-        this.codeAssureur = codeAssureur;
-    }
-
-    public String getCodeFormule() {
-        return this.codeFormule;
-    }
-
-    public Garantie codeFormule(String codeFormule) {
-        this.setCodeFormule(codeFormule);
-        return this;
-    }
-
-    public void setCodeFormule(String codeFormule) {
-        this.codeFormule = codeFormule;
-    }
-
-    public String getCodePack() {
-        return this.codePack;
-    }
-
-    public Garantie codePack(String codePack) {
-        this.setCodePack(codePack);
-        return this;
-    }
-
-    public void setCodePack(String codePack) {
-        this.codePack = codePack;
-    }
-
-    public String getTypePack() {
-        return this.typePack;
-    }
-
-    public Garantie typePack(String typePack) {
-        this.setTypePack(typePack);
-        return this;
-    }
-
-    public void setTypePack(String typePack) {
-        this.typePack = typePack;
-    }
-
-    public String getTitrePack() {
-        return this.titrePack;
-    }
-
-    public Garantie titrePack(String titrePack) {
-        this.setTitrePack(titrePack);
-        return this;
-    }
-
-    public void setTitrePack(String titrePack) {
-        this.titrePack = titrePack;
-    }
-
-    public String getCodeSousPack() {
-        return this.codeSousPack;
-    }
-
-    public Garantie codeSousPack(String codeSousPack) {
-        this.setCodeSousPack(codeSousPack);
-        return this;
-    }
-
-    public void setCodeSousPack(String codeSousPack) {
-        this.codeSousPack = codeSousPack;
-    }
-
-    public String getTypeSousPack() {
-        return this.typeSousPack;
-    }
-
-    public Garantie typeSousPack(String typeSousPack) {
-        this.setTypeSousPack(typeSousPack);
-        return this;
-    }
-
-    public void setTypeSousPack(String typeSousPack) {
-        this.typeSousPack = typeSousPack;
-    }
-
-    public String getTitreSousPack() {
-        return this.titreSousPack;
-    }
-
-    public Garantie titreSousPack(String titreSousPack) {
-        this.setTitreSousPack(titreSousPack);
-        return this;
-    }
-
-    public void setTitreSousPack(String titreSousPack) {
-        this.titreSousPack = titreSousPack;
-    }
-
-    public String getCodeTypePrestations() {
-        return this.codeTypePrestations;
-    }
-
-    public Garantie codeTypePrestations(String codeTypePrestations) {
-        this.setCodeTypePrestations(codeTypePrestations);
-        return this;
-    }
-
-    public void setCodeTypePrestations(String codeTypePrestations) {
-        this.codeTypePrestations = codeTypePrestations;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public Produit getProduit() {
@@ -302,19 +132,9 @@ public class Garantie implements Serializable {
     public String toString() {
         return "Garantie{" +
             "id=" + getId() +
-            ", codeGarantieTechnique='" + getCodeGarantieTechnique() + "'" +
-            ", codeEtatGarantie='" + getCodeEtatGarantie() + "'" +
-            ", dateAdhesionGarantie='" + getDateAdhesionGarantie() + "'" +
-            ", dateRadiationGarantie='" + getDateRadiationGarantie() + "'" +
-            ", codeAssureur='" + getCodeAssureur() + "'" +
-            ", codeFormule='" + getCodeFormule() + "'" +
-            ", codePack='" + getCodePack() + "'" +
-            ", typePack='" + getTypePack() + "'" +
-            ", titrePack='" + getTitrePack() + "'" +
-            ", codeSousPack='" + getCodeSousPack() + "'" +
-            ", typeSousPack='" + getTypeSousPack() + "'" +
-            ", titreSousPack='" + getTitreSousPack() + "'" +
-            ", codeTypePrestations='" + getCodeTypePrestations() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             "}";
     }
 }

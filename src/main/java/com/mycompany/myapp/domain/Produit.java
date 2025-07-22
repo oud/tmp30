@@ -26,35 +26,16 @@ public class Produit implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "code_produit", nullable = false)
-    private String codeProduit;
+    @Column(name = "type_meg", nullable = false)
+    private String typeMEG;
 
     @NotNull
-    @Column(name = "date_adhesion_produit", nullable = false)
-    private LocalDate dateAdhesionProduit;
-
-    @Column(name = "date_radiation_produit")
-    private LocalDate dateRadiationProduit;
+    @Column(name = "code_offre", nullable = false)
+    private String codeOffre;
 
     @NotNull
-    @Column(name = "code_formule", nullable = false)
-    private String codeFormule;
-
-    @NotNull
-    @Column(name = "code_famille_risque_formule", nullable = false)
-    private String codeFamilleRisqueFormule;
-
-    @NotNull
-    @Column(name = "titre_formule", nullable = false)
-    private String titreFormule;
-
-    @NotNull
-    @Column(name = "type_formule", nullable = false)
-    private String typeFormule;
-
-    @NotNull
-    @Column(name = "code_etat", nullable = false)
-    private String codeEtat;
+    @Column(name = "date_effet", nullable = false)
+    private LocalDate dateEffet;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "contrat" }, allowSetters = true)
@@ -75,108 +56,43 @@ public class Produit implements Serializable {
         this.id = id;
     }
 
-    public String getCodeProduit() {
-        return this.codeProduit;
+    public String getTypeMEG() {
+        return this.typeMEG;
     }
 
-    public Produit codeProduit(String codeProduit) {
-        this.setCodeProduit(codeProduit);
+    public Produit typeMEG(String typeMEG) {
+        this.setTypeMEG(typeMEG);
         return this;
     }
 
-    public void setCodeProduit(String codeProduit) {
-        this.codeProduit = codeProduit;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public LocalDate getDateAdhesionProduit() {
-        return this.dateAdhesionProduit;
+    public String getCodeOffre() {
+        return this.codeOffre;
     }
 
-    public Produit dateAdhesionProduit(LocalDate dateAdhesionProduit) {
-        this.setDateAdhesionProduit(dateAdhesionProduit);
+    public Produit codeOffre(String codeOffre) {
+        this.setCodeOffre(codeOffre);
         return this;
     }
 
-    public void setDateAdhesionProduit(LocalDate dateAdhesionProduit) {
-        this.dateAdhesionProduit = dateAdhesionProduit;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public LocalDate getDateRadiationProduit() {
-        return this.dateRadiationProduit;
+    public LocalDate getDateEffet() {
+        return this.dateEffet;
     }
 
-    public Produit dateRadiationProduit(LocalDate dateRadiationProduit) {
-        this.setDateRadiationProduit(dateRadiationProduit);
+    public Produit dateEffet(LocalDate dateEffet) {
+        this.setDateEffet(dateEffet);
         return this;
     }
 
-    public void setDateRadiationProduit(LocalDate dateRadiationProduit) {
-        this.dateRadiationProduit = dateRadiationProduit;
-    }
-
-    public String getCodeFormule() {
-        return this.codeFormule;
-    }
-
-    public Produit codeFormule(String codeFormule) {
-        this.setCodeFormule(codeFormule);
-        return this;
-    }
-
-    public void setCodeFormule(String codeFormule) {
-        this.codeFormule = codeFormule;
-    }
-
-    public String getCodeFamilleRisqueFormule() {
-        return this.codeFamilleRisqueFormule;
-    }
-
-    public Produit codeFamilleRisqueFormule(String codeFamilleRisqueFormule) {
-        this.setCodeFamilleRisqueFormule(codeFamilleRisqueFormule);
-        return this;
-    }
-
-    public void setCodeFamilleRisqueFormule(String codeFamilleRisqueFormule) {
-        this.codeFamilleRisqueFormule = codeFamilleRisqueFormule;
-    }
-
-    public String getTitreFormule() {
-        return this.titreFormule;
-    }
-
-    public Produit titreFormule(String titreFormule) {
-        this.setTitreFormule(titreFormule);
-        return this;
-    }
-
-    public void setTitreFormule(String titreFormule) {
-        this.titreFormule = titreFormule;
-    }
-
-    public String getTypeFormule() {
-        return this.typeFormule;
-    }
-
-    public Produit typeFormule(String typeFormule) {
-        this.setTypeFormule(typeFormule);
-        return this;
-    }
-
-    public void setTypeFormule(String typeFormule) {
-        this.typeFormule = typeFormule;
-    }
-
-    public String getCodeEtat() {
-        return this.codeEtat;
-    }
-
-    public Produit codeEtat(String codeEtat) {
-        this.setCodeEtat(codeEtat);
-        return this;
-    }
-
-    public void setCodeEtat(String codeEtat) {
-        this.codeEtat = codeEtat;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public Groupe getGroupe() {
@@ -216,14 +132,9 @@ public class Produit implements Serializable {
     public String toString() {
         return "Produit{" +
             "id=" + getId() +
-            ", codeProduit='" + getCodeProduit() + "'" +
-            ", dateAdhesionProduit='" + getDateAdhesionProduit() + "'" +
-            ", dateRadiationProduit='" + getDateRadiationProduit() + "'" +
-            ", codeFormule='" + getCodeFormule() + "'" +
-            ", codeFamilleRisqueFormule='" + getCodeFamilleRisqueFormule() + "'" +
-            ", titreFormule='" + getTitreFormule() + "'" +
-            ", typeFormule='" + getTypeFormule() + "'" +
-            ", codeEtat='" + getCodeEtat() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             "}";
     }
 }

@@ -10,8 +10,7 @@ import { GarantieService, RestGarantie } from './garantie.service';
 
 const requireRestSample: RestGarantie = {
   ...sampleWithRequiredData,
-  dateAdhesionGarantie: sampleWithRequiredData.dateAdhesionGarantie?.format(DATE_FORMAT),
-  dateRadiationGarantie: sampleWithRequiredData.dateRadiationGarantie?.format(DATE_FORMAT),
+  dateEffet: sampleWithRequiredData.dateEffet?.format(DATE_FORMAT),
 };
 
 describe('Garantie Service', () => {

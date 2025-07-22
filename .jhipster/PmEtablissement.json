@@ -127,12 +127,6 @@
   "name": "PmEtablissement",
   "relationships": [
     {
-      "otherEntityName": "contrat",
-      "relationshipName": "contrat",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    },
-    {
       "otherEntityName": "groupe",
       "relationshipName": "groupe",
       "relationshipSide": "left",

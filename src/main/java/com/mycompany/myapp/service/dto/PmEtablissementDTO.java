@@ -83,8 +83,6 @@ public class PmEtablissementDTO implements Serializable {
 
     private Boolean checked;
 
-    private ContratDTO contrat;
-
     private GroupeDTO groupe;
 
     public Long getId() {
@@ -287,14 +285,6 @@ public class PmEtablissementDTO implements Serializable {
         this.checked = checked;
     }
 
-    public ContratDTO getContrat() {
-        return contrat;
-    }
-
-    public void setContrat(ContratDTO contrat) {
-        this.contrat = contrat;
-    }
-
     public GroupeDTO getGroupe() {
         return groupe;
     }
@@ -353,7 +343,6 @@ public class PmEtablissementDTO implements Serializable {
             ", codeNIC='" + getCodeNIC() + "'" +
             ", identifiantAI='" + getIdentifiantAI() + "'" +
             ", checked='" + getChecked() + "'" +
-            ", contrat=" + getContrat() +
             ", groupe=" + getGroupe() +
             "}";
     }

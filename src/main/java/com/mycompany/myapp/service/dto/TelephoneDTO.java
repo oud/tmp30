@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.util.Objects;
 /**
  * A DTO for the {@link com.mycompany.myapp.domain.Telephone} entity.
  */
+@Schema(description = "not an ignored comment")
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class TelephoneDTO implements Serializable {
 

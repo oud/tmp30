@@ -120,10 +120,6 @@ public class PmEtablissement implements Serializable {
     private Boolean checked;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "pmEntreprise" }, allowSetters = true)
-    private Contrat contrat;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "contrat" }, allowSetters = true)
     private Groupe groupe;
 
@@ -452,19 +448,6 @@ public class PmEtablissement implements Serializable {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
-    }
-
-    public Contrat getContrat() {
-        return this.contrat;
-    }
-
-    public void setContrat(Contrat contrat) {
-        this.contrat = contrat;
-    }
-
-    public PmEtablissement contrat(Contrat contrat) {
-        this.setContrat(contrat);
-        return this;
     }
 
     public Groupe getGroupe() {

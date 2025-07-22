@@ -40,93 +40,23 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="codeGarantieTechnique">
+            <th scope="col" jhiSortBy="typeMEG">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codeGarantieTechnique">Code Garantie Technique</span>
+                <span jhiTranslate="tmp30App.garantie.typeMEG">Type MEG</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="codeEtatGarantie">
+            <th scope="col" jhiSortBy="codeOffre">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codeEtatGarantie">Code Etat Garantie</span>
+                <span jhiTranslate="tmp30App.garantie.codeOffre">Code Offre</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="dateAdhesionGarantie">
+            <th scope="col" jhiSortBy="dateEffet">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.dateAdhesionGarantie">Date Adhesion Garantie</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="dateRadiationGarantie">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.dateRadiationGarantie">Date Radiation Garantie</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeAssureur">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codeAssureur">Code Assureur</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeFormule">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codeFormule">Code Formule</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codePack">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codePack">Code Pack</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="typePack">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.typePack">Type Pack</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="titrePack">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.titrePack">Titre Pack</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeSousPack">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codeSousPack">Code Sous Pack</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="typeSousPack">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.typeSousPack">Type Sous Pack</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="titreSousPack">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.titreSousPack">Titre Sous Pack</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeTypePrestations">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.garantie.codeTypePrestations">Code Type Prestations</span>
+                <span jhiTranslate="tmp30App.garantie.dateEffet">Date Effet</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -146,19 +76,9 @@
               <td>
                 <a [routerLink]="['/garantie', garantie.id, 'view']">{{ garantie.id }}</a>
               </td>
-              <td>{{ garantie.codeGarantieTechnique }}</td>
-              <td>{{ garantie.codeEtatGarantie }}</td>
-              <td>{{ garantie.dateAdhesionGarantie | formatMediumDate }}</td>
-              <td>{{ garantie.dateRadiationGarantie | formatMediumDate }}</td>
-              <td>{{ garantie.codeAssureur }}</td>
-              <td>{{ garantie.codeFormule }}</td>
-              <td>{{ garantie.codePack }}</td>
-              <td>{{ garantie.typePack }}</td>
-              <td>{{ garantie.titrePack }}</td>
-              <td>{{ garantie.codeSousPack }}</td>
-              <td>{{ garantie.typeSousPack }}</td>
-              <td>{{ garantie.titreSousPack }}</td>
-              <td>{{ garantie.codeTypePrestations }}</td>
+              <td>{{ garantie.typeMEG }}</td>
+              <td>{{ garantie.codeOffre }}</td>
+              <td>{{ garantie.dateEffet | formatMediumDate }}</td>
               <td>
                 @if (garantie.produit) {
                   <div>

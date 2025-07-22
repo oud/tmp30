@@ -12,9 +12,8 @@ import { IContrat, NewContrat } from '../contrat.model';
 
 export type PartialUpdateContrat = Partial<IContrat> & Pick<IContrat, 'id'>;
 
-type RestOf<T extends IContrat | NewContrat> = Omit<T, 'dateEffetPremiereSouscription' | 'dateEffetDerniereResiliation'> & {
-  dateEffetPremiereSouscription?: string | null;
-  dateEffetDerniereResiliation?: string | null;
+type RestOf<T extends IContrat | NewContrat> = Omit<T, 'dateEffet'> & {
+  dateEffet?: string | null;
 };
 
 export type RestContrat = RestOf<IContrat>;
@@ -102,18 +101,14 @@ export class ContratService {
   protected convertDateFromClient<T extends IContrat | NewContrat | PartialUpdateContrat>(contrat: T): RestOf<T> {
     return {
       ...contrat,
-      dateEffetPremiereSouscription: contrat.dateEffetPremiereSouscription?.format(DATE_FORMAT) ?? null,
-      dateEffetDerniereResiliation: contrat.dateEffetDerniereResiliation?.format(DATE_FORMAT) ?? null,
+      dateEffet: contrat.dateEffet?.format(DATE_FORMAT) ?? null,
     };
   }
 
   protected convertDateFromServer(restContrat: RestContrat): IContrat {
     return {
       ...restContrat,
-      dateEffetPremiereSouscription: restContrat.dateEffetPremiereSouscription
-        ? dayjs(restContrat.dateEffetPremiereSouscription)
-        : undefined,
-      dateEffetDerniereResiliation: restContrat.dateEffetDerniereResiliation ? dayjs(restContrat.dateEffetDerniereResiliation) : undefined,
+      dateEffet: restContrat.dateEffet ? dayjs(restContrat.dateEffet) : undefined,
     };
   }
 

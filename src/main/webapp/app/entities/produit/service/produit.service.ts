@@ -12,9 +12,8 @@ import { IProduit, NewProduit } from '../produit.model';
 
 export type PartialUpdateProduit = Partial<IProduit> & Pick<IProduit, 'id'>;
 
-type RestOf<T extends IProduit | NewProduit> = Omit<T, 'dateAdhesionProduit' | 'dateRadiationProduit'> & {
-  dateAdhesionProduit?: string | null;
-  dateRadiationProduit?: string | null;
+type RestOf<T extends IProduit | NewProduit> = Omit<T, 'dateEffet'> & {
+  dateEffet?: string | null;
 };
 
 export type RestProduit = RestOf<IProduit>;
@@ -102,16 +101,14 @@ export class ProduitService {
   protected convertDateFromClient<T extends IProduit | NewProduit | PartialUpdateProduit>(produit: T): RestOf<T> {
     return {
       ...produit,
-      dateAdhesionProduit: produit.dateAdhesionProduit?.format(DATE_FORMAT) ?? null,
-      dateRadiationProduit: produit.dateRadiationProduit?.format(DATE_FORMAT) ?? null,
+      dateEffet: produit.dateEffet?.format(DATE_FORMAT) ?? null,
     };
   }
 
   protected convertDateFromServer(restProduit: RestProduit): IProduit {
     return {
       ...restProduit,
-      dateAdhesionProduit: restProduit.dateAdhesionProduit ? dayjs(restProduit.dateAdhesionProduit) : undefined,
-      dateRadiationProduit: restProduit.dateRadiationProduit ? dayjs(restProduit.dateRadiationProduit) : undefined,
+      dateEffet: restProduit.dateEffet ? dayjs(restProduit.dateEffet) : undefined,
     };
   }
 

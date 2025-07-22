@@ -44,7 +44,6 @@ describe('PmEtablissement Form Service', () => {
             codeNIC: expect.any(Object),
             identifiantAI: expect.any(Object),
             checked: expect.any(Object),
-            contrat: expect.any(Object),
             groupe: expect.any(Object),
           }),
         );
@@ -80,7 +79,6 @@ describe('PmEtablissement Form Service', () => {
             codeNIC: expect.any(Object),
             identifiantAI: expect.any(Object),
             checked: expect.any(Object),
-            contrat: expect.any(Object),
             groupe: expect.any(Object),
           }),
         );

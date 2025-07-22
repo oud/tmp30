@@ -10,8 +10,7 @@ import { ContratService, RestContrat } from './contrat.service';
 
 const requireRestSample: RestContrat = {
   ...sampleWithRequiredData,
-  dateEffetPremiereSouscription: sampleWithRequiredData.dateEffetPremiereSouscription?.format(DATE_FORMAT),
-  dateEffetDerniereResiliation: sampleWithRequiredData.dateEffetDerniereResiliation?.format(DATE_FORMAT),
+  dateEffet: sampleWithRequiredData.dateEffet?.format(DATE_FORMAT),
 };
 
 describe('Contrat Service', () => {

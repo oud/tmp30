@@ -18,10 +18,9 @@ type TauxFormDefaults = Pick<NewTaux, 'id'>;
 
 type TauxFormGroupContent = {
   id: FormControl<ITaux['id'] | NewTaux['id']>;
-  codeVariableDeclarative: FormControl<ITaux['codeVariableDeclarative']>;
-  uniteVariableDeclarative: FormControl<ITaux['uniteVariableDeclarative']>;
-  valeurFacteurMontant: FormControl<ITaux['valeurFacteurMontant']>;
-  valeurFacteurTaux: FormControl<ITaux['valeurFacteurTaux']>;
+  typeMEG: FormControl<ITaux['typeMEG']>;
+  codeOffre: FormControl<ITaux['codeOffre']>;
+  dateEffet: FormControl<ITaux['dateEffet']>;
   garantie: FormControl<ITaux['garantie']>;
 };
 
@@ -42,14 +41,13 @@ export class TauxFormService {
           validators: [Validators.required],
         },
       ),
-      codeVariableDeclarative: new FormControl(tauxRawValue.codeVariableDeclarative, {
+      typeMEG: new FormControl(tauxRawValue.typeMEG, {
         validators: [Validators.required],
       }),
-      uniteVariableDeclarative: new FormControl(tauxRawValue.uniteVariableDeclarative, {
+      codeOffre: new FormControl(tauxRawValue.codeOffre, {
         validators: [Validators.required],
       }),
-      valeurFacteurMontant: new FormControl(tauxRawValue.valeurFacteurMontant),
-      valeurFacteurTaux: new FormControl(tauxRawValue.valeurFacteurTaux, {
+      dateEffet: new FormControl(tauxRawValue.dateEffet, {
         validators: [Validators.required],
       }),
       garantie: new FormControl(tauxRawValue.garantie),

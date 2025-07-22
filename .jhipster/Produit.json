@@ -6,42 +6,18 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "codeProduit",
+      "fieldName": "typeMEG",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateAdhesionProduit",
+      "fieldName": "codeOffre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateEffet",
       "fieldType": "LocalDate",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "dateRadiationProduit",
-      "fieldType": "LocalDate"
-    },
-    {
-      "fieldName": "codeFormule",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "codeFamilleRisqueFormule",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "titreFormule",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "typeFormule",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "codeEtat",
-      "fieldType": "String",
       "fieldValidateRules": ["required"]
     }
   ],

@@ -18,10 +18,9 @@
         "title": "Taux"
       },
       "id": "ID",
-      "codeVariableDeclarative": "Code Variable Declarative",
-      "uniteVariableDeclarative": "Unite Variable Declarative",
-      "valeurFacteurMontant": "Valeur Facteur Montant",
-      "valeurFacteurTaux": "Valeur Facteur Taux",
+      "typeMEG": "Type MEG",
+      "codeOffre": "Code Offre",
+      "dateEffet": "Date Effet",
       "garantie": "Garantie"
     }
   }

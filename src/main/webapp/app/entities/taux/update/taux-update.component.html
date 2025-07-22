@@ -15,78 +15,51 @@
           </div>
         }
 
-        @let codeVariableDeclarativeRef = editForm.get('codeVariableDeclarative')!;
+        @let typeMEGRef = editForm.get('typeMEG')!;
         <div class="mb-3">
-          <label class="form-label" for="field_codeVariableDeclarative" jhiTranslate="tmp30App.taux.codeVariableDeclarative"
-            >Code Variable Declarative</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="codeVariableDeclarative"
-            id="field_codeVariableDeclarative"
-            data-cy="codeVariableDeclarative"
-            formControlName="codeVariableDeclarative"
-          />
-          @if (codeVariableDeclarativeRef.invalid && (codeVariableDeclarativeRef.dirty || codeVariableDeclarativeRef.touched)) {
+          <label class="form-label" for="field_typeMEG" jhiTranslate="tmp30App.taux.typeMEG">Type MEG</label>
+          <input type="text" class="form-control" name="typeMEG" id="field_typeMEG" data-cy="typeMEG" formControlName="typeMEG" />
+          @if (typeMEGRef.invalid && (typeMEGRef.dirty || typeMEGRef.touched)) {
             <div>
-              @if (editForm.get('codeVariableDeclarative')?.errors?.required) {
+              @if (editForm.get('typeMEG')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
-        @let uniteVariableDeclarativeRef = editForm.get('uniteVariableDeclarative')!;
+        @let codeOffreRef = editForm.get('codeOffre')!;
         <div class="mb-3">
-          <label class="form-label" for="field_uniteVariableDeclarative" jhiTranslate="tmp30App.taux.uniteVariableDeclarative"
-            >Unite Variable Declarative</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="uniteVariableDeclarative"
-            id="field_uniteVariableDeclarative"
-            data-cy="uniteVariableDeclarative"
-            formControlName="uniteVariableDeclarative"
-          />
-          @if (uniteVariableDeclarativeRef.invalid && (uniteVariableDeclarativeRef.dirty || uniteVariableDeclarativeRef.touched)) {
+          <label class="form-label" for="field_codeOffre" jhiTranslate="tmp30App.taux.codeOffre">Code Offre</label>
+          <input type="text" class="form-control" name="codeOffre" id="field_codeOffre" data-cy="codeOffre" formControlName="codeOffre" />
+          @if (codeOffreRef.invalid && (codeOffreRef.dirty || codeOffreRef.touched)) {
             <div>
-              @if (editForm.get('uniteVariableDeclarative')?.errors?.required) {
+              @if (editForm.get('codeOffre')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
+        @let dateEffetRef = editForm.get('dateEffet')!;
         <div class="mb-3">
-          <label class="form-label" for="field_valeurFacteurMontant" jhiTranslate="tmp30App.taux.valeurFacteurMontant"
-            >Valeur Facteur Montant</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="valeurFacteurMontant"
-            id="field_valeurFacteurMontant"
-            data-cy="valeurFacteurMontant"
-            formControlName="valeurFacteurMontant"
-          />
-        </div>
-
-        @let valeurFacteurTauxRef = editForm.get('valeurFacteurTaux')!;
-        <div class="mb-3">
-          <label class="form-label" for="field_valeurFacteurTaux" jhiTranslate="tmp30App.taux.valeurFacteurTaux">Valeur Facteur Taux</label>
-          <input
-            type="text"
-            class="form-control"
-            name="valeurFacteurTaux"
-            id="field_valeurFacteurTaux"
-            data-cy="valeurFacteurTaux"
-            formControlName="valeurFacteurTaux"
-          />
-          @if (valeurFacteurTauxRef.invalid && (valeurFacteurTauxRef.dirty || valeurFacteurTauxRef.touched)) {
+          <label class="form-label" for="field_dateEffet" jhiTranslate="tmp30App.taux.dateEffet">Date Effet</label>
+          <div class="input-group">
+            <input
+              id="field_dateEffet"
+              data-cy="dateEffet"
+              type="text"
+              class="form-control"
+              name="dateEffet"
+              ngbDatepicker
+              #dateEffetDp="ngbDatepicker"
+              formControlName="dateEffet"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateEffetDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (dateEffetRef.invalid && (dateEffetRef.dirty || dateEffetRef.touched)) {
             <div>
-              @if (editForm.get('valeurFacteurTaux')?.errors?.required) {
+              @if (editForm.get('dateEffet')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>

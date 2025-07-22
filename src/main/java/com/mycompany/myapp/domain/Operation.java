@@ -26,30 +26,16 @@ public class Operation implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "numero_operation_niveau_0", nullable = false)
-    private String numeroOperationNiveau0;
+    @Column(name = "type_meg", nullable = false)
+    private String typeMEG;
 
     @NotNull
-    @Column(name = "etat_operation", nullable = false)
-    private String etatOperation;
+    @Column(name = "code_offre", nullable = false)
+    private String codeOffre;
 
     @NotNull
-    @Column(name = "date_effet_operation", nullable = false)
-    private LocalDate dateEffetOperation;
-
-    @Column(name = "date_demande_operation")
-    private LocalDate dateDemandeOperation;
-
-    @NotNull
-    @Column(name = "date_creation", nullable = false)
-    private LocalDate dateCreation;
-
-    @NotNull
-    @Column(name = "code_acte_gestion", nullable = false)
-    private String codeActeGestion;
-
-    @Column(name = "numero_operation_annulee")
-    private String numeroOperationAnnulee;
+    @Column(name = "date_effet", nullable = false)
+    private LocalDate dateEffet;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "pmEntreprise" }, allowSetters = true)
@@ -70,95 +56,43 @@ public class Operation implements Serializable {
         this.id = id;
     }
 
-    public String getNumeroOperationNiveau0() {
-        return this.numeroOperationNiveau0;
+    public String getTypeMEG() {
+        return this.typeMEG;
     }
 
-    public Operation numeroOperationNiveau0(String numeroOperationNiveau0) {
-        this.setNumeroOperationNiveau0(numeroOperationNiveau0);
+    public Operation typeMEG(String typeMEG) {
+        this.setTypeMEG(typeMEG);
         return this;
     }
 
-    public void setNumeroOperationNiveau0(String numeroOperationNiveau0) {
-        this.numeroOperationNiveau0 = numeroOperationNiveau0;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public String getEtatOperation() {
-        return this.etatOperation;
+    public String getCodeOffre() {
+        return this.codeOffre;
     }
 
-    public Operation etatOperation(String etatOperation) {
-        this.setEtatOperation(etatOperation);
+    public Operation codeOffre(String codeOffre) {
+        this.setCodeOffre(codeOffre);
         return this;
     }
 
-    public void setEtatOperation(String etatOperation) {
-        this.etatOperation = etatOperation;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public LocalDate getDateEffetOperation() {
-        return this.dateEffetOperation;
+    public LocalDate getDateEffet() {
+        return this.dateEffet;
     }
 
-    public Operation dateEffetOperation(LocalDate dateEffetOperation) {
-        this.setDateEffetOperation(dateEffetOperation);
+    public Operation dateEffet(LocalDate dateEffet) {
+        this.setDateEffet(dateEffet);
         return this;
     }
 
-    public void setDateEffetOperation(LocalDate dateEffetOperation) {
-        this.dateEffetOperation = dateEffetOperation;
-    }
-
-    public LocalDate getDateDemandeOperation() {
-        return this.dateDemandeOperation;
-    }
-
-    public Operation dateDemandeOperation(LocalDate dateDemandeOperation) {
-        this.setDateDemandeOperation(dateDemandeOperation);
-        return this;
-    }
-
-    public void setDateDemandeOperation(LocalDate dateDemandeOperation) {
-        this.dateDemandeOperation = dateDemandeOperation;
-    }
-
-    public LocalDate getDateCreation() {
-        return this.dateCreation;
-    }
-
-    public Operation dateCreation(LocalDate dateCreation) {
-        this.setDateCreation(dateCreation);
-        return this;
-    }
-
-    public void setDateCreation(LocalDate dateCreation) {
-        this.dateCreation = dateCreation;
-    }
-
-    public String getCodeActeGestion() {
-        return this.codeActeGestion;
-    }
-
-    public Operation codeActeGestion(String codeActeGestion) {
-        this.setCodeActeGestion(codeActeGestion);
-        return this;
-    }
-
-    public void setCodeActeGestion(String codeActeGestion) {
-        this.codeActeGestion = codeActeGestion;
-    }
-
-    public String getNumeroOperationAnnulee() {
-        return this.numeroOperationAnnulee;
-    }
-
-    public Operation numeroOperationAnnulee(String numeroOperationAnnulee) {
-        this.setNumeroOperationAnnulee(numeroOperationAnnulee);
-        return this;
-    }
-
-    public void setNumeroOperationAnnulee(String numeroOperationAnnulee) {
-        this.numeroOperationAnnulee = numeroOperationAnnulee;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public Contrat getContrat() {
@@ -198,13 +132,9 @@ public class Operation implements Serializable {
     public String toString() {
         return "Operation{" +
             "id=" + getId() +
-            ", numeroOperationNiveau0='" + getNumeroOperationNiveau0() + "'" +
-            ", etatOperation='" + getEtatOperation() + "'" +
-            ", dateEffetOperation='" + getDateEffetOperation() + "'" +
-            ", dateDemandeOperation='" + getDateDemandeOperation() + "'" +
-            ", dateCreation='" + getDateCreation() + "'" +
-            ", codeActeGestion='" + getCodeActeGestion() + "'" +
-            ", numeroOperationAnnulee='" + getNumeroOperationAnnulee() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             "}";
     }
 }

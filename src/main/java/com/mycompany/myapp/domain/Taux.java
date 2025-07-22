@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -25,19 +26,16 @@ public class Taux implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "code_variable_declarative", nullable = false)
-    private String codeVariableDeclarative;
+    @Column(name = "type_meg", nullable = false)
+    private String typeMEG;
 
     @NotNull
-    @Column(name = "unite_variable_declarative", nullable = false)
-    private String uniteVariableDeclarative;
-
-    @Column(name = "valeur_facteur_montant")
-    private String valeurFacteurMontant;
+    @Column(name = "code_offre", nullable = false)
+    private String codeOffre;
 
     @NotNull
-    @Column(name = "valeur_facteur_taux", nullable = false)
-    private String valeurFacteurTaux;
+    @Column(name = "date_effet", nullable = false)
+    private LocalDate dateEffet;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "produit" }, allowSetters = true)
@@ -58,56 +56,43 @@ public class Taux implements Serializable {
         this.id = id;
     }
 
-    public String getCodeVariableDeclarative() {
-        return this.codeVariableDeclarative;
+    public String getTypeMEG() {
+        return this.typeMEG;
     }
 
-    public Taux codeVariableDeclarative(String codeVariableDeclarative) {
-        this.setCodeVariableDeclarative(codeVariableDeclarative);
+    public Taux typeMEG(String typeMEG) {
+        this.setTypeMEG(typeMEG);
         return this;
     }
 
-    public void setCodeVariableDeclarative(String codeVariableDeclarative) {
-        this.codeVariableDeclarative = codeVariableDeclarative;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public String getUniteVariableDeclarative() {
-        return this.uniteVariableDeclarative;
+    public String getCodeOffre() {
+        return this.codeOffre;
     }
 
-    public Taux uniteVariableDeclarative(String uniteVariableDeclarative) {
-        this.setUniteVariableDeclarative(uniteVariableDeclarative);
+    public Taux codeOffre(String codeOffre) {
+        this.setCodeOffre(codeOffre);
         return this;
     }
 
-    public void setUniteVariableDeclarative(String uniteVariableDeclarative) {
-        this.uniteVariableDeclarative = uniteVariableDeclarative;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public String getValeurFacteurMontant() {
-        return this.valeurFacteurMontant;
+    public LocalDate getDateEffet() {
+        return this.dateEffet;
     }
 
-    public Taux valeurFacteurMontant(String valeurFacteurMontant) {
-        this.setValeurFacteurMontant(valeurFacteurMontant);
+    public Taux dateEffet(LocalDate dateEffet) {
+        this.setDateEffet(dateEffet);
         return this;
     }
 
-    public void setValeurFacteurMontant(String valeurFacteurMontant) {
-        this.valeurFacteurMontant = valeurFacteurMontant;
-    }
-
-    public String getValeurFacteurTaux() {
-        return this.valeurFacteurTaux;
-    }
-
-    public Taux valeurFacteurTaux(String valeurFacteurTaux) {
-        this.setValeurFacteurTaux(valeurFacteurTaux);
-        return this;
-    }
-
-    public void setValeurFacteurTaux(String valeurFacteurTaux) {
-        this.valeurFacteurTaux = valeurFacteurTaux;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public Garantie getGarantie() {
@@ -147,10 +132,9 @@ public class Taux implements Serializable {
     public String toString() {
         return "Taux{" +
             "id=" + getId() +
-            ", codeVariableDeclarative='" + getCodeVariableDeclarative() + "'" +
-            ", uniteVariableDeclarative='" + getUniteVariableDeclarative() + "'" +
-            ", valeurFacteurMontant='" + getValeurFacteurMontant() + "'" +
-            ", valeurFacteurTaux='" + getValeurFacteurTaux() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             "}";
     }
 }

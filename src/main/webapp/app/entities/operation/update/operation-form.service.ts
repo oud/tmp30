@@ -18,13 +18,9 @@ type OperationFormDefaults = Pick<NewOperation, 'id'>;
 
 type OperationFormGroupContent = {
   id: FormControl<IOperation['id'] | NewOperation['id']>;
-  numeroOperationNiveau0: FormControl<IOperation['numeroOperationNiveau0']>;
-  etatOperation: FormControl<IOperation['etatOperation']>;
-  dateEffetOperation: FormControl<IOperation['dateEffetOperation']>;
-  dateDemandeOperation: FormControl<IOperation['dateDemandeOperation']>;
-  dateCreation: FormControl<IOperation['dateCreation']>;
-  codeActeGestion: FormControl<IOperation['codeActeGestion']>;
-  numeroOperationAnnulee: FormControl<IOperation['numeroOperationAnnulee']>;
+  typeMEG: FormControl<IOperation['typeMEG']>;
+  codeOffre: FormControl<IOperation['codeOffre']>;
+  dateEffet: FormControl<IOperation['dateEffet']>;
   contrat: FormControl<IOperation['contrat']>;
 };
 
@@ -45,23 +41,15 @@ export class OperationFormService {
           validators: [Validators.required],
         },
       ),
-      numeroOperationNiveau0: new FormControl(operationRawValue.numeroOperationNiveau0, {
+      typeMEG: new FormControl(operationRawValue.typeMEG, {
         validators: [Validators.required],
       }),
-      etatOperation: new FormControl(operationRawValue.etatOperation, {
+      codeOffre: new FormControl(operationRawValue.codeOffre, {
         validators: [Validators.required],
       }),
-      dateEffetOperation: new FormControl(operationRawValue.dateEffetOperation, {
+      dateEffet: new FormControl(operationRawValue.dateEffet, {
         validators: [Validators.required],
       }),
-      dateDemandeOperation: new FormControl(operationRawValue.dateDemandeOperation),
-      dateCreation: new FormControl(operationRawValue.dateCreation, {
-        validators: [Validators.required],
-      }),
-      codeActeGestion: new FormControl(operationRawValue.codeActeGestion, {
-        validators: [Validators.required],
-      }),
-      numeroOperationAnnulee: new FormControl(operationRawValue.numeroOperationAnnulee),
       contrat: new FormControl(operationRawValue.contrat),
     });
   }

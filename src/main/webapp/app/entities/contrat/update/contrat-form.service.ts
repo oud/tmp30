@@ -18,29 +18,9 @@ type ContratFormDefaults = Pick<NewContrat, 'id'>;
 
 type ContratFormGroupContent = {
   id: FormControl<IContrat['id'] | NewContrat['id']>;
-  numeroContratCollectif: FormControl<IContrat['numeroContratCollectif']>;
-  migre: FormControl<IContrat['migre']>;
-  codeEntiteRattachement: FormControl<IContrat['codeEntiteRattachement']>;
-  codeCentreGestion: FormControl<IContrat['codeCentreGestion']>;
-  codeGroupeGestion: FormControl<IContrat['codeGroupeGestion']>;
-  codeReseauDistribution: FormControl<IContrat['codeReseauDistribution']>;
-  typeContratCollectif: FormControl<IContrat['typeContratCollectif']>;
-  etatContrat: FormControl<IContrat['etatContrat']>;
-  dateEffetPremiereSouscription: FormControl<IContrat['dateEffetPremiereSouscription']>;
-  dateEffetDerniereResiliation: FormControl<IContrat['dateEffetDerniereResiliation']>;
-  motifResiliation: FormControl<IContrat['motifResiliation']>;
-  codeNatureCouverture: FormControl<IContrat['codeNatureCouverture']>;
+  typeMEG: FormControl<IContrat['typeMEG']>;
   codeOffre: FormControl<IContrat['codeOffre']>;
-  numeroVersionOffre: FormControl<IContrat['numeroVersionOffre']>;
-  echeancePrincipale: FormControl<IContrat['echeancePrincipale']>;
-  codeOrganismePorteurRisque: FormControl<IContrat['codeOrganismePorteurRisque']>;
-  indicateurPorteurRisque: FormControl<IContrat['indicateurPorteurRisque']>;
-  codeOrganismeProducteurFicheDsn: FormControl<IContrat['codeOrganismeProducteurFicheDsn']>;
-  codeOrganismeDelegataireCotisations: FormControl<IContrat['codeOrganismeDelegataireCotisations']>;
-  codeOrganismeDelegatairePrestations: FormControl<IContrat['codeOrganismeDelegatairePrestations']>;
-  datePremierMoisCotisationAutorise: FormControl<IContrat['datePremierMoisCotisationAutorise']>;
-  numeroOperationNiveau0: FormControl<IContrat['numeroOperationNiveau0']>;
-  statut: FormControl<IContrat['statut']>;
+  dateEffet: FormControl<IContrat['dateEffet']>;
   pmEntreprise: FormControl<IContrat['pmEntreprise']>;
 };
 
@@ -61,69 +41,13 @@ export class ContratFormService {
           validators: [Validators.required],
         },
       ),
-      numeroContratCollectif: new FormControl(contratRawValue.numeroContratCollectif, {
-        validators: [Validators.required],
-      }),
-      migre: new FormControl(contratRawValue.migre, {
-        validators: [Validators.required],
-      }),
-      codeEntiteRattachement: new FormControl(contratRawValue.codeEntiteRattachement, {
-        validators: [Validators.required],
-      }),
-      codeCentreGestion: new FormControl(contratRawValue.codeCentreGestion, {
-        validators: [Validators.required],
-      }),
-      codeGroupeGestion: new FormControl(contratRawValue.codeGroupeGestion, {
-        validators: [Validators.required],
-      }),
-      codeReseauDistribution: new FormControl(contratRawValue.codeReseauDistribution, {
-        validators: [Validators.required],
-      }),
-      typeContratCollectif: new FormControl(contratRawValue.typeContratCollectif, {
-        validators: [Validators.required],
-      }),
-      etatContrat: new FormControl(contratRawValue.etatContrat, {
-        validators: [Validators.required],
-      }),
-      dateEffetPremiereSouscription: new FormControl(contratRawValue.dateEffetPremiereSouscription, {
-        validators: [Validators.required],
-      }),
-      dateEffetDerniereResiliation: new FormControl(contratRawValue.dateEffetDerniereResiliation),
-      motifResiliation: new FormControl(contratRawValue.motifResiliation),
-      codeNatureCouverture: new FormControl(contratRawValue.codeNatureCouverture, {
+      typeMEG: new FormControl(contratRawValue.typeMEG, {
         validators: [Validators.required],
       }),
       codeOffre: new FormControl(contratRawValue.codeOffre, {
         validators: [Validators.required],
       }),
-      numeroVersionOffre: new FormControl(contratRawValue.numeroVersionOffre, {
-        validators: [Validators.required],
-      }),
-      echeancePrincipale: new FormControl(contratRawValue.echeancePrincipale, {
-        validators: [Validators.required],
-      }),
-      codeOrganismePorteurRisque: new FormControl(contratRawValue.codeOrganismePorteurRisque, {
-        validators: [Validators.required],
-      }),
-      indicateurPorteurRisque: new FormControl(contratRawValue.indicateurPorteurRisque, {
-        validators: [Validators.required],
-      }),
-      codeOrganismeProducteurFicheDsn: new FormControl(contratRawValue.codeOrganismeProducteurFicheDsn, {
-        validators: [Validators.required],
-      }),
-      codeOrganismeDelegataireCotisations: new FormControl(contratRawValue.codeOrganismeDelegataireCotisations, {
-        validators: [Validators.required],
-      }),
-      codeOrganismeDelegatairePrestations: new FormControl(contratRawValue.codeOrganismeDelegatairePrestations, {
-        validators: [Validators.required],
-      }),
-      datePremierMoisCotisationAutorise: new FormControl(contratRawValue.datePremierMoisCotisationAutorise, {
-        validators: [Validators.required],
-      }),
-      numeroOperationNiveau0: new FormControl(contratRawValue.numeroOperationNiveau0, {
-        validators: [Validators.required],
-      }),
-      statut: new FormControl(contratRawValue.statut, {
+      dateEffet: new FormControl(contratRawValue.dateEffet, {
         validators: [Validators.required],
       }),
       pmEntreprise: new FormControl(contratRawValue.pmEntreprise),

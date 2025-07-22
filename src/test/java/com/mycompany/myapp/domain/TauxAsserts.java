@@ -47,20 +47,9 @@ public class TauxAsserts {
     public static void assertTauxUpdatableFieldsEquals(Taux expected, Taux actual) {
         assertThat(actual)
             .as("Verify Taux relevant properties")
-            .satisfies(a ->
-                assertThat(a.getCodeVariableDeclarative())
-                    .as("check codeVariableDeclarative")
-                    .isEqualTo(expected.getCodeVariableDeclarative())
-            )
-            .satisfies(a ->
-                assertThat(a.getUniteVariableDeclarative())
-                    .as("check uniteVariableDeclarative")
-                    .isEqualTo(expected.getUniteVariableDeclarative())
-            )
-            .satisfies(a ->
-                assertThat(a.getValeurFacteurMontant()).as("check valeurFacteurMontant").isEqualTo(expected.getValeurFacteurMontant())
-            )
-            .satisfies(a -> assertThat(a.getValeurFacteurTaux()).as("check valeurFacteurTaux").isEqualTo(expected.getValeurFacteurTaux()));
+            .satisfies(a -> assertThat(a.getTypeMEG()).as("check typeMEG").isEqualTo(expected.getTypeMEG()))
+            .satisfies(a -> assertThat(a.getCodeOffre()).as("check codeOffre").isEqualTo(expected.getCodeOffre()))
+            .satisfies(a -> assertThat(a.getDateEffet()).as("check dateEffet").isEqualTo(expected.getDateEffet()));
     }
 
     /**

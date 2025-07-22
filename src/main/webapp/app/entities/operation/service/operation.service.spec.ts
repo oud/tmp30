@@ -10,9 +10,7 @@ import { OperationService, RestOperation } from './operation.service';
 
 const requireRestSample: RestOperation = {
   ...sampleWithRequiredData,
-  dateEffetOperation: sampleWithRequiredData.dateEffetOperation?.format(DATE_FORMAT),
-  dateDemandeOperation: sampleWithRequiredData.dateDemandeOperation?.format(DATE_FORMAT),
-  dateCreation: sampleWithRequiredData.dateCreation?.format(DATE_FORMAT),
+  dateEffet: sampleWithRequiredData.dateEffet?.format(DATE_FORMAT),
 };
 
 describe('Operation Service', () => {
