@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250722150552"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "codeVariableDeclarative",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "uniteVariableDeclarative",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valeurFacteurMontant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valeurFacteurTaux",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Taux",
+  "relationships": [
+    {
+      "otherEntityName": "garantie",
+      "relationshipName": "garantie",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
