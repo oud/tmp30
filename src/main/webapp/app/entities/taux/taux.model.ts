@@ -1,11 +1,11 @@
+import dayjs from 'dayjs/esm';
 import { IGarantie } from 'app/entities/garantie/garantie.model';
 
 export interface ITaux {
   id: number;
-  codeVariableDeclarative?: string | null;
-  uniteVariableDeclarative?: string | null;
-  valeurFacteurMontant?: string | null;
-  valeurFacteurTaux?: string | null;
+  typeMEG?: string | null;
+  codeOffre?: string | null;
+  dateEffet?: dayjs.Dayjs | null;
   garantie?: Pick<IGarantie, 'id'> | null;
 }
 

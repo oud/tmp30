@@ -7,12 +7,10 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IContrat } from 'app/entities/contrat/contrat.model';
-import { ContratService } from 'app/entities/contrat/service/contrat.service';
 import { IGroupe } from 'app/entities/groupe/groupe.model';
 import { GroupeService } from 'app/entities/groupe/service/groupe.service';
-import { PmEtablissementService } from '../service/pm-etablissement.service';
 import { IPmEtablissement } from '../pm-etablissement.model';
+import { PmEtablissementService } from '../service/pm-etablissement.service';
 import { PmEtablissementFormGroup, PmEtablissementFormService } from './pm-etablissement-form.service';
 
 @Component({
@@ -24,19 +22,15 @@ export class PmEtablissementUpdateComponent implements OnInit {
   isSaving = false;
   pmEtablissement: IPmEtablissement | null = null;
 
-  contratsSharedCollection: IContrat[] = [];
   groupesSharedCollection: IGroupe[] = [];
 
   protected pmEtablissementService = inject(PmEtablissementService);
   protected pmEtablissementFormService = inject(PmEtablissementFormService);
-  protected contratService = inject(ContratService);
   protected groupeService = inject(GroupeService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: PmEtablissementFormGroup = this.pmEtablissementFormService.createPmEtablissementFormGroup();
-
-  compareContrat = (o1: IContrat | null, o2: IContrat | null): boolean => this.contratService.compareContrat(o1, o2);
 
   compareGroupe = (o1: IGroupe | null, o2: IGroupe | null): boolean => this.groupeService.compareGroupe(o1, o2);
 
@@ -88,10 +82,6 @@ export class PmEtablissementUpdateComponent implements OnInit {
     this.pmEtablissement = pmEtablissement;
     this.pmEtablissementFormService.resetForm(this.editForm, pmEtablissement);
 
-    this.contratsSharedCollection = this.contratService.addContratToCollectionIfMissing<IContrat>(
-      this.contratsSharedCollection,
-      pmEtablissement.contrat,
-    );
     this.groupesSharedCollection = this.groupeService.addGroupeToCollectionIfMissing<IGroupe>(
       this.groupesSharedCollection,
       pmEtablissement.groupe,
@@ -99,16 +89,6 @@ export class PmEtablissementUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
-    this.contratService
-      .query()
-      .pipe(map((res: HttpResponse<IContrat[]>) => res.body ?? []))
-      .pipe(
-        map((contrats: IContrat[]) =>
-          this.contratService.addContratToCollectionIfMissing<IContrat>(contrats, this.pmEtablissement?.contrat),
-        ),
-      )
-      .subscribe((contrats: IContrat[]) => (this.contratsSharedCollection = contrats));
-
     this.groupeService
       .query()
       .pipe(map((res: HttpResponse<IGroupe[]>) => res.body ?? []))

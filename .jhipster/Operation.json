@@ -6,37 +6,19 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "numeroOperationNiveau0",
+      "fieldName": "typeMEG",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "etatOperation",
+      "fieldName": "codeOffre",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateEffetOperation",
+      "fieldName": "dateEffet",
       "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "dateDemandeOperation",
-      "fieldType": "LocalDate"
-    },
-    {
-      "fieldName": "dateCreation",
-      "fieldType": "LocalDate",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "codeActeGestion",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "numeroOperationAnnulee",
-      "fieldType": "String"
     }
   ],
   "name": "Operation",

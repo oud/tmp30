@@ -10,8 +10,7 @@ import { ProduitService, RestProduit } from './produit.service';
 
 const requireRestSample: RestProduit = {
   ...sampleWithRequiredData,
-  dateAdhesionProduit: sampleWithRequiredData.dateAdhesionProduit?.format(DATE_FORMAT),
-  dateRadiationProduit: sampleWithRequiredData.dateRadiationProduit?.format(DATE_FORMAT),
+  dateEffet: sampleWithRequiredData.dateEffet?.format(DATE_FORMAT),
 };
 
 describe('Produit Service', () => {

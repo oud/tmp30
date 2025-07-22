@@ -10,13 +10,6 @@
     -->
     <changeSet id="20250722150555-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="contrat_id"
-                                 baseTableName="pm_etablissement"
-                                 constraintName="fk_pm_etablissement__contrat_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="contrat"
-                                 />
-
         <addForeignKeyConstraint baseColumnNames="groupe_id"
                                  baseTableName="pm_etablissement"
                                  constraintName="fk_pm_etablissement__groupe_id"

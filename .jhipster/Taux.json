@@ -6,22 +6,18 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "codeVariableDeclarative",
+      "fieldName": "typeMEG",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "uniteVariableDeclarative",
+      "fieldName": "codeOffre",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "valeurFacteurMontant",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "valeurFacteurTaux",
-      "fieldType": "String",
+      "fieldName": "dateEffet",
+      "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
     }
   ],

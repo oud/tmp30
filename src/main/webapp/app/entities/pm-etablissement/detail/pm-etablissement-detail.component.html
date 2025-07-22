@@ -111,14 +111,6 @@
           <dd>
             <span>{{ pmEtablissementRef.checked }}</span>
           </dd>
-          <dt><span jhiTranslate="tmp30App.pmEtablissement.contrat">Contrat</span></dt>
-          <dd>
-            @if (pmEtablissement()!.contrat) {
-              <div>
-                <a [routerLink]="['/contrat', pmEtablissement()!.contrat?.id, 'view']">{{ pmEtablissementRef.contrat?.id }}</a>
-              </div>
-            }
-          </dd>
           <dt><span jhiTranslate="tmp30App.pmEtablissement.groupe">Groupe</span></dt>
           <dd>
             @if (pmEtablissement()!.groupe) {

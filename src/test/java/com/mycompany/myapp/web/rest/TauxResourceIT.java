@@ -14,6 +14,8 @@ import com.mycompany.myapp.repository.TauxRepository;
 import com.mycompany.myapp.service.dto.TauxDTO;
 import com.mycompany.myapp.service.mapper.TauxMapper;
 import jakarta.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
@@ -34,17 +36,14 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class TauxResourceIT {
 
-    private static final String DEFAULT_CODE_VARIABLE_DECLARATIVE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE_VARIABLE_DECLARATIVE = "BBBBBBBBBB";
+    private static final String DEFAULT_TYPE_MEG = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE_MEG = "BBBBBBBBBB";
 
-    private static final String DEFAULT_UNITE_VARIABLE_DECLARATIVE = "AAAAAAAAAA";
-    private static final String UPDATED_UNITE_VARIABLE_DECLARATIVE = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE_OFFRE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_OFFRE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_VALEUR_FACTEUR_MONTANT = "AAAAAAAAAA";
-    private static final String UPDATED_VALEUR_FACTEUR_MONTANT = "BBBBBBBBBB";
-
-    private static final String DEFAULT_VALEUR_FACTEUR_TAUX = "AAAAAAAAAA";
-    private static final String UPDATED_VALEUR_FACTEUR_TAUX = "BBBBBBBBBB";
+    private static final LocalDate DEFAULT_DATE_EFFET = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_EFFET = LocalDate.now(ZoneId.systemDefault());
 
     private static final String ENTITY_API_URL = "/api/tauxes";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -78,11 +77,7 @@ class TauxResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Taux createEntity() {
-        return new Taux()
-            .codeVariableDeclarative(DEFAULT_CODE_VARIABLE_DECLARATIVE)
-            .uniteVariableDeclarative(DEFAULT_UNITE_VARIABLE_DECLARATIVE)
-            .valeurFacteurMontant(DEFAULT_VALEUR_FACTEUR_MONTANT)
-            .valeurFacteurTaux(DEFAULT_VALEUR_FACTEUR_TAUX);
+        return new Taux().typeMEG(DEFAULT_TYPE_MEG).codeOffre(DEFAULT_CODE_OFFRE).dateEffet(DEFAULT_DATE_EFFET);
     }
 
     /**
@@ -92,11 +87,7 @@ class TauxResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Taux createUpdatedEntity() {
-        return new Taux()
-            .codeVariableDeclarative(UPDATED_CODE_VARIABLE_DECLARATIVE)
-            .uniteVariableDeclarative(UPDATED_UNITE_VARIABLE_DECLARATIVE)
-            .valeurFacteurMontant(UPDATED_VALEUR_FACTEUR_MONTANT)
-            .valeurFacteurTaux(UPDATED_VALEUR_FACTEUR_TAUX);
+        return new Taux().typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
     }
 
     @BeforeEach
@@ -156,10 +147,10 @@ class TauxResourceIT {
 
     @Test
     @Transactional
-    void checkCodeVariableDeclarativeIsRequired() throws Exception {
+    void checkTypeMEGIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        taux.setCodeVariableDeclarative(null);
+        taux.setTypeMEG(null);
 
         // Create the Taux, which fails.
         TauxDTO tauxDTO = tauxMapper.toDto(taux);
@@ -173,10 +164,10 @@ class TauxResourceIT {
 
     @Test
     @Transactional
-    void checkUniteVariableDeclarativeIsRequired() throws Exception {
+    void checkCodeOffreIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        taux.setUniteVariableDeclarative(null);
+        taux.setCodeOffre(null);
 
         // Create the Taux, which fails.
         TauxDTO tauxDTO = tauxMapper.toDto(taux);
@@ -190,10 +181,10 @@ class TauxResourceIT {
 
     @Test
     @Transactional
-    void checkValeurFacteurTauxIsRequired() throws Exception {
+    void checkDateEffetIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        taux.setValeurFacteurTaux(null);
+        taux.setDateEffet(null);
 
         // Create the Taux, which fails.
         TauxDTO tauxDTO = tauxMapper.toDto(taux);
@@ -217,10 +208,9 @@ class TauxResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(taux.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codeVariableDeclarative").value(hasItem(DEFAULT_CODE_VARIABLE_DECLARATIVE)))
-            .andExpect(jsonPath("$.[*].uniteVariableDeclarative").value(hasItem(DEFAULT_UNITE_VARIABLE_DECLARATIVE)))
-            .andExpect(jsonPath("$.[*].valeurFacteurMontant").value(hasItem(DEFAULT_VALEUR_FACTEUR_MONTANT)))
-            .andExpect(jsonPath("$.[*].valeurFacteurTaux").value(hasItem(DEFAULT_VALEUR_FACTEUR_TAUX)));
+            .andExpect(jsonPath("$.[*].typeMEG").value(hasItem(DEFAULT_TYPE_MEG)))
+            .andExpect(jsonPath("$.[*].codeOffre").value(hasItem(DEFAULT_CODE_OFFRE)))
+            .andExpect(jsonPath("$.[*].dateEffet").value(hasItem(DEFAULT_DATE_EFFET.toString())));
     }
 
     @Test
@@ -235,10 +225,9 @@ class TauxResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(taux.getId().intValue()))
-            .andExpect(jsonPath("$.codeVariableDeclarative").value(DEFAULT_CODE_VARIABLE_DECLARATIVE))
-            .andExpect(jsonPath("$.uniteVariableDeclarative").value(DEFAULT_UNITE_VARIABLE_DECLARATIVE))
-            .andExpect(jsonPath("$.valeurFacteurMontant").value(DEFAULT_VALEUR_FACTEUR_MONTANT))
-            .andExpect(jsonPath("$.valeurFacteurTaux").value(DEFAULT_VALEUR_FACTEUR_TAUX));
+            .andExpect(jsonPath("$.typeMEG").value(DEFAULT_TYPE_MEG))
+            .andExpect(jsonPath("$.codeOffre").value(DEFAULT_CODE_OFFRE))
+            .andExpect(jsonPath("$.dateEffet").value(DEFAULT_DATE_EFFET.toString()));
     }
 
     @Test
@@ -260,11 +249,7 @@ class TauxResourceIT {
         Taux updatedTaux = tauxRepository.findById(taux.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedTaux are not directly saved in db
         em.detach(updatedTaux);
-        updatedTaux
-            .codeVariableDeclarative(UPDATED_CODE_VARIABLE_DECLARATIVE)
-            .uniteVariableDeclarative(UPDATED_UNITE_VARIABLE_DECLARATIVE)
-            .valeurFacteurMontant(UPDATED_VALEUR_FACTEUR_MONTANT)
-            .valeurFacteurTaux(UPDATED_VALEUR_FACTEUR_TAUX);
+        updatedTaux.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
         TauxDTO tauxDTO = tauxMapper.toDto(updatedTaux);
 
         restTauxMockMvc
@@ -346,7 +331,7 @@ class TauxResourceIT {
         Taux partialUpdatedTaux = new Taux();
         partialUpdatedTaux.setId(taux.getId());
 
-        partialUpdatedTaux.codeVariableDeclarative(UPDATED_CODE_VARIABLE_DECLARATIVE).valeurFacteurTaux(UPDATED_VALEUR_FACTEUR_TAUX);
+        partialUpdatedTaux.typeMEG(UPDATED_TYPE_MEG);
 
         restTauxMockMvc
             .perform(
@@ -374,11 +359,7 @@ class TauxResourceIT {
         Taux partialUpdatedTaux = new Taux();
         partialUpdatedTaux.setId(taux.getId());
 
-        partialUpdatedTaux
-            .codeVariableDeclarative(UPDATED_CODE_VARIABLE_DECLARATIVE)
-            .uniteVariableDeclarative(UPDATED_UNITE_VARIABLE_DECLARATIVE)
-            .valeurFacteurMontant(UPDATED_VALEUR_FACTEUR_MONTANT)
-            .valeurFacteurTaux(UPDATED_VALEUR_FACTEUR_TAUX);
+        partialUpdatedTaux.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
 
         restTauxMockMvc
             .perform(

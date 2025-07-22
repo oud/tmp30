@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-import static com.mycompany.myapp.domain.ContratTestSamples.*;
 import static com.mycompany.myapp.domain.GroupeTestSamples.*;
 import static com.mycompany.myapp.domain.PmEtablissementTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,18 +21,6 @@ class PmEtablissementTest {
 
         pmEtablissement2 = getPmEtablissementSample2();
         assertThat(pmEtablissement1).isNotEqualTo(pmEtablissement2);
-    }
-
-    @Test
-    void contratTest() {
-        PmEtablissement pmEtablissement = getPmEtablissementRandomSampleGenerator();
-        Contrat contratBack = getContratRandomSampleGenerator();
-
-        pmEtablissement.setContrat(contratBack);
-        assertThat(pmEtablissement.getContrat()).isEqualTo(contratBack);
-
-        pmEtablissement.contrat(null);
-        assertThat(pmEtablissement.getContrat()).isNull();
     }
 
     @Test

@@ -18,14 +18,9 @@
         "title": "Produit"
       },
       "id": "ID",
-      "codeProduit": "Code Produit",
-      "dateAdhesionProduit": "Date Adhesion Produit",
-      "dateRadiationProduit": "Date Radiation Produit",
-      "codeFormule": "Code Formule",
-      "codeFamilleRisqueFormule": "Code Famille Risque Formule",
-      "titreFormule": "Titre Formule",
-      "typeFormule": "Type Formule",
-      "codeEtat": "Code Etat",
+      "typeMEG": "Type MEG",
+      "codeOffre": "Code Offre",
+      "dateEffet": "Date Effet",
       "groupe": "Groupe"
     }
   }

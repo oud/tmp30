@@ -18,19 +18,9 @@ type GarantieFormDefaults = Pick<NewGarantie, 'id'>;
 
 type GarantieFormGroupContent = {
   id: FormControl<IGarantie['id'] | NewGarantie['id']>;
-  codeGarantieTechnique: FormControl<IGarantie['codeGarantieTechnique']>;
-  codeEtatGarantie: FormControl<IGarantie['codeEtatGarantie']>;
-  dateAdhesionGarantie: FormControl<IGarantie['dateAdhesionGarantie']>;
-  dateRadiationGarantie: FormControl<IGarantie['dateRadiationGarantie']>;
-  codeAssureur: FormControl<IGarantie['codeAssureur']>;
-  codeFormule: FormControl<IGarantie['codeFormule']>;
-  codePack: FormControl<IGarantie['codePack']>;
-  typePack: FormControl<IGarantie['typePack']>;
-  titrePack: FormControl<IGarantie['titrePack']>;
-  codeSousPack: FormControl<IGarantie['codeSousPack']>;
-  typeSousPack: FormControl<IGarantie['typeSousPack']>;
-  titreSousPack: FormControl<IGarantie['titreSousPack']>;
-  codeTypePrestations: FormControl<IGarantie['codeTypePrestations']>;
+  typeMEG: FormControl<IGarantie['typeMEG']>;
+  codeOffre: FormControl<IGarantie['codeOffre']>;
+  dateEffet: FormControl<IGarantie['dateEffet']>;
   produit: FormControl<IGarantie['produit']>;
 };
 
@@ -51,43 +41,13 @@ export class GarantieFormService {
           validators: [Validators.required],
         },
       ),
-      codeGarantieTechnique: new FormControl(garantieRawValue.codeGarantieTechnique, {
+      typeMEG: new FormControl(garantieRawValue.typeMEG, {
         validators: [Validators.required],
       }),
-      codeEtatGarantie: new FormControl(garantieRawValue.codeEtatGarantie, {
+      codeOffre: new FormControl(garantieRawValue.codeOffre, {
         validators: [Validators.required],
       }),
-      dateAdhesionGarantie: new FormControl(garantieRawValue.dateAdhesionGarantie, {
-        validators: [Validators.required],
-      }),
-      dateRadiationGarantie: new FormControl(garantieRawValue.dateRadiationGarantie, {
-        validators: [Validators.required],
-      }),
-      codeAssureur: new FormControl(garantieRawValue.codeAssureur, {
-        validators: [Validators.required],
-      }),
-      codeFormule: new FormControl(garantieRawValue.codeFormule, {
-        validators: [Validators.required],
-      }),
-      codePack: new FormControl(garantieRawValue.codePack, {
-        validators: [Validators.required],
-      }),
-      typePack: new FormControl(garantieRawValue.typePack, {
-        validators: [Validators.required],
-      }),
-      titrePack: new FormControl(garantieRawValue.titrePack, {
-        validators: [Validators.required],
-      }),
-      codeSousPack: new FormControl(garantieRawValue.codeSousPack, {
-        validators: [Validators.required],
-      }),
-      typeSousPack: new FormControl(garantieRawValue.typeSousPack, {
-        validators: [Validators.required],
-      }),
-      titreSousPack: new FormControl(garantieRawValue.titreSousPack, {
-        validators: [Validators.required],
-      }),
-      codeTypePrestations: new FormControl(garantieRawValue.codeTypePrestations, {
+      dateEffet: new FormControl(garantieRawValue.dateEffet, {
         validators: [Validators.required],
       }),
       produit: new FormControl(garantieRawValue.produit),

@@ -2,6 +2,7 @@ package com.mycompany.myapp.service.dto;
 
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -13,15 +14,13 @@ public class TauxDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String codeVariableDeclarative;
+    private String typeMEG;
 
     @NotNull
-    private String uniteVariableDeclarative;
-
-    private String valeurFacteurMontant;
+    private String codeOffre;
 
     @NotNull
-    private String valeurFacteurTaux;
+    private LocalDate dateEffet;
 
     private GarantieDTO garantie;
 
@@ -33,36 +32,28 @@ public class TauxDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCodeVariableDeclarative() {
-        return codeVariableDeclarative;
+    public String getTypeMEG() {
+        return typeMEG;
     }
 
-    public void setCodeVariableDeclarative(String codeVariableDeclarative) {
-        this.codeVariableDeclarative = codeVariableDeclarative;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public String getUniteVariableDeclarative() {
-        return uniteVariableDeclarative;
+    public String getCodeOffre() {
+        return codeOffre;
     }
 
-    public void setUniteVariableDeclarative(String uniteVariableDeclarative) {
-        this.uniteVariableDeclarative = uniteVariableDeclarative;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public String getValeurFacteurMontant() {
-        return valeurFacteurMontant;
+    public LocalDate getDateEffet() {
+        return dateEffet;
     }
 
-    public void setValeurFacteurMontant(String valeurFacteurMontant) {
-        this.valeurFacteurMontant = valeurFacteurMontant;
-    }
-
-    public String getValeurFacteurTaux() {
-        return valeurFacteurTaux;
-    }
-
-    public void setValeurFacteurTaux(String valeurFacteurTaux) {
-        this.valeurFacteurTaux = valeurFacteurTaux;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public GarantieDTO getGarantie() {
@@ -99,10 +90,9 @@ public class TauxDTO implements Serializable {
     public String toString() {
         return "TauxDTO{" +
             "id=" + getId() +
-            ", codeVariableDeclarative='" + getCodeVariableDeclarative() + "'" +
-            ", uniteVariableDeclarative='" + getUniteVariableDeclarative() + "'" +
-            ", valeurFacteurMontant='" + getValeurFacteurMontant() + "'" +
-            ", valeurFacteurTaux='" + getValeurFacteurTaux() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             ", garantie=" + getGarantie() +
             "}";
     }

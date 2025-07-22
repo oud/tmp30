@@ -4,41 +4,29 @@ import { IOperation, NewOperation } from './operation.model';
 
 export const sampleWithRequiredData: IOperation = {
   id: 6430,
-  numeroOperationNiveau0: 'boohoo',
-  etatOperation: 'unwieldy meager boastfully',
-  dateEffetOperation: dayjs('2025-07-22'),
-  dateCreation: dayjs('2025-07-21'),
-  codeActeGestion: 'bleakly starboard',
+  typeMEG: 'boohoo',
+  codeOffre: 'unwieldy meager boastfully',
+  dateEffet: dayjs('2025-07-22'),
 };
 
 export const sampleWithPartialData: IOperation = {
-  id: 22612,
-  numeroOperationNiveau0: 'yieldingly than quinoa',
-  etatOperation: 'before',
-  dateEffetOperation: dayjs('2025-07-21'),
-  dateDemandeOperation: dayjs('2025-07-22'),
-  dateCreation: dayjs('2025-07-21'),
-  codeActeGestion: 'cleave dampen',
-  numeroOperationAnnulee: 'refute',
+  id: 3157,
+  typeMEG: 'deep',
+  codeOffre: 'phooey but',
+  dateEffet: dayjs('2025-07-22'),
 };
 
 export const sampleWithFullData: IOperation = {
   id: 13289,
-  numeroOperationNiveau0: 'knickers unlike',
-  etatOperation: 'carpool',
-  dateEffetOperation: dayjs('2025-07-22'),
-  dateDemandeOperation: dayjs('2025-07-22'),
-  dateCreation: dayjs('2025-07-22'),
-  codeActeGestion: 'ponder',
-  numeroOperationAnnulee: 'about',
+  typeMEG: 'knickers unlike',
+  codeOffre: 'carpool',
+  dateEffet: dayjs('2025-07-22'),
 };
 
 export const sampleWithNewData: NewOperation = {
-  numeroOperationNiveau0: 'list unabashedly minus',
-  etatOperation: 'sandy',
-  dateEffetOperation: dayjs('2025-07-22'),
-  dateCreation: dayjs('2025-07-21'),
-  codeActeGestion: 'until',
+  typeMEG: 'list unabashedly minus',
+  codeOffre: 'sandy',
+  dateEffet: dayjs('2025-07-22'),
   id: null,
 };
 

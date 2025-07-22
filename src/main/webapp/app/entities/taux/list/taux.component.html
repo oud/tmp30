@@ -40,30 +40,23 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="codeVariableDeclarative">
+            <th scope="col" jhiSortBy="typeMEG">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.taux.codeVariableDeclarative">Code Variable Declarative</span>
+                <span jhiTranslate="tmp30App.taux.typeMEG">Type MEG</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="uniteVariableDeclarative">
+            <th scope="col" jhiSortBy="codeOffre">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.taux.uniteVariableDeclarative">Unite Variable Declarative</span>
+                <span jhiTranslate="tmp30App.taux.codeOffre">Code Offre</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="valeurFacteurMontant">
+            <th scope="col" jhiSortBy="dateEffet">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.taux.valeurFacteurMontant">Valeur Facteur Montant</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="valeurFacteurTaux">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.taux.valeurFacteurTaux">Valeur Facteur Taux</span>
+                <span jhiTranslate="tmp30App.taux.dateEffet">Date Effet</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -83,10 +76,9 @@
               <td>
                 <a [routerLink]="['/taux', taux.id, 'view']">{{ taux.id }}</a>
               </td>
-              <td>{{ taux.codeVariableDeclarative }}</td>
-              <td>{{ taux.uniteVariableDeclarative }}</td>
-              <td>{{ taux.valeurFacteurMontant }}</td>
-              <td>{{ taux.valeurFacteurTaux }}</td>
+              <td>{{ taux.typeMEG }}</td>
+              <td>{{ taux.codeOffre }}</td>
+              <td>{{ taux.dateEffet | formatMediumDate }}</td>
               <td>
                 @if (taux.garantie) {
                   <div>

@@ -26,28 +26,16 @@ public class Groupe implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "code_groupe_assures", nullable = false)
-    private String codeGroupeAssures;
+    @Column(name = "type_meg", nullable = false)
+    private String typeMEG;
 
     @NotNull
-    @Column(name = "code_groupe_population", nullable = false)
-    private String codeGroupePopulation;
+    @Column(name = "code_offre", nullable = false)
+    private String codeOffre;
 
     @NotNull
-    @Column(name = "type_groupe_assures", nullable = false)
-    private String typeGroupeAssures;
-
-    @NotNull
-    @Column(name = "date_debut_periode_groupe_assures", nullable = false)
-    private LocalDate dateDebutPeriodeGroupeAssures;
-
-    @NotNull
-    @Column(name = "libelle_groupe_assures_type_autre", nullable = false)
-    private String libelleGroupeAssuresTypeAutre;
-
-    @NotNull
-    @Column(name = "code_etat_groupe_assures", nullable = false)
-    private String codeEtatGroupeAssures;
+    @Column(name = "date_effet", nullable = false)
+    private LocalDate dateEffet;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "pmEntreprise" }, allowSetters = true)
@@ -68,82 +56,43 @@ public class Groupe implements Serializable {
         this.id = id;
     }
 
-    public String getCodeGroupeAssures() {
-        return this.codeGroupeAssures;
+    public String getTypeMEG() {
+        return this.typeMEG;
     }
 
-    public Groupe codeGroupeAssures(String codeGroupeAssures) {
-        this.setCodeGroupeAssures(codeGroupeAssures);
+    public Groupe typeMEG(String typeMEG) {
+        this.setTypeMEG(typeMEG);
         return this;
     }
 
-    public void setCodeGroupeAssures(String codeGroupeAssures) {
-        this.codeGroupeAssures = codeGroupeAssures;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public String getCodeGroupePopulation() {
-        return this.codeGroupePopulation;
+    public String getCodeOffre() {
+        return this.codeOffre;
     }
 
-    public Groupe codeGroupePopulation(String codeGroupePopulation) {
-        this.setCodeGroupePopulation(codeGroupePopulation);
+    public Groupe codeOffre(String codeOffre) {
+        this.setCodeOffre(codeOffre);
         return this;
     }
 
-    public void setCodeGroupePopulation(String codeGroupePopulation) {
-        this.codeGroupePopulation = codeGroupePopulation;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public String getTypeGroupeAssures() {
-        return this.typeGroupeAssures;
+    public LocalDate getDateEffet() {
+        return this.dateEffet;
     }
 
-    public Groupe typeGroupeAssures(String typeGroupeAssures) {
-        this.setTypeGroupeAssures(typeGroupeAssures);
+    public Groupe dateEffet(LocalDate dateEffet) {
+        this.setDateEffet(dateEffet);
         return this;
     }
 
-    public void setTypeGroupeAssures(String typeGroupeAssures) {
-        this.typeGroupeAssures = typeGroupeAssures;
-    }
-
-    public LocalDate getDateDebutPeriodeGroupeAssures() {
-        return this.dateDebutPeriodeGroupeAssures;
-    }
-
-    public Groupe dateDebutPeriodeGroupeAssures(LocalDate dateDebutPeriodeGroupeAssures) {
-        this.setDateDebutPeriodeGroupeAssures(dateDebutPeriodeGroupeAssures);
-        return this;
-    }
-
-    public void setDateDebutPeriodeGroupeAssures(LocalDate dateDebutPeriodeGroupeAssures) {
-        this.dateDebutPeriodeGroupeAssures = dateDebutPeriodeGroupeAssures;
-    }
-
-    public String getLibelleGroupeAssuresTypeAutre() {
-        return this.libelleGroupeAssuresTypeAutre;
-    }
-
-    public Groupe libelleGroupeAssuresTypeAutre(String libelleGroupeAssuresTypeAutre) {
-        this.setLibelleGroupeAssuresTypeAutre(libelleGroupeAssuresTypeAutre);
-        return this;
-    }
-
-    public void setLibelleGroupeAssuresTypeAutre(String libelleGroupeAssuresTypeAutre) {
-        this.libelleGroupeAssuresTypeAutre = libelleGroupeAssuresTypeAutre;
-    }
-
-    public String getCodeEtatGroupeAssures() {
-        return this.codeEtatGroupeAssures;
-    }
-
-    public Groupe codeEtatGroupeAssures(String codeEtatGroupeAssures) {
-        this.setCodeEtatGroupeAssures(codeEtatGroupeAssures);
-        return this;
-    }
-
-    public void setCodeEtatGroupeAssures(String codeEtatGroupeAssures) {
-        this.codeEtatGroupeAssures = codeEtatGroupeAssures;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public Contrat getContrat() {
@@ -183,12 +132,9 @@ public class Groupe implements Serializable {
     public String toString() {
         return "Groupe{" +
             "id=" + getId() +
-            ", codeGroupeAssures='" + getCodeGroupeAssures() + "'" +
-            ", codeGroupePopulation='" + getCodeGroupePopulation() + "'" +
-            ", typeGroupeAssures='" + getTypeGroupeAssures() + "'" +
-            ", dateDebutPeriodeGroupeAssures='" + getDateDebutPeriodeGroupeAssures() + "'" +
-            ", libelleGroupeAssuresTypeAutre='" + getLibelleGroupeAssuresTypeAutre() + "'" +
-            ", codeEtatGroupeAssures='" + getCodeEtatGroupeAssures() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             "}";
     }
 }

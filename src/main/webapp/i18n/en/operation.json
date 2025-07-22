@@ -18,13 +18,9 @@
         "title": "Operation"
       },
       "id": "ID",
-      "numeroOperationNiveau0": "Numero Operation Niveau 0",
-      "etatOperation": "Etat Operation",
-      "dateEffetOperation": "Date Effet Operation",
-      "dateDemandeOperation": "Date Demande Operation",
-      "dateCreation": "Date Creation",
-      "codeActeGestion": "Code Acte Gestion",
-      "numeroOperationAnnulee": "Numero Operation Annulee",
+      "typeMEG": "Type MEG",
+      "codeOffre": "Code Offre",
+      "dateEffet": "Date Effet",
       "contrat": "Contrat"
     }
   }

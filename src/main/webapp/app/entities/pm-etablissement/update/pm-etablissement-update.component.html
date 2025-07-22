@@ -511,23 +511,6 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" for="field_contrat" jhiTranslate="tmp30App.pmEtablissement.contrat">Contrat</label>
-          <select
-            class="form-control"
-            id="field_contrat"
-            data-cy="contrat"
-            name="contrat"
-            formControlName="contrat"
-            [compareWith]="compareContrat"
-          >
-            <option [ngValue]="null"></option>
-            @for (contratOption of contratsSharedCollection; track $index) {
-              <option [ngValue]="contratOption">{{ contratOption.id }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="mb-3">
           <label class="form-label" for="field_groupe" jhiTranslate="tmp30App.pmEtablissement.groupe">Groupe</label>
           <select
             class="form-control"

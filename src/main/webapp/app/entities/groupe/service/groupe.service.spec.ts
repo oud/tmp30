@@ -10,7 +10,7 @@ import { GroupeService, RestGroupe } from './groupe.service';
 
 const requireRestSample: RestGroupe = {
   ...sampleWithRequiredData,
-  dateDebutPeriodeGroupeAssures: sampleWithRequiredData.dateDebutPeriodeGroupeAssures?.format(DATE_FORMAT),
+  dateEffet: sampleWithRequiredData.dateEffet?.format(DATE_FORMAT),
 };
 
 describe('Groupe Service', () => {

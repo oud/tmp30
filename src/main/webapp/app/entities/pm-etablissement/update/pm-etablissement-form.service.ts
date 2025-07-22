@@ -42,7 +42,6 @@ type PmEtablissementFormGroupContent = {
   codeNIC: FormControl<IPmEtablissement['codeNIC']>;
   identifiantAI: FormControl<IPmEtablissement['identifiantAI']>;
   checked: FormControl<IPmEtablissement['checked']>;
-  contrat: FormControl<IPmEtablissement['contrat']>;
   groupe: FormControl<IPmEtablissement['groupe']>;
 };
 
@@ -131,7 +130,6 @@ export class PmEtablissementFormService {
       }),
       identifiantAI: new FormControl(pmEtablissementRawValue.identifiantAI),
       checked: new FormControl(pmEtablissementRawValue.checked),
-      contrat: new FormControl(pmEtablissementRawValue.contrat),
       groupe: new FormControl(pmEtablissementRawValue.groupe),
     });
   }

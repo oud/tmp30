@@ -47,24 +47,9 @@ public class GroupeAsserts {
     public static void assertGroupeUpdatableFieldsEquals(Groupe expected, Groupe actual) {
         assertThat(actual)
             .as("Verify Groupe relevant properties")
-            .satisfies(a -> assertThat(a.getCodeGroupeAssures()).as("check codeGroupeAssures").isEqualTo(expected.getCodeGroupeAssures()))
-            .satisfies(a ->
-                assertThat(a.getCodeGroupePopulation()).as("check codeGroupePopulation").isEqualTo(expected.getCodeGroupePopulation())
-            )
-            .satisfies(a -> assertThat(a.getTypeGroupeAssures()).as("check typeGroupeAssures").isEqualTo(expected.getTypeGroupeAssures()))
-            .satisfies(a ->
-                assertThat(a.getDateDebutPeriodeGroupeAssures())
-                    .as("check dateDebutPeriodeGroupeAssures")
-                    .isEqualTo(expected.getDateDebutPeriodeGroupeAssures())
-            )
-            .satisfies(a ->
-                assertThat(a.getLibelleGroupeAssuresTypeAutre())
-                    .as("check libelleGroupeAssuresTypeAutre")
-                    .isEqualTo(expected.getLibelleGroupeAssuresTypeAutre())
-            )
-            .satisfies(a ->
-                assertThat(a.getCodeEtatGroupeAssures()).as("check codeEtatGroupeAssures").isEqualTo(expected.getCodeEtatGroupeAssures())
-            );
+            .satisfies(a -> assertThat(a.getTypeMEG()).as("check typeMEG").isEqualTo(expected.getTypeMEG()))
+            .satisfies(a -> assertThat(a.getCodeOffre()).as("check codeOffre").isEqualTo(expected.getCodeOffre()))
+            .satisfies(a -> assertThat(a.getDateEffet()).as("check dateEffet").isEqualTo(expected.getDateEffet()));
     }
 
     /**

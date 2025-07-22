@@ -3,12 +3,9 @@ import { IContrat } from 'app/entities/contrat/contrat.model';
 
 export interface IGroupe {
   id: number;
-  codeGroupeAssures?: string | null;
-  codeGroupePopulation?: string | null;
-  typeGroupeAssures?: string | null;
-  dateDebutPeriodeGroupeAssures?: dayjs.Dayjs | null;
-  libelleGroupeAssuresTypeAutre?: string | null;
-  codeEtatGroupeAssures?: string | null;
+  typeMEG?: string | null;
+  codeOffre?: string | null;
+  dateEffet?: dayjs.Dayjs | null;
   contrat?: Pick<IContrat, 'id'> | null;
 }
 

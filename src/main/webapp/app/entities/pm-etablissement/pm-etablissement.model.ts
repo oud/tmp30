@@ -1,5 +1,4 @@
 import dayjs from 'dayjs/esm';
-import { IContrat } from 'app/entities/contrat/contrat.model';
 import { IGroupe } from 'app/entities/groupe/groupe.model';
 
 export interface IPmEtablissement {
@@ -28,7 +27,6 @@ export interface IPmEtablissement {
   codeNIC?: string | null;
   identifiantAI?: string | null;
   checked?: boolean | null;
-  contrat?: Pick<IContrat, 'id'> | null;
   groupe?: Pick<IGroupe, 'id'> | null;
 }
 

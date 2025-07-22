@@ -3,6 +3,7 @@
     "changelogDate": "20250722150557"
   },
   "applications": "*",
+  "documentation": "not an ignored comment",
   "dto": "mapstruct",
   "fields": [
     {

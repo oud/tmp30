@@ -40,58 +40,23 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="codeProduit">
+            <th scope="col" jhiSortBy="typeMEG">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.codeProduit">Code Produit</span>
+                <span jhiTranslate="tmp30App.produit.typeMEG">Type MEG</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="dateAdhesionProduit">
+            <th scope="col" jhiSortBy="codeOffre">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.dateAdhesionProduit">Date Adhesion Produit</span>
+                <span jhiTranslate="tmp30App.produit.codeOffre">Code Offre</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="dateRadiationProduit">
+            <th scope="col" jhiSortBy="dateEffet">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.dateRadiationProduit">Date Radiation Produit</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeFormule">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.codeFormule">Code Formule</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeFamilleRisqueFormule">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.codeFamilleRisqueFormule">Code Famille Risque Formule</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="titreFormule">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.titreFormule">Titre Formule</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="typeFormule">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.typeFormule">Type Formule</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="codeEtat">
-              <div class="d-flex">
-                <span jhiTranslate="tmp30App.produit.codeEtat">Code Etat</span>
+                <span jhiTranslate="tmp30App.produit.dateEffet">Date Effet</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -111,14 +76,9 @@
               <td>
                 <a [routerLink]="['/produit', produit.id, 'view']">{{ produit.id }}</a>
               </td>
-              <td>{{ produit.codeProduit }}</td>
-              <td>{{ produit.dateAdhesionProduit | formatMediumDate }}</td>
-              <td>{{ produit.dateRadiationProduit | formatMediumDate }}</td>
-              <td>{{ produit.codeFormule }}</td>
-              <td>{{ produit.codeFamilleRisqueFormule }}</td>
-              <td>{{ produit.titreFormule }}</td>
-              <td>{{ produit.typeFormule }}</td>
-              <td>{{ produit.codeEtat }}</td>
+              <td>{{ produit.typeMEG }}</td>
+              <td>{{ produit.codeOffre }}</td>
+              <td>{{ produit.dateEffet | formatMediumDate }}</td>
               <td>
                 @if (produit.groupe) {
                   <div>

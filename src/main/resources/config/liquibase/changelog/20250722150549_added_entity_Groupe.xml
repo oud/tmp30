@@ -14,22 +14,13 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="code_groupe_assures" type="varchar(255)">
+            <column name="type_meg" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="code_groupe_population" type="varchar(255)">
+            <column name="code_offre" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="type_groupe_assures" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="date_debut_periode_groupe_assures" type="date">
-                <constraints nullable="false" />
-            </column>
-            <column name="libelle_groupe_assures_type_autre" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="code_etat_groupe_assures" type="varchar(255)">
+            <column name="date_effet" type="date">
                 <constraints nullable="false" />
             </column>
             <column name="contrat_id" type="bigint">
@@ -56,12 +47,9 @@
                   tableName="groupe"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="code_groupe_assures" type="string"/>
-            <column name="code_groupe_population" type="string"/>
-            <column name="type_groupe_assures" type="string"/>
-            <column name="date_debut_periode_groupe_assures" type="date"/>
-            <column name="libelle_groupe_assures_type_autre" type="string"/>
-            <column name="code_etat_groupe_assures" type="string"/>
+            <column name="type_meg" type="string"/>
+            <column name="code_offre" type="string"/>
+            <column name="date_effet" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

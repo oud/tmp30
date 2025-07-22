@@ -47,75 +47,9 @@ public class ContratAsserts {
     public static void assertContratUpdatableFieldsEquals(Contrat expected, Contrat actual) {
         assertThat(actual)
             .as("Verify Contrat relevant properties")
-            .satisfies(a ->
-                assertThat(a.getNumeroContratCollectif()).as("check numeroContratCollectif").isEqualTo(expected.getNumeroContratCollectif())
-            )
-            .satisfies(a -> assertThat(a.getMigre()).as("check migre").isEqualTo(expected.getMigre()))
-            .satisfies(a ->
-                assertThat(a.getCodeEntiteRattachement()).as("check codeEntiteRattachement").isEqualTo(expected.getCodeEntiteRattachement())
-            )
-            .satisfies(a -> assertThat(a.getCodeCentreGestion()).as("check codeCentreGestion").isEqualTo(expected.getCodeCentreGestion()))
-            .satisfies(a -> assertThat(a.getCodeGroupeGestion()).as("check codeGroupeGestion").isEqualTo(expected.getCodeGroupeGestion()))
-            .satisfies(a ->
-                assertThat(a.getCodeReseauDistribution()).as("check codeReseauDistribution").isEqualTo(expected.getCodeReseauDistribution())
-            )
-            .satisfies(a ->
-                assertThat(a.getTypeContratCollectif()).as("check typeContratCollectif").isEqualTo(expected.getTypeContratCollectif())
-            )
-            .satisfies(a -> assertThat(a.getEtatContrat()).as("check etatContrat").isEqualTo(expected.getEtatContrat()))
-            .satisfies(a ->
-                assertThat(a.getDateEffetPremiereSouscription())
-                    .as("check dateEffetPremiereSouscription")
-                    .isEqualTo(expected.getDateEffetPremiereSouscription())
-            )
-            .satisfies(a ->
-                assertThat(a.getDateEffetDerniereResiliation())
-                    .as("check dateEffetDerniereResiliation")
-                    .isEqualTo(expected.getDateEffetDerniereResiliation())
-            )
-            .satisfies(a -> assertThat(a.getMotifResiliation()).as("check motifResiliation").isEqualTo(expected.getMotifResiliation()))
-            .satisfies(a ->
-                assertThat(a.getCodeNatureCouverture()).as("check codeNatureCouverture").isEqualTo(expected.getCodeNatureCouverture())
-            )
+            .satisfies(a -> assertThat(a.getTypeMEG()).as("check typeMEG").isEqualTo(expected.getTypeMEG()))
             .satisfies(a -> assertThat(a.getCodeOffre()).as("check codeOffre").isEqualTo(expected.getCodeOffre()))
-            .satisfies(a -> assertThat(a.getNumeroVersionOffre()).as("check numeroVersionOffre").isEqualTo(expected.getNumeroVersionOffre())
-            )
-            .satisfies(a -> assertThat(a.getEcheancePrincipale()).as("check echeancePrincipale").isEqualTo(expected.getEcheancePrincipale())
-            )
-            .satisfies(a ->
-                assertThat(a.getCodeOrganismePorteurRisque())
-                    .as("check codeOrganismePorteurRisque")
-                    .isEqualTo(expected.getCodeOrganismePorteurRisque())
-            )
-            .satisfies(a ->
-                assertThat(a.getIndicateurPorteurRisque())
-                    .as("check indicateurPorteurRisque")
-                    .isEqualTo(expected.getIndicateurPorteurRisque())
-            )
-            .satisfies(a ->
-                assertThat(a.getCodeOrganismeProducteurFicheDsn())
-                    .as("check codeOrganismeProducteurFicheDsn")
-                    .isEqualTo(expected.getCodeOrganismeProducteurFicheDsn())
-            )
-            .satisfies(a ->
-                assertThat(a.getCodeOrganismeDelegataireCotisations())
-                    .as("check codeOrganismeDelegataireCotisations")
-                    .isEqualTo(expected.getCodeOrganismeDelegataireCotisations())
-            )
-            .satisfies(a ->
-                assertThat(a.getCodeOrganismeDelegatairePrestations())
-                    .as("check codeOrganismeDelegatairePrestations")
-                    .isEqualTo(expected.getCodeOrganismeDelegatairePrestations())
-            )
-            .satisfies(a ->
-                assertThat(a.getDatePremierMoisCotisationAutorise())
-                    .as("check datePremierMoisCotisationAutorise")
-                    .isEqualTo(expected.getDatePremierMoisCotisationAutorise())
-            )
-            .satisfies(a ->
-                assertThat(a.getNumeroOperationNiveau0()).as("check numeroOperationNiveau0").isEqualTo(expected.getNumeroOperationNiveau0())
-            )
-            .satisfies(a -> assertThat(a.getStatut()).as("check statut").isEqualTo(expected.getStatut()));
+            .satisfies(a -> assertThat(a.getDateEffet()).as("check dateEffet").isEqualTo(expected.getDateEffet()));
     }
 
     /**

@@ -4,12 +4,10 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, from, of } from 'rxjs';
 
-import { IContrat } from 'app/entities/contrat/contrat.model';
-import { ContratService } from 'app/entities/contrat/service/contrat.service';
 import { IGroupe } from 'app/entities/groupe/groupe.model';
 import { GroupeService } from 'app/entities/groupe/service/groupe.service';
-import { IPmEtablissement } from '../pm-etablissement.model';
 import { PmEtablissementService } from '../service/pm-etablissement.service';
+import { IPmEtablissement } from '../pm-etablissement.model';
 import { PmEtablissementFormService } from './pm-etablissement-form.service';
 
 import { PmEtablissementUpdateComponent } from './pm-etablissement-update.component';
@@ -20,7 +18,6 @@ describe('PmEtablissement Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let pmEtablissementFormService: PmEtablissementFormService;
   let pmEtablissementService: PmEtablissementService;
-  let contratService: ContratService;
   let groupeService: GroupeService;
 
   beforeEach(() => {
@@ -44,35 +41,12 @@ describe('PmEtablissement Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     pmEtablissementFormService = TestBed.inject(PmEtablissementFormService);
     pmEtablissementService = TestBed.inject(PmEtablissementService);
-    contratService = TestBed.inject(ContratService);
     groupeService = TestBed.inject(GroupeService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('should call Contrat query and add missing value', () => {
-      const pmEtablissement: IPmEtablissement = { id: 14323 };
-      const contrat: IContrat = { id: 7637 };
-      pmEtablissement.contrat = contrat;
-
-      const contratCollection: IContrat[] = [{ id: 7637 }];
-      jest.spyOn(contratService, 'query').mockReturnValue(of(new HttpResponse({ body: contratCollection })));
-      const additionalContrats = [contrat];
-      const expectedCollection: IContrat[] = [...additionalContrats, ...contratCollection];
-      jest.spyOn(contratService, 'addContratToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ pmEtablissement });
-      comp.ngOnInit();
-
-      expect(contratService.query).toHaveBeenCalled();
-      expect(contratService.addContratToCollectionIfMissing).toHaveBeenCalledWith(
-        contratCollection,
-        ...additionalContrats.map(expect.objectContaining),
-      );
-      expect(comp.contratsSharedCollection).toEqual(expectedCollection);
-    });
-
     it('should call Groupe query and add missing value', () => {
       const pmEtablissement: IPmEtablissement = { id: 14323 };
       const groupe: IGroupe = { id: 10264 };
@@ -97,15 +71,12 @@ describe('PmEtablissement Management Update Component', () => {
 
     it('should update editForm', () => {
       const pmEtablissement: IPmEtablissement = { id: 14323 };
-      const contrat: IContrat = { id: 7637 };
-      pmEtablissement.contrat = contrat;
       const groupe: IGroupe = { id: 10264 };
       pmEtablissement.groupe = groupe;
 
       activatedRoute.data = of({ pmEtablissement });
       comp.ngOnInit();
 
-      expect(comp.contratsSharedCollection).toContainEqual(contrat);
       expect(comp.groupesSharedCollection).toContainEqual(groupe);
       expect(comp.pmEtablissement).toEqual(pmEtablissement);
     });
@@ -180,16 +151,6 @@ describe('PmEtablissement Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareContrat', () => {
-      it('should forward to contratService', () => {
-        const entity = { id: 7637 };
-        const entity2 = { id: 25812 };
-        jest.spyOn(contratService, 'compareContrat');
-        comp.compareContrat(entity, entity2);
-        expect(contratService.compareContrat).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
     describe('compareGroupe', () => {
       it('should forward to groupeService', () => {
         const entity = { id: 10264 };

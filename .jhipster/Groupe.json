@@ -6,33 +6,18 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "codeGroupeAssures",
+      "fieldName": "typeMEG",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "codeGroupePopulation",
+      "fieldName": "codeOffre",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "typeGroupeAssures",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "dateDebutPeriodeGroupeAssures",
+      "fieldName": "dateEffet",
       "fieldType": "LocalDate",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "libelleGroupeAssuresTypeAutre",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "codeEtatGroupeAssures",
-      "fieldType": "String",
       "fieldValidateRules": ["required"]
     }
   ],

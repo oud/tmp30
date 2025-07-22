@@ -14,27 +14,13 @@ public class ProduitDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String codeProduit;
+    private String typeMEG;
 
     @NotNull
-    private LocalDate dateAdhesionProduit;
-
-    private LocalDate dateRadiationProduit;
+    private String codeOffre;
 
     @NotNull
-    private String codeFormule;
-
-    @NotNull
-    private String codeFamilleRisqueFormule;
-
-    @NotNull
-    private String titreFormule;
-
-    @NotNull
-    private String typeFormule;
-
-    @NotNull
-    private String codeEtat;
+    private LocalDate dateEffet;
 
     private GroupeDTO groupe;
 
@@ -46,68 +32,28 @@ public class ProduitDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCodeProduit() {
-        return codeProduit;
+    public String getTypeMEG() {
+        return typeMEG;
     }
 
-    public void setCodeProduit(String codeProduit) {
-        this.codeProduit = codeProduit;
+    public void setTypeMEG(String typeMEG) {
+        this.typeMEG = typeMEG;
     }
 
-    public LocalDate getDateAdhesionProduit() {
-        return dateAdhesionProduit;
+    public String getCodeOffre() {
+        return codeOffre;
     }
 
-    public void setDateAdhesionProduit(LocalDate dateAdhesionProduit) {
-        this.dateAdhesionProduit = dateAdhesionProduit;
+    public void setCodeOffre(String codeOffre) {
+        this.codeOffre = codeOffre;
     }
 
-    public LocalDate getDateRadiationProduit() {
-        return dateRadiationProduit;
+    public LocalDate getDateEffet() {
+        return dateEffet;
     }
 
-    public void setDateRadiationProduit(LocalDate dateRadiationProduit) {
-        this.dateRadiationProduit = dateRadiationProduit;
-    }
-
-    public String getCodeFormule() {
-        return codeFormule;
-    }
-
-    public void setCodeFormule(String codeFormule) {
-        this.codeFormule = codeFormule;
-    }
-
-    public String getCodeFamilleRisqueFormule() {
-        return codeFamilleRisqueFormule;
-    }
-
-    public void setCodeFamilleRisqueFormule(String codeFamilleRisqueFormule) {
-        this.codeFamilleRisqueFormule = codeFamilleRisqueFormule;
-    }
-
-    public String getTitreFormule() {
-        return titreFormule;
-    }
-
-    public void setTitreFormule(String titreFormule) {
-        this.titreFormule = titreFormule;
-    }
-
-    public String getTypeFormule() {
-        return typeFormule;
-    }
-
-    public void setTypeFormule(String typeFormule) {
-        this.typeFormule = typeFormule;
-    }
-
-    public String getCodeEtat() {
-        return codeEtat;
-    }
-
-    public void setCodeEtat(String codeEtat) {
-        this.codeEtat = codeEtat;
+    public void setDateEffet(LocalDate dateEffet) {
+        this.dateEffet = dateEffet;
     }
 
     public GroupeDTO getGroupe() {
@@ -144,14 +90,9 @@ public class ProduitDTO implements Serializable {
     public String toString() {
         return "ProduitDTO{" +
             "id=" + getId() +
-            ", codeProduit='" + getCodeProduit() + "'" +
-            ", dateAdhesionProduit='" + getDateAdhesionProduit() + "'" +
-            ", dateRadiationProduit='" + getDateRadiationProduit() + "'" +
-            ", codeFormule='" + getCodeFormule() + "'" +
-            ", codeFamilleRisqueFormule='" + getCodeFamilleRisqueFormule() + "'" +
-            ", titreFormule='" + getTitreFormule() + "'" +
-            ", typeFormule='" + getTypeFormule() + "'" +
-            ", codeEtat='" + getCodeEtat() + "'" +
+            ", typeMEG='" + getTypeMEG() + "'" +
+            ", codeOffre='" + getCodeOffre() + "'" +
+            ", dateEffet='" + getDateEffet() + "'" +
             ", groupe=" + getGroupe() +
             "}";
     }

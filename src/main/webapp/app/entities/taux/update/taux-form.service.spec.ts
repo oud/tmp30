@@ -20,10 +20,9 @@ describe('Taux Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            codeVariableDeclarative: expect.any(Object),
-            uniteVariableDeclarative: expect.any(Object),
-            valeurFacteurMontant: expect.any(Object),
-            valeurFacteurTaux: expect.any(Object),
+            typeMEG: expect.any(Object),
+            codeOffre: expect.any(Object),
+            dateEffet: expect.any(Object),
             garantie: expect.any(Object),
           }),
         );
@@ -35,10 +34,9 @@ describe('Taux Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            codeVariableDeclarative: expect.any(Object),
-            uniteVariableDeclarative: expect.any(Object),
-            valeurFacteurMontant: expect.any(Object),
-            valeurFacteurTaux: expect.any(Object),
+            typeMEG: expect.any(Object),
+            codeOffre: expect.any(Object),
+            dateEffet: expect.any(Object),
             garantie: expect.any(Object),
           }),
         );
