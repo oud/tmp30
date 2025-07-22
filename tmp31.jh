@@ -1,0 +1,164 @@
+entity Contrat {
+	typeMEG String required
+    codeOffre String required
+    dateEffet LocalDate required
+}
+
+entity Operation {
+	typeMEG String required
+    codeOffre String required
+    dateEffet LocalDate required
+}
+
+entity Groupe {
+	typeMEG String required
+    codeOffre String required
+    dateEffet LocalDate required
+}
+
+entity Produit {
+	typeMEG String required
+    codeOffre String required
+    dateEffet LocalDate required
+}
+
+entity Garantie {
+	typeMEG String required
+    codeOffre String required
+    dateEffet LocalDate required
+}
+
+entity Taux {
+	typeMEG String required
+    codeOffre String required
+    dateEffet LocalDate required
+}
+
+entity PmEntreprise {
+	idEntrepriseRPG String required
+    codePartenaireDistributeur String required
+    numeroSiretSiege String required
+    codeEtat String required
+    libelleEtat String required
+	codeCategoriePersonne String required
+	libelleCategoriePersonne String required
+  	codeType String required
+    dateCreationJuridique LocalDate required
+    dateEtat LocalDate required
+    dateFermetureJuridique LocalDate required
+    codeTrancheEffectif String required
+    libelleTrancheEffectif String required
+    dateCessationActivite LocalDate required
+    dateEffectifOfficiel LocalDate required
+    effectifOfficiel String required
+    codeMotifCessationActivite String required
+    siren String required
+    codeFormeJuridique String required
+    raisonSociale String required
+    codeCategorieJuridique String required
+    codeIDCC String required
+    codeAPE String required
+    identifiantAI String
+    checked Boolean
+  }
+  
+entity PmEtablissement {
+    idEtablissementRPG String required
+    codePartenaireDistributeur String required
+    numeroSiretSiege String required
+    codeEtat String required
+    libelleEtat String required
+    codeCategoriePersonne String required
+    libelleCategoriePersonne String required
+    codeType String required
+    dateCreationJuridique LocalDate required
+    dateEtat LocalDate required
+    dateFermetureJuridique LocalDate required
+    codeIDCC String required
+    codeTrancheEffectif String required
+    libelleTrancheEffectif String required
+    dateCessationActivite LocalDate required
+    dateEffectifOfficiel LocalDate required
+    effectifOfficiel String required
+    codeMotifCessationActivite String required
+    siret String required
+    codeTypeEtablissement String required
+    libelleEnseigne String required
+    codeNIC String required
+    identifiantAI String
+    checked Boolean
+}
+
+entity Adresse {
+	codePaysISO String required
+    codePostal String required
+	dateDerniereModification LocalDate required
+	libelleCommune String required
+    ligne1 String required
+    ligne2 String required
+    ligne3 String required
+    ligne4 String required
+    ligne5 String required
+    ligne6 String required
+    ligne7 String required
+    nombreCourriersPND String required
+    codeUsageAdresse String required
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Telephone {
+	codePaysISO String required
+    codeTypeTelephone String required
+    dateDerniereModification LocalDate required
+    codeIndicatifPays String required
+    numeroTelephone String required
+    codeStatut String required
+    dateStatut String required
+    codeUsageTelephone String required
+}
+
+entity Email {
+    adresseEmail String required
+    codeStatut String required
+    dateStatut LocalDate required
+    codeUsageEmail String required
+}
+
+relationship OneToOne {
+    Contrat{PmEntreprise} to PmEntreprise
+}
+
+relationship ManyToOne {
+	PmEtablissement{groupe} to Groupe
+    Groupe{contrat} to Contrat
+    Operation{contrat} to Contrat
+    Produit{groupe} to Groupe
+    Garantie{produit} to Produit
+    Taux{garantie} to Garantie
+}
+
+relationship ManyToOne {
+	Adresse{pmEntreprise} to PmEntreprise
+    Email{pmEntreprise} to PmEntreprise
+    Telephone{pmEntreprise} to PmEntreprise
+}
+
+relationship ManyToOne {
+	Adresse{pmEtablissement} to PmEtablissement
+    Email{pmEtablissement} to PmEtablissement
+    Telephone{pmEtablissement} to PmEtablissement
+}
+
+
+
+
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
