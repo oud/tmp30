@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20250722150553"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "numeroOperationNiveau0",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "etatOperation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateEffetOperation",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDemandeOperation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeActeGestion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numeroOperationAnnulee",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Operation",
+  "relationships": [
+    {
+      "otherEntityName": "contrat",
+      "relationshipName": "contrat",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

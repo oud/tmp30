@@ -8,7 +8,17 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "contrat": "Contrat",
+        "groupe": "Groupe",
+        "produit": "Produit",
+        "garantie": "Garantie",
+        "taux": "Taux",
+        "operation": "Operation",
+        "pmEntreprise": "Pm Entreprise",
+        "pmEtablissement": "Pm Etablissement",
+        "adresse": "Adresse",
+        "telephone": "Telephone",
+        "email": "Email"
       },
       "account": {
         "main": "Account",
