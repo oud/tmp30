@@ -168,29 +168,28 @@ entity Email {
 }
 
 relationship OneToOne {
-    Contrat{PmEntreprise} to PmEntreprise
+    Contrat{pmEntreprise} to PmEntreprise
 }
 
-relationship ManyToOne {
-	PmEtablissement{contrat} to Contrat
-    PmEtablissement{groupe} to Groupe
-    Groupe{contrat} to Contrat
-    Operation{contrat} to Contrat
-    Produit{groupe} to Groupe
-    Garantie{produit} to Produit
-    Taux{garantie} to Garantie
+relationship OneToMany {
+	Groupe{pmEtablissement} to PmEtablissement
+    Contrat{groupe} to Groupe
+    Contrat{operation} to Operation
+    Groupe{produit} to Produit
+    Produit{garantie} to Garantie
+    Garantie{taux} to Taux
 }
 
-relationship ManyToOne {
-	Adresse{pmEntreprise} to PmEntreprise
-    Email{pmEntreprise} to PmEntreprise
-    Telephone{pmEntreprise} to PmEntreprise
+relationship OneToMany {
+	PmEntreprise{adresse} to Adresse
+    PmEntreprise{email} to Email
+    PmEntreprise{telephone} to Telephone
 }
 
-relationship ManyToOne {
-	Adresse{pmEtablissement} to PmEtablissement
-    Email{pmEtablissement} to PmEtablissement
-    Telephone{pmEtablissement} to PmEtablissement
+relationship OneToMany {
+	PmEtablissement{adresse} to Adresse
+    PmEtablissement{email} to Email
+    PmEtablissement{telephone} to Telephone
 }
 
 
