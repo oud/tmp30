@@ -3,7 +3,6 @@
     "changelogDate": "20250722150557"
   },
   "applications": "*",
-  "documentation": "not an ignored comment",
   "dto": "mapstruct",
   "fields": [
     {
@@ -48,20 +47,7 @@
     }
   ],
   "name": "Telephone",
-  "relationships": [
-    {
-      "otherEntityName": "pmEntreprise",
-      "relationshipName": "pmEntreprise",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    },
-    {
-      "otherEntityName": "pmEtablissement",
-      "relationshipName": "pmEtablissement",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

@@ -6,30 +6,41 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "typeMEG",
+      "fieldName": "numeroOperationNiveau0",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "codeOffre",
+      "fieldName": "etatOperation",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateEffet",
+      "fieldName": "dateEffetOperation",
       "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDemandeOperation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeActeGestion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numeroOperationAnnulee",
+      "fieldType": "String"
     }
   ],
   "name": "Operation",
-  "relationships": [
-    {
-      "otherEntityName": "contrat",
-      "relationshipName": "contrat",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

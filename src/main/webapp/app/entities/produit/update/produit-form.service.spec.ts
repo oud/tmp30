@@ -20,9 +20,14 @@ describe('Produit Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            typeMEG: expect.any(Object),
-            codeOffre: expect.any(Object),
-            dateEffet: expect.any(Object),
+            codeProduit: expect.any(Object),
+            dateAdhesionProduit: expect.any(Object),
+            dateRadiationProduit: expect.any(Object),
+            codeFormule: expect.any(Object),
+            codeFamilleRisqueFormule: expect.any(Object),
+            titreFormule: expect.any(Object),
+            typeFormule: expect.any(Object),
+            codeEtat: expect.any(Object),
             groupe: expect.any(Object),
           }),
         );
@@ -34,9 +39,14 @@ describe('Produit Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            typeMEG: expect.any(Object),
-            codeOffre: expect.any(Object),
-            dateEffet: expect.any(Object),
+            codeProduit: expect.any(Object),
+            dateAdhesionProduit: expect.any(Object),
+            dateRadiationProduit: expect.any(Object),
+            codeFormule: expect.any(Object),
+            codeFamilleRisqueFormule: expect.any(Object),
+            titreFormule: expect.any(Object),
+            typeFormule: expect.any(Object),
+            codeEtat: expect.any(Object),
             groupe: expect.any(Object),
           }),
         );

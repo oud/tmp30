@@ -1,26 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-
-import dayjs from 'dayjs/esm';
+import { Observable } from 'rxjs';
 
 import { isPresent } from 'app/core/util/operators';
-import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { ITaux, NewTaux } from '../taux.model';
 
 export type PartialUpdateTaux = Partial<ITaux> & Pick<ITaux, 'id'>;
-
-type RestOf<T extends ITaux | NewTaux> = Omit<T, 'dateEffet'> & {
-  dateEffet?: string | null;
-};
-
-export type RestTaux = RestOf<ITaux>;
-
-export type NewRestTaux = RestOf<NewTaux>;
-
-export type PartialUpdateRestTaux = RestOf<PartialUpdateTaux>;
 
 export type EntityResponseType = HttpResponse<ITaux>;
 export type EntityArrayResponseType = HttpResponse<ITaux[]>;
@@ -33,35 +20,24 @@ export class TauxService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/tauxes');
 
   create(taux: NewTaux): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(taux);
-    return this.http.post<RestTaux>(this.resourceUrl, copy, { observe: 'response' }).pipe(map(res => this.convertResponseFromServer(res)));
+    return this.http.post<ITaux>(this.resourceUrl, taux, { observe: 'response' });
   }
 
   update(taux: ITaux): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(taux);
-    return this.http
-      .put<RestTaux>(`${this.resourceUrl}/${this.getTauxIdentifier(taux)}`, copy, { observe: 'response' })
-      .pipe(map(res => this.convertResponseFromServer(res)));
+    return this.http.put<ITaux>(`${this.resourceUrl}/${this.getTauxIdentifier(taux)}`, taux, { observe: 'response' });
   }
 
   partialUpdate(taux: PartialUpdateTaux): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(taux);
-    return this.http
-      .patch<RestTaux>(`${this.resourceUrl}/${this.getTauxIdentifier(taux)}`, copy, { observe: 'response' })
-      .pipe(map(res => this.convertResponseFromServer(res)));
+    return this.http.patch<ITaux>(`${this.resourceUrl}/${this.getTauxIdentifier(taux)}`, taux, { observe: 'response' });
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http
-      .get<RestTaux>(`${this.resourceUrl}/${id}`, { observe: 'response' })
-      .pipe(map(res => this.convertResponseFromServer(res)));
+    return this.http.get<ITaux>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http
-      .get<RestTaux[]>(this.resourceUrl, { params: options, observe: 'response' })
-      .pipe(map(res => this.convertResponseArrayFromServer(res)));
+    return this.http.get<ITaux[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
@@ -94,31 +70,5 @@ export class TauxService {
       return [...tauxesToAdd, ...tauxCollection];
     }
     return tauxCollection;
-  }
-
-  protected convertDateFromClient<T extends ITaux | NewTaux | PartialUpdateTaux>(taux: T): RestOf<T> {
-    return {
-      ...taux,
-      dateEffet: taux.dateEffet?.format(DATE_FORMAT) ?? null,
-    };
-  }
-
-  protected convertDateFromServer(restTaux: RestTaux): ITaux {
-    return {
-      ...restTaux,
-      dateEffet: restTaux.dateEffet ? dayjs(restTaux.dateEffet) : undefined,
-    };
-  }
-
-  protected convertResponseFromServer(res: HttpResponse<RestTaux>): HttpResponse<ITaux> {
-    return res.clone({
-      body: res.body ? this.convertDateFromServer(res.body) : null,
-    });
-  }
-
-  protected convertResponseArrayFromServer(res: HttpResponse<RestTaux[]>): HttpResponse<ITaux[]> {
-    return res.clone({
-      body: res.body ? res.body.map(item => this.convertDateFromServer(item)) : null,
-    });
   }
 }

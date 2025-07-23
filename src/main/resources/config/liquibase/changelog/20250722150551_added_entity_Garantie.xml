@@ -14,13 +14,43 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="type_meg" type="varchar(255)">
+            <column name="code_garantie_technique" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="code_offre" type="varchar(255)">
+            <column name="code_etat_garantie" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="date_effet" type="date">
+            <column name="date_adhesion_garantie" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_radiation_garantie" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="code_assureur" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="code_formule" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="code_pack" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="type_pack" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="titre_pack" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="code_sous_pack" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="type_sous_pack" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="titre_sous_pack" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="code_type_prestations" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="produit_id" type="bigint">
@@ -47,9 +77,19 @@
                   tableName="garantie"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="type_meg" type="string"/>
-            <column name="code_offre" type="string"/>
-            <column name="date_effet" type="date"/>
+            <column name="code_garantie_technique" type="string"/>
+            <column name="code_etat_garantie" type="string"/>
+            <column name="date_adhesion_garantie" type="date"/>
+            <column name="date_radiation_garantie" type="date"/>
+            <column name="code_assureur" type="string"/>
+            <column name="code_formule" type="string"/>
+            <column name="code_pack" type="string"/>
+            <column name="type_pack" type="string"/>
+            <column name="titre_pack" type="string"/>
+            <column name="code_sous_pack" type="string"/>
+            <column name="type_sous_pack" type="string"/>
+            <column name="titre_sous_pack" type="string"/>
+            <column name="code_type_prestations" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

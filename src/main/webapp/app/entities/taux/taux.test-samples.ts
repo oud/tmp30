@@ -1,32 +1,31 @@
-import dayjs from 'dayjs/esm';
-
 import { ITaux, NewTaux } from './taux.model';
 
 export const sampleWithRequiredData: ITaux = {
   id: 25853,
-  typeMEG: 'whose usable',
-  codeOffre: 'and but enormously',
-  dateEffet: dayjs('2025-07-22'),
+  codeVariableDeclarative: 'whose usable',
+  uniteVariableDeclarative: 'and but enormously',
+  valeurFacteurTaux: 'ack kinase likewise',
 };
 
 export const sampleWithPartialData: ITaux = {
-  id: 27091,
-  typeMEG: 'fine lucky',
-  codeOffre: 'yahoo very',
-  dateEffet: dayjs('2025-07-21'),
+  id: 21120,
+  codeVariableDeclarative: 'director knife',
+  uniteVariableDeclarative: 'metabolise if',
+  valeurFacteurTaux: 'milestone',
 };
 
 export const sampleWithFullData: ITaux = {
   id: 7041,
-  typeMEG: 'around',
-  codeOffre: 'digit brightly deploy',
-  dateEffet: dayjs('2025-07-21'),
+  codeVariableDeclarative: 'around',
+  uniteVariableDeclarative: 'digit brightly deploy',
+  valeurFacteurMontant: 'extricate',
+  valeurFacteurTaux: 'ultimate amused',
 };
 
 export const sampleWithNewData: NewTaux = {
-  typeMEG: 'mid sophisticated bah',
-  codeOffre: 'memorise accidentally sorrowful',
-  dateEffet: dayjs('2025-07-21'),
+  codeVariableDeclarative: 'mid sophisticated bah',
+  uniteVariableDeclarative: 'memorise accidentally sorrowful',
+  valeurFacteurTaux: 'rewarding',
   id: null,
 };
 

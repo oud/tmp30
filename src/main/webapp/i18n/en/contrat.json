@@ -18,10 +18,32 @@
         "title": "Contrat"
       },
       "id": "ID",
-      "typeMEG": "Type MEG",
+      "numeroContratCollectif": "Numero Contrat Collectif",
+      "migre": "Migre",
+      "codeEntiteRattachement": "Code Entite Rattachement",
+      "codeCentreGestion": "Code Centre Gestion",
+      "codeGroupeGestion": "Code Groupe Gestion",
+      "codeReseauDistribution": "Code Reseau Distribution",
+      "typeContratCollectif": "Type Contrat Collectif",
+      "etatContrat": "Etat Contrat",
+      "dateEffetPremiereSouscription": "Date Effet Premiere Souscription",
+      "dateEffetDerniereResiliation": "Date Effet Derniere Resiliation",
+      "motifResiliation": "Motif Resiliation",
+      "codeNatureCouverture": "Code Nature Couverture",
       "codeOffre": "Code Offre",
-      "dateEffet": "Date Effet",
-      "pmEntreprise": "Pm Entreprise"
+      "numeroVersionOffre": "Numero Version Offre",
+      "echeancePrincipale": "Echeance Principale",
+      "codeOrganismePorteurRisque": "Code Organisme Porteur Risque",
+      "indicateurPorteurRisque": "Indicateur Porteur Risque",
+      "codeOrganismeProducteurFicheDsn": "Code Organisme Producteur Fiche Dsn",
+      "codeOrganismeDelegataireCotisations": "Code Organisme Delegataire Cotisations",
+      "codeOrganismeDelegatairePrestations": "Code Organisme Delegataire Prestations",
+      "datePremierMoisCotisationAutorise": "Date Premier Mois Cotisation Autorise",
+      "numeroOperationNiveau0": "Numero Operation Niveau 0",
+      "statut": "Statut",
+      "pmEntreprise": "Pm Entreprise",
+      "groupe": "Groupe",
+      "operation": "Operation"
     }
   }
 }

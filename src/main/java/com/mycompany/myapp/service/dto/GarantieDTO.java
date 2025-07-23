@@ -14,13 +14,43 @@ public class GarantieDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String typeMEG;
+    private String codeGarantieTechnique;
 
     @NotNull
-    private String codeOffre;
+    private String codeEtatGarantie;
 
     @NotNull
-    private LocalDate dateEffet;
+    private LocalDate dateAdhesionGarantie;
+
+    @NotNull
+    private LocalDate dateRadiationGarantie;
+
+    @NotNull
+    private String codeAssureur;
+
+    @NotNull
+    private String codeFormule;
+
+    @NotNull
+    private String codePack;
+
+    @NotNull
+    private String typePack;
+
+    @NotNull
+    private String titrePack;
+
+    @NotNull
+    private String codeSousPack;
+
+    @NotNull
+    private String typeSousPack;
+
+    @NotNull
+    private String titreSousPack;
+
+    @NotNull
+    private String codeTypePrestations;
 
     private ProduitDTO produit;
 
@@ -32,28 +62,108 @@ public class GarantieDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTypeMEG() {
-        return typeMEG;
+    public String getCodeGarantieTechnique() {
+        return codeGarantieTechnique;
     }
 
-    public void setTypeMEG(String typeMEG) {
-        this.typeMEG = typeMEG;
+    public void setCodeGarantieTechnique(String codeGarantieTechnique) {
+        this.codeGarantieTechnique = codeGarantieTechnique;
     }
 
-    public String getCodeOffre() {
-        return codeOffre;
+    public String getCodeEtatGarantie() {
+        return codeEtatGarantie;
     }
 
-    public void setCodeOffre(String codeOffre) {
-        this.codeOffre = codeOffre;
+    public void setCodeEtatGarantie(String codeEtatGarantie) {
+        this.codeEtatGarantie = codeEtatGarantie;
     }
 
-    public LocalDate getDateEffet() {
-        return dateEffet;
+    public LocalDate getDateAdhesionGarantie() {
+        return dateAdhesionGarantie;
     }
 
-    public void setDateEffet(LocalDate dateEffet) {
-        this.dateEffet = dateEffet;
+    public void setDateAdhesionGarantie(LocalDate dateAdhesionGarantie) {
+        this.dateAdhesionGarantie = dateAdhesionGarantie;
+    }
+
+    public LocalDate getDateRadiationGarantie() {
+        return dateRadiationGarantie;
+    }
+
+    public void setDateRadiationGarantie(LocalDate dateRadiationGarantie) {
+        this.dateRadiationGarantie = dateRadiationGarantie;
+    }
+
+    public String getCodeAssureur() {
+        return codeAssureur;
+    }
+
+    public void setCodeAssureur(String codeAssureur) {
+        this.codeAssureur = codeAssureur;
+    }
+
+    public String getCodeFormule() {
+        return codeFormule;
+    }
+
+    public void setCodeFormule(String codeFormule) {
+        this.codeFormule = codeFormule;
+    }
+
+    public String getCodePack() {
+        return codePack;
+    }
+
+    public void setCodePack(String codePack) {
+        this.codePack = codePack;
+    }
+
+    public String getTypePack() {
+        return typePack;
+    }
+
+    public void setTypePack(String typePack) {
+        this.typePack = typePack;
+    }
+
+    public String getTitrePack() {
+        return titrePack;
+    }
+
+    public void setTitrePack(String titrePack) {
+        this.titrePack = titrePack;
+    }
+
+    public String getCodeSousPack() {
+        return codeSousPack;
+    }
+
+    public void setCodeSousPack(String codeSousPack) {
+        this.codeSousPack = codeSousPack;
+    }
+
+    public String getTypeSousPack() {
+        return typeSousPack;
+    }
+
+    public void setTypeSousPack(String typeSousPack) {
+        this.typeSousPack = typeSousPack;
+    }
+
+    public String getTitreSousPack() {
+        return titreSousPack;
+    }
+
+    public void setTitreSousPack(String titreSousPack) {
+        this.titreSousPack = titreSousPack;
+    }
+
+    public String getCodeTypePrestations() {
+        return codeTypePrestations;
+    }
+
+    public void setCodeTypePrestations(String codeTypePrestations) {
+        this.codeTypePrestations = codeTypePrestations;
     }
 
     public ProduitDTO getProduit() {
@@ -90,9 +200,19 @@ public class GarantieDTO implements Serializable {
     public String toString() {
         return "GarantieDTO{" +
             "id=" + getId() +
-            ", typeMEG='" + getTypeMEG() + "'" +
-            ", codeOffre='" + getCodeOffre() + "'" +
-            ", dateEffet='" + getDateEffet() + "'" +
+            ", codeGarantieTechnique='" + getCodeGarantieTechnique() + "'" +
+            ", codeEtatGarantie='" + getCodeEtatGarantie() + "'" +
+            ", dateAdhesionGarantie='" + getDateAdhesionGarantie() + "'" +
+            ", dateRadiationGarantie='" + getDateRadiationGarantie() + "'" +
+            ", codeAssureur='" + getCodeAssureur() + "'" +
+            ", codeFormule='" + getCodeFormule() + "'" +
+            ", codePack='" + getCodePack() + "'" +
+            ", typePack='" + getTypePack() + "'" +
+            ", titrePack='" + getTitrePack() + "'" +
+            ", codeSousPack='" + getCodeSousPack() + "'" +
+            ", typeSousPack='" + getTypeSousPack() + "'" +
+            ", titreSousPack='" + getTitreSousPack() + "'" +
+            ", codeTypePrestations='" + getCodeTypePrestations() + "'" +
             ", produit=" + getProduit() +
             "}";
     }

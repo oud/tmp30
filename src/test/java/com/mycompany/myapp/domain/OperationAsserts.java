@@ -47,9 +47,20 @@ public class OperationAsserts {
     public static void assertOperationUpdatableFieldsEquals(Operation expected, Operation actual) {
         assertThat(actual)
             .as("Verify Operation relevant properties")
-            .satisfies(a -> assertThat(a.getTypeMEG()).as("check typeMEG").isEqualTo(expected.getTypeMEG()))
-            .satisfies(a -> assertThat(a.getCodeOffre()).as("check codeOffre").isEqualTo(expected.getCodeOffre()))
-            .satisfies(a -> assertThat(a.getDateEffet()).as("check dateEffet").isEqualTo(expected.getDateEffet()));
+            .satisfies(a ->
+                assertThat(a.getNumeroOperationNiveau0()).as("check numeroOperationNiveau0").isEqualTo(expected.getNumeroOperationNiveau0())
+            )
+            .satisfies(a -> assertThat(a.getEtatOperation()).as("check etatOperation").isEqualTo(expected.getEtatOperation()))
+            .satisfies(a -> assertThat(a.getDateEffetOperation()).as("check dateEffetOperation").isEqualTo(expected.getDateEffetOperation())
+            )
+            .satisfies(a ->
+                assertThat(a.getDateDemandeOperation()).as("check dateDemandeOperation").isEqualTo(expected.getDateDemandeOperation())
+            )
+            .satisfies(a -> assertThat(a.getDateCreation()).as("check dateCreation").isEqualTo(expected.getDateCreation()))
+            .satisfies(a -> assertThat(a.getCodeActeGestion()).as("check codeActeGestion").isEqualTo(expected.getCodeActeGestion()))
+            .satisfies(a ->
+                assertThat(a.getNumeroOperationAnnulee()).as("check numeroOperationAnnulee").isEqualTo(expected.getNumeroOperationAnnulee())
+            );
     }
 
     /**

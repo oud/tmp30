@@ -15,55 +15,157 @@
           </div>
         }
 
-        @let typeMEGRef = editForm.get('typeMEG')!;
+        @let numeroOperationNiveau0Ref = editForm.get('numeroOperationNiveau0')!;
         <div class="mb-3">
-          <label class="form-label" for="field_typeMEG" jhiTranslate="tmp30App.operation.typeMEG">Type MEG</label>
-          <input type="text" class="form-control" name="typeMEG" id="field_typeMEG" data-cy="typeMEG" formControlName="typeMEG" />
-          @if (typeMEGRef.invalid && (typeMEGRef.dirty || typeMEGRef.touched)) {
+          <label class="form-label" for="field_numeroOperationNiveau0" jhiTranslate="tmp30App.operation.numeroOperationNiveau0"
+            >Numero Operation Niveau 0</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numeroOperationNiveau0"
+            id="field_numeroOperationNiveau0"
+            data-cy="numeroOperationNiveau0"
+            formControlName="numeroOperationNiveau0"
+          />
+          @if (numeroOperationNiveau0Ref.invalid && (numeroOperationNiveau0Ref.dirty || numeroOperationNiveau0Ref.touched)) {
             <div>
-              @if (editForm.get('typeMEG')?.errors?.required) {
+              @if (editForm.get('numeroOperationNiveau0')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
-        @let codeOffreRef = editForm.get('codeOffre')!;
+        @let etatOperationRef = editForm.get('etatOperation')!;
         <div class="mb-3">
-          <label class="form-label" for="field_codeOffre" jhiTranslate="tmp30App.operation.codeOffre">Code Offre</label>
-          <input type="text" class="form-control" name="codeOffre" id="field_codeOffre" data-cy="codeOffre" formControlName="codeOffre" />
-          @if (codeOffreRef.invalid && (codeOffreRef.dirty || codeOffreRef.touched)) {
+          <label class="form-label" for="field_etatOperation" jhiTranslate="tmp30App.operation.etatOperation">Etat Operation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="etatOperation"
+            id="field_etatOperation"
+            data-cy="etatOperation"
+            formControlName="etatOperation"
+          />
+          @if (etatOperationRef.invalid && (etatOperationRef.dirty || etatOperationRef.touched)) {
             <div>
-              @if (editForm.get('codeOffre')?.errors?.required) {
+              @if (editForm.get('etatOperation')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
-        @let dateEffetRef = editForm.get('dateEffet')!;
+        @let dateEffetOperationRef = editForm.get('dateEffetOperation')!;
         <div class="mb-3">
-          <label class="form-label" for="field_dateEffet" jhiTranslate="tmp30App.operation.dateEffet">Date Effet</label>
+          <label class="form-label" for="field_dateEffetOperation" jhiTranslate="tmp30App.operation.dateEffetOperation"
+            >Date Effet Operation</label
+          >
           <div class="input-group">
             <input
-              id="field_dateEffet"
-              data-cy="dateEffet"
+              id="field_dateEffetOperation"
+              data-cy="dateEffetOperation"
               type="text"
               class="form-control"
-              name="dateEffet"
+              name="dateEffetOperation"
               ngbDatepicker
-              #dateEffetDp="ngbDatepicker"
-              formControlName="dateEffet"
+              #dateEffetOperationDp="ngbDatepicker"
+              formControlName="dateEffetOperation"
             />
-            <button type="button" class="btn btn-secondary" (click)="dateEffetDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            <button type="button" class="btn btn-secondary" (click)="dateEffetOperationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
           </div>
-          @if (dateEffetRef.invalid && (dateEffetRef.dirty || dateEffetRef.touched)) {
+          @if (dateEffetOperationRef.invalid && (dateEffetOperationRef.dirty || dateEffetOperationRef.touched)) {
             <div>
-              @if (editForm.get('dateEffet')?.errors?.required) {
+              @if (editForm.get('dateEffetOperation')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dateDemandeOperation" jhiTranslate="tmp30App.operation.dateDemandeOperation"
+            >Date Demande Operation</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateDemandeOperation"
+              data-cy="dateDemandeOperation"
+              type="text"
+              class="form-control"
+              name="dateDemandeOperation"
+              ngbDatepicker
+              #dateDemandeOperationDp="ngbDatepicker"
+              formControlName="dateDemandeOperation"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDemandeOperationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        @let dateCreationRef = editForm.get('dateCreation')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dateCreation" jhiTranslate="tmp30App.operation.dateCreation">Date Creation</label>
+          <div class="input-group">
+            <input
+              id="field_dateCreation"
+              data-cy="dateCreation"
+              type="text"
+              class="form-control"
+              name="dateCreation"
+              ngbDatepicker
+              #dateCreationDp="ngbDatepicker"
+              formControlName="dateCreation"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (dateCreationRef.invalid && (dateCreationRef.dirty || dateCreationRef.touched)) {
+            <div>
+              @if (editForm.get('dateCreation')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codeActeGestionRef = editForm.get('codeActeGestion')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codeActeGestion" jhiTranslate="tmp30App.operation.codeActeGestion">Code Acte Gestion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeActeGestion"
+            id="field_codeActeGestion"
+            data-cy="codeActeGestion"
+            formControlName="codeActeGestion"
+          />
+          @if (codeActeGestionRef.invalid && (codeActeGestionRef.dirty || codeActeGestionRef.touched)) {
+            <div>
+              @if (editForm.get('codeActeGestion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroOperationAnnulee" jhiTranslate="tmp30App.operation.numeroOperationAnnulee"
+            >Numero Operation Annulee</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numeroOperationAnnulee"
+            id="field_numeroOperationAnnulee"
+            data-cy="numeroOperationAnnulee"
+            formControlName="numeroOperationAnnulee"
+          />
         </div>
 
         <div class="mb-3">

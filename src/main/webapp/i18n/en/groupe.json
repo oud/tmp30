@@ -18,9 +18,14 @@
         "title": "Groupe"
       },
       "id": "ID",
-      "typeMEG": "Type MEG",
-      "codeOffre": "Code Offre",
-      "dateEffet": "Date Effet",
+      "codeGroupeAssures": "Code Groupe Assures",
+      "codeGroupePopulation": "Code Groupe Population",
+      "typeGroupeAssures": "Type Groupe Assures",
+      "dateDebutPeriodeGroupeAssures": "Date Debut Periode Groupe Assures",
+      "libelleGroupeAssuresTypeAutre": "Libelle Groupe Assures Type Autre",
+      "codeEtatGroupeAssures": "Code Etat Groupe Assures",
+      "pmEtablissement": "Pm Etablissement",
+      "produit": "Produit",
       "contrat": "Contrat"
     }
   }

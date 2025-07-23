@@ -6,28 +6,52 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "typeMEG",
+      "fieldName": "codeProduit",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "codeOffre",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "dateEffet",
+      "fieldName": "dateAdhesionProduit",
       "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateRadiationProduit",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "codeFormule",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeFamilleRisqueFormule",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "titreFormule",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typeFormule",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeEtat",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     }
   ],
   "name": "Produit",
   "relationships": [
     {
-      "otherEntityName": "groupe",
-      "relationshipName": "groupe",
+      "otherEntityName": "garantie",
+      "relationshipName": "garantie",
       "relationshipSide": "left",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

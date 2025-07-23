@@ -36,14 +36,29 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class ProduitResourceIT {
 
-    private static final String DEFAULT_TYPE_MEG = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE_MEG = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE_PRODUIT = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_PRODUIT = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODE_OFFRE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE_OFFRE = "BBBBBBBBBB";
+    private static final LocalDate DEFAULT_DATE_ADHESION_PRODUIT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_ADHESION_PRODUIT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_EFFET = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_EFFET = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDate DEFAULT_DATE_RADIATION_PRODUIT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RADIATION_PRODUIT = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_CODE_FORMULE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_FORMULE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_FAMILLE_RISQUE_FORMULE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_FAMILLE_RISQUE_FORMULE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITRE_FORMULE = "AAAAAAAAAA";
+    private static final String UPDATED_TITRE_FORMULE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TYPE_FORMULE = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE_FORMULE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_ETAT = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_ETAT = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/produits";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,7 +92,15 @@ class ProduitResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Produit createEntity() {
-        return new Produit().typeMEG(DEFAULT_TYPE_MEG).codeOffre(DEFAULT_CODE_OFFRE).dateEffet(DEFAULT_DATE_EFFET);
+        return new Produit()
+            .codeProduit(DEFAULT_CODE_PRODUIT)
+            .dateAdhesionProduit(DEFAULT_DATE_ADHESION_PRODUIT)
+            .dateRadiationProduit(DEFAULT_DATE_RADIATION_PRODUIT)
+            .codeFormule(DEFAULT_CODE_FORMULE)
+            .codeFamilleRisqueFormule(DEFAULT_CODE_FAMILLE_RISQUE_FORMULE)
+            .titreFormule(DEFAULT_TITRE_FORMULE)
+            .typeFormule(DEFAULT_TYPE_FORMULE)
+            .codeEtat(DEFAULT_CODE_ETAT);
     }
 
     /**
@@ -87,7 +110,15 @@ class ProduitResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Produit createUpdatedEntity() {
-        return new Produit().typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        return new Produit()
+            .codeProduit(UPDATED_CODE_PRODUIT)
+            .dateAdhesionProduit(UPDATED_DATE_ADHESION_PRODUIT)
+            .dateRadiationProduit(UPDATED_DATE_RADIATION_PRODUIT)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codeFamilleRisqueFormule(UPDATED_CODE_FAMILLE_RISQUE_FORMULE)
+            .titreFormule(UPDATED_TITRE_FORMULE)
+            .typeFormule(UPDATED_TYPE_FORMULE)
+            .codeEtat(UPDATED_CODE_ETAT);
     }
 
     @BeforeEach
@@ -147,10 +178,10 @@ class ProduitResourceIT {
 
     @Test
     @Transactional
-    void checkTypeMEGIsRequired() throws Exception {
+    void checkCodeProduitIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        produit.setTypeMEG(null);
+        produit.setCodeProduit(null);
 
         // Create the Produit, which fails.
         ProduitDTO produitDTO = produitMapper.toDto(produit);
@@ -164,10 +195,10 @@ class ProduitResourceIT {
 
     @Test
     @Transactional
-    void checkCodeOffreIsRequired() throws Exception {
+    void checkDateAdhesionProduitIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        produit.setCodeOffre(null);
+        produit.setDateAdhesionProduit(null);
 
         // Create the Produit, which fails.
         ProduitDTO produitDTO = produitMapper.toDto(produit);
@@ -181,10 +212,78 @@ class ProduitResourceIT {
 
     @Test
     @Transactional
-    void checkDateEffetIsRequired() throws Exception {
+    void checkCodeFormuleIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        produit.setDateEffet(null);
+        produit.setCodeFormule(null);
+
+        // Create the Produit, which fails.
+        ProduitDTO produitDTO = produitMapper.toDto(produit);
+
+        restProduitMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(produitDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeFamilleRisqueFormuleIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        produit.setCodeFamilleRisqueFormule(null);
+
+        // Create the Produit, which fails.
+        ProduitDTO produitDTO = produitMapper.toDto(produit);
+
+        restProduitMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(produitDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTitreFormuleIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        produit.setTitreFormule(null);
+
+        // Create the Produit, which fails.
+        ProduitDTO produitDTO = produitMapper.toDto(produit);
+
+        restProduitMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(produitDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTypeFormuleIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        produit.setTypeFormule(null);
+
+        // Create the Produit, which fails.
+        ProduitDTO produitDTO = produitMapper.toDto(produit);
+
+        restProduitMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(produitDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeEtatIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        produit.setCodeEtat(null);
 
         // Create the Produit, which fails.
         ProduitDTO produitDTO = produitMapper.toDto(produit);
@@ -208,9 +307,14 @@ class ProduitResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(produit.getId().intValue())))
-            .andExpect(jsonPath("$.[*].typeMEG").value(hasItem(DEFAULT_TYPE_MEG)))
-            .andExpect(jsonPath("$.[*].codeOffre").value(hasItem(DEFAULT_CODE_OFFRE)))
-            .andExpect(jsonPath("$.[*].dateEffet").value(hasItem(DEFAULT_DATE_EFFET.toString())));
+            .andExpect(jsonPath("$.[*].codeProduit").value(hasItem(DEFAULT_CODE_PRODUIT)))
+            .andExpect(jsonPath("$.[*].dateAdhesionProduit").value(hasItem(DEFAULT_DATE_ADHESION_PRODUIT.toString())))
+            .andExpect(jsonPath("$.[*].dateRadiationProduit").value(hasItem(DEFAULT_DATE_RADIATION_PRODUIT.toString())))
+            .andExpect(jsonPath("$.[*].codeFormule").value(hasItem(DEFAULT_CODE_FORMULE)))
+            .andExpect(jsonPath("$.[*].codeFamilleRisqueFormule").value(hasItem(DEFAULT_CODE_FAMILLE_RISQUE_FORMULE)))
+            .andExpect(jsonPath("$.[*].titreFormule").value(hasItem(DEFAULT_TITRE_FORMULE)))
+            .andExpect(jsonPath("$.[*].typeFormule").value(hasItem(DEFAULT_TYPE_FORMULE)))
+            .andExpect(jsonPath("$.[*].codeEtat").value(hasItem(DEFAULT_CODE_ETAT)));
     }
 
     @Test
@@ -225,9 +329,14 @@ class ProduitResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(produit.getId().intValue()))
-            .andExpect(jsonPath("$.typeMEG").value(DEFAULT_TYPE_MEG))
-            .andExpect(jsonPath("$.codeOffre").value(DEFAULT_CODE_OFFRE))
-            .andExpect(jsonPath("$.dateEffet").value(DEFAULT_DATE_EFFET.toString()));
+            .andExpect(jsonPath("$.codeProduit").value(DEFAULT_CODE_PRODUIT))
+            .andExpect(jsonPath("$.dateAdhesionProduit").value(DEFAULT_DATE_ADHESION_PRODUIT.toString()))
+            .andExpect(jsonPath("$.dateRadiationProduit").value(DEFAULT_DATE_RADIATION_PRODUIT.toString()))
+            .andExpect(jsonPath("$.codeFormule").value(DEFAULT_CODE_FORMULE))
+            .andExpect(jsonPath("$.codeFamilleRisqueFormule").value(DEFAULT_CODE_FAMILLE_RISQUE_FORMULE))
+            .andExpect(jsonPath("$.titreFormule").value(DEFAULT_TITRE_FORMULE))
+            .andExpect(jsonPath("$.typeFormule").value(DEFAULT_TYPE_FORMULE))
+            .andExpect(jsonPath("$.codeEtat").value(DEFAULT_CODE_ETAT));
     }
 
     @Test
@@ -249,7 +358,15 @@ class ProduitResourceIT {
         Produit updatedProduit = produitRepository.findById(produit.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedProduit are not directly saved in db
         em.detach(updatedProduit);
-        updatedProduit.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        updatedProduit
+            .codeProduit(UPDATED_CODE_PRODUIT)
+            .dateAdhesionProduit(UPDATED_DATE_ADHESION_PRODUIT)
+            .dateRadiationProduit(UPDATED_DATE_RADIATION_PRODUIT)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codeFamilleRisqueFormule(UPDATED_CODE_FAMILLE_RISQUE_FORMULE)
+            .titreFormule(UPDATED_TITRE_FORMULE)
+            .typeFormule(UPDATED_TYPE_FORMULE)
+            .codeEtat(UPDATED_CODE_ETAT);
         ProduitDTO produitDTO = produitMapper.toDto(updatedProduit);
 
         restProduitMockMvc
@@ -335,7 +452,13 @@ class ProduitResourceIT {
         Produit partialUpdatedProduit = new Produit();
         partialUpdatedProduit.setId(produit.getId());
 
-        partialUpdatedProduit.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedProduit
+            .codeProduit(UPDATED_CODE_PRODUIT)
+            .dateAdhesionProduit(UPDATED_DATE_ADHESION_PRODUIT)
+            .dateRadiationProduit(UPDATED_DATE_RADIATION_PRODUIT)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codeFamilleRisqueFormule(UPDATED_CODE_FAMILLE_RISQUE_FORMULE)
+            .titreFormule(UPDATED_TITRE_FORMULE);
 
         restProduitMockMvc
             .perform(
@@ -363,7 +486,15 @@ class ProduitResourceIT {
         Produit partialUpdatedProduit = new Produit();
         partialUpdatedProduit.setId(produit.getId());
 
-        partialUpdatedProduit.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedProduit
+            .codeProduit(UPDATED_CODE_PRODUIT)
+            .dateAdhesionProduit(UPDATED_DATE_ADHESION_PRODUIT)
+            .dateRadiationProduit(UPDATED_DATE_RADIATION_PRODUIT)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codeFamilleRisqueFormule(UPDATED_CODE_FAMILLE_RISQUE_FORMULE)
+            .titreFormule(UPDATED_TITRE_FORMULE)
+            .typeFormule(UPDATED_TYPE_FORMULE)
+            .codeEtat(UPDATED_CODE_ETAT);
 
         restProduitMockMvc
             .perform(

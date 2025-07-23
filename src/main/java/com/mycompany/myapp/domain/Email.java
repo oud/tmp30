@@ -42,11 +42,11 @@ public class Email implements Serializable {
     private String codeUsageEmail;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "contrat" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "adresses", "emails", "telephones", "contrat" }, allowSetters = true)
     private PmEntreprise pmEntreprise;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "groupe" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "adresses", "emails", "telephones", "groupe" }, allowSetters = true)
     private PmEtablissement pmEtablissement;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

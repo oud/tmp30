@@ -42,6 +42,9 @@
       "codeNIC": "Code NIC",
       "identifiantAI": "Identifiant AI",
       "checked": "Checked",
+      "adresse": "Adresse",
+      "email": "Email",
+      "telephone": "Telephone",
       "groupe": "Groupe"
     }
   }

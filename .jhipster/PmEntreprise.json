@@ -130,7 +130,26 @@
     }
   ],
   "name": "PmEntreprise",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "adresse",
+      "relationshipName": "adresse",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "email",
+      "relationshipName": "email",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "telephone",
+      "relationshipName": "telephone",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

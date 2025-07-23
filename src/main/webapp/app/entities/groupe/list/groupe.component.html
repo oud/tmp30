@@ -40,23 +40,44 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="typeMEG">
+            <th scope="col" jhiSortBy="codeGroupeAssures">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.groupe.typeMEG">Type MEG</span>
+                <span jhiTranslate="tmp30App.groupe.codeGroupeAssures">Code Groupe Assures</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="codeOffre">
+            <th scope="col" jhiSortBy="codeGroupePopulation">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.groupe.codeOffre">Code Offre</span>
+                <span jhiTranslate="tmp30App.groupe.codeGroupePopulation">Code Groupe Population</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="dateEffet">
+            <th scope="col" jhiSortBy="typeGroupeAssures">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.groupe.dateEffet">Date Effet</span>
+                <span jhiTranslate="tmp30App.groupe.typeGroupeAssures">Type Groupe Assures</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateDebutPeriodeGroupeAssures">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.groupe.dateDebutPeriodeGroupeAssures">Date Debut Periode Groupe Assures</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleGroupeAssuresTypeAutre">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.groupe.libelleGroupeAssuresTypeAutre">Libelle Groupe Assures Type Autre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeEtatGroupeAssures">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.groupe.codeEtatGroupeAssures">Code Etat Groupe Assures</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -76,9 +97,12 @@
               <td>
                 <a [routerLink]="['/groupe', groupe.id, 'view']">{{ groupe.id }}</a>
               </td>
-              <td>{{ groupe.typeMEG }}</td>
-              <td>{{ groupe.codeOffre }}</td>
-              <td>{{ groupe.dateEffet | formatMediumDate }}</td>
+              <td>{{ groupe.codeGroupeAssures }}</td>
+              <td>{{ groupe.codeGroupePopulation }}</td>
+              <td>{{ groupe.typeGroupeAssures }}</td>
+              <td>{{ groupe.dateDebutPeriodeGroupeAssures | formatMediumDate }}</td>
+              <td>{{ groupe.libelleGroupeAssuresTypeAutre }}</td>
+              <td>{{ groupe.codeEtatGroupeAssures }}</td>
               <td>
                 @if (groupe.contrat) {
                   <div>

@@ -9,7 +9,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * not an ignored comment
+ * A Telephone.
  */
 @Entity
 @Table(name = "telephone")
@@ -58,11 +58,11 @@ public class Telephone implements Serializable {
     private String codeUsageTelephone;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "contrat" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "adresses", "emails", "telephones", "contrat" }, allowSetters = true)
     private PmEntreprise pmEntreprise;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "groupe" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "adresses", "emails", "telephones", "groupe" }, allowSetters = true)
     private PmEtablissement pmEtablissement;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

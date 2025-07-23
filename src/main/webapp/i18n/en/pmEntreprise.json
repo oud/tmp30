@@ -43,6 +43,9 @@
       "codeAPE": "Code APE",
       "identifiantAI": "Identifiant AI",
       "checked": "Checked",
+      "adresse": "Adresse",
+      "email": "Email",
+      "telephone": "Telephone",
       "contrat": "Contrat"
     }
   }

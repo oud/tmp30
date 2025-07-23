@@ -40,23 +40,51 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="typeMEG">
+            <th scope="col" jhiSortBy="numeroOperationNiveau0">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.operation.typeMEG">Type MEG</span>
+                <span jhiTranslate="tmp30App.operation.numeroOperationNiveau0">Numero Operation Niveau 0</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="codeOffre">
+            <th scope="col" jhiSortBy="etatOperation">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.operation.codeOffre">Code Offre</span>
+                <span jhiTranslate="tmp30App.operation.etatOperation">Etat Operation</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="dateEffet">
+            <th scope="col" jhiSortBy="dateEffetOperation">
               <div class="d-flex">
-                <span jhiTranslate="tmp30App.operation.dateEffet">Date Effet</span>
+                <span jhiTranslate="tmp30App.operation.dateEffetOperation">Date Effet Operation</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateDemandeOperation">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.operation.dateDemandeOperation">Date Demande Operation</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateCreation">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.operation.dateCreation">Date Creation</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeActeGestion">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.operation.codeActeGestion">Code Acte Gestion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroOperationAnnulee">
+              <div class="d-flex">
+                <span jhiTranslate="tmp30App.operation.numeroOperationAnnulee">Numero Operation Annulee</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -76,9 +104,13 @@
               <td>
                 <a [routerLink]="['/operation', operation.id, 'view']">{{ operation.id }}</a>
               </td>
-              <td>{{ operation.typeMEG }}</td>
-              <td>{{ operation.codeOffre }}</td>
-              <td>{{ operation.dateEffet | formatMediumDate }}</td>
+              <td>{{ operation.numeroOperationNiveau0 }}</td>
+              <td>{{ operation.etatOperation }}</td>
+              <td>{{ operation.dateEffetOperation | formatMediumDate }}</td>
+              <td>{{ operation.dateDemandeOperation | formatMediumDate }}</td>
+              <td>{{ operation.dateCreation | formatMediumDate }}</td>
+              <td>{{ operation.codeActeGestion }}</td>
+              <td>{{ operation.numeroOperationAnnulee }}</td>
               <td>
                 @if (operation.contrat) {
                   <div>

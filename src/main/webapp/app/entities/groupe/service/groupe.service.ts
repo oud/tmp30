@@ -12,8 +12,8 @@ import { IGroupe, NewGroupe } from '../groupe.model';
 
 export type PartialUpdateGroupe = Partial<IGroupe> & Pick<IGroupe, 'id'>;
 
-type RestOf<T extends IGroupe | NewGroupe> = Omit<T, 'dateEffet'> & {
-  dateEffet?: string | null;
+type RestOf<T extends IGroupe | NewGroupe> = Omit<T, 'dateDebutPeriodeGroupeAssures'> & {
+  dateDebutPeriodeGroupeAssures?: string | null;
 };
 
 export type RestGroupe = RestOf<IGroupe>;
@@ -101,14 +101,14 @@ export class GroupeService {
   protected convertDateFromClient<T extends IGroupe | NewGroupe | PartialUpdateGroupe>(groupe: T): RestOf<T> {
     return {
       ...groupe,
-      dateEffet: groupe.dateEffet?.format(DATE_FORMAT) ?? null,
+      dateDebutPeriodeGroupeAssures: groupe.dateDebutPeriodeGroupeAssures?.format(DATE_FORMAT) ?? null,
     };
   }
 
   protected convertDateFromServer(restGroupe: RestGroupe): IGroupe {
     return {
       ...restGroupe,
-      dateEffet: restGroupe.dateEffet ? dayjs(restGroupe.dateEffet) : undefined,
+      dateDebutPeriodeGroupeAssures: restGroupe.dateDebutPeriodeGroupeAssures ? dayjs(restGroupe.dateDebutPeriodeGroupeAssures) : undefined,
     };
   }
 

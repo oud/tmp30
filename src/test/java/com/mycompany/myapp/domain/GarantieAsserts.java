@@ -47,9 +47,27 @@ public class GarantieAsserts {
     public static void assertGarantieUpdatableFieldsEquals(Garantie expected, Garantie actual) {
         assertThat(actual)
             .as("Verify Garantie relevant properties")
-            .satisfies(a -> assertThat(a.getTypeMEG()).as("check typeMEG").isEqualTo(expected.getTypeMEG()))
-            .satisfies(a -> assertThat(a.getCodeOffre()).as("check codeOffre").isEqualTo(expected.getCodeOffre()))
-            .satisfies(a -> assertThat(a.getDateEffet()).as("check dateEffet").isEqualTo(expected.getDateEffet()));
+            .satisfies(a ->
+                assertThat(a.getCodeGarantieTechnique()).as("check codeGarantieTechnique").isEqualTo(expected.getCodeGarantieTechnique())
+            )
+            .satisfies(a -> assertThat(a.getCodeEtatGarantie()).as("check codeEtatGarantie").isEqualTo(expected.getCodeEtatGarantie()))
+            .satisfies(a ->
+                assertThat(a.getDateAdhesionGarantie()).as("check dateAdhesionGarantie").isEqualTo(expected.getDateAdhesionGarantie())
+            )
+            .satisfies(a ->
+                assertThat(a.getDateRadiationGarantie()).as("check dateRadiationGarantie").isEqualTo(expected.getDateRadiationGarantie())
+            )
+            .satisfies(a -> assertThat(a.getCodeAssureur()).as("check codeAssureur").isEqualTo(expected.getCodeAssureur()))
+            .satisfies(a -> assertThat(a.getCodeFormule()).as("check codeFormule").isEqualTo(expected.getCodeFormule()))
+            .satisfies(a -> assertThat(a.getCodePack()).as("check codePack").isEqualTo(expected.getCodePack()))
+            .satisfies(a -> assertThat(a.getTypePack()).as("check typePack").isEqualTo(expected.getTypePack()))
+            .satisfies(a -> assertThat(a.getTitrePack()).as("check titrePack").isEqualTo(expected.getTitrePack()))
+            .satisfies(a -> assertThat(a.getCodeSousPack()).as("check codeSousPack").isEqualTo(expected.getCodeSousPack()))
+            .satisfies(a -> assertThat(a.getTypeSousPack()).as("check typeSousPack").isEqualTo(expected.getTypeSousPack()))
+            .satisfies(a -> assertThat(a.getTitreSousPack()).as("check titreSousPack").isEqualTo(expected.getTitreSousPack()))
+            .satisfies(a ->
+                assertThat(a.getCodeTypePrestations()).as("check codeTypePrestations").isEqualTo(expected.getCodeTypePrestations())
+            );
     }
 
     /**

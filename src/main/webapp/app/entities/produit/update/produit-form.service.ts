@@ -18,9 +18,14 @@ type ProduitFormDefaults = Pick<NewProduit, 'id'>;
 
 type ProduitFormGroupContent = {
   id: FormControl<IProduit['id'] | NewProduit['id']>;
-  typeMEG: FormControl<IProduit['typeMEG']>;
-  codeOffre: FormControl<IProduit['codeOffre']>;
-  dateEffet: FormControl<IProduit['dateEffet']>;
+  codeProduit: FormControl<IProduit['codeProduit']>;
+  dateAdhesionProduit: FormControl<IProduit['dateAdhesionProduit']>;
+  dateRadiationProduit: FormControl<IProduit['dateRadiationProduit']>;
+  codeFormule: FormControl<IProduit['codeFormule']>;
+  codeFamilleRisqueFormule: FormControl<IProduit['codeFamilleRisqueFormule']>;
+  titreFormule: FormControl<IProduit['titreFormule']>;
+  typeFormule: FormControl<IProduit['typeFormule']>;
+  codeEtat: FormControl<IProduit['codeEtat']>;
   groupe: FormControl<IProduit['groupe']>;
 };
 
@@ -41,13 +46,26 @@ export class ProduitFormService {
           validators: [Validators.required],
         },
       ),
-      typeMEG: new FormControl(produitRawValue.typeMEG, {
+      codeProduit: new FormControl(produitRawValue.codeProduit, {
         validators: [Validators.required],
       }),
-      codeOffre: new FormControl(produitRawValue.codeOffre, {
+      dateAdhesionProduit: new FormControl(produitRawValue.dateAdhesionProduit, {
         validators: [Validators.required],
       }),
-      dateEffet: new FormControl(produitRawValue.dateEffet, {
+      dateRadiationProduit: new FormControl(produitRawValue.dateRadiationProduit),
+      codeFormule: new FormControl(produitRawValue.codeFormule, {
+        validators: [Validators.required],
+      }),
+      codeFamilleRisqueFormule: new FormControl(produitRawValue.codeFamilleRisqueFormule, {
+        validators: [Validators.required],
+      }),
+      titreFormule: new FormControl(produitRawValue.titreFormule, {
+        validators: [Validators.required],
+      }),
+      typeFormule: new FormControl(produitRawValue.typeFormule, {
+        validators: [Validators.required],
+      }),
+      codeEtat: new FormControl(produitRawValue.codeEtat, {
         validators: [Validators.required],
       }),
       groupe: new FormControl(produitRawValue.groupe),
