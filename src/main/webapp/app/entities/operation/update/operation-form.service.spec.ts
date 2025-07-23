@@ -20,9 +20,13 @@ describe('Operation Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            typeMEG: expect.any(Object),
-            codeOffre: expect.any(Object),
-            dateEffet: expect.any(Object),
+            numeroOperationNiveau0: expect.any(Object),
+            etatOperation: expect.any(Object),
+            dateEffetOperation: expect.any(Object),
+            dateDemandeOperation: expect.any(Object),
+            dateCreation: expect.any(Object),
+            codeActeGestion: expect.any(Object),
+            numeroOperationAnnulee: expect.any(Object),
             contrat: expect.any(Object),
           }),
         );
@@ -34,9 +38,13 @@ describe('Operation Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            typeMEG: expect.any(Object),
-            codeOffre: expect.any(Object),
-            dateEffet: expect.any(Object),
+            numeroOperationNiveau0: expect.any(Object),
+            etatOperation: expect.any(Object),
+            dateEffetOperation: expect.any(Object),
+            dateDemandeOperation: expect.any(Object),
+            dateCreation: expect.any(Object),
+            codeActeGestion: expect.any(Object),
+            numeroOperationAnnulee: expect.any(Object),
             contrat: expect.any(Object),
           }),
         );

@@ -127,10 +127,22 @@
   "name": "PmEtablissement",
   "relationships": [
     {
-      "otherEntityName": "groupe",
-      "relationshipName": "groupe",
+      "otherEntityName": "adresse",
+      "relationshipName": "adresse",
       "relationshipSide": "left",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "email",
+      "relationshipName": "email",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "telephone",
+      "relationshipName": "telephone",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

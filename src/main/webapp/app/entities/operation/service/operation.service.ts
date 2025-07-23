@@ -12,8 +12,10 @@ import { IOperation, NewOperation } from '../operation.model';
 
 export type PartialUpdateOperation = Partial<IOperation> & Pick<IOperation, 'id'>;
 
-type RestOf<T extends IOperation | NewOperation> = Omit<T, 'dateEffet'> & {
-  dateEffet?: string | null;
+type RestOf<T extends IOperation | NewOperation> = Omit<T, 'dateEffetOperation' | 'dateDemandeOperation' | 'dateCreation'> & {
+  dateEffetOperation?: string | null;
+  dateDemandeOperation?: string | null;
+  dateCreation?: string | null;
 };
 
 export type RestOperation = RestOf<IOperation>;
@@ -101,14 +103,18 @@ export class OperationService {
   protected convertDateFromClient<T extends IOperation | NewOperation | PartialUpdateOperation>(operation: T): RestOf<T> {
     return {
       ...operation,
-      dateEffet: operation.dateEffet?.format(DATE_FORMAT) ?? null,
+      dateEffetOperation: operation.dateEffetOperation?.format(DATE_FORMAT) ?? null,
+      dateDemandeOperation: operation.dateDemandeOperation?.format(DATE_FORMAT) ?? null,
+      dateCreation: operation.dateCreation?.format(DATE_FORMAT) ?? null,
     };
   }
 
   protected convertDateFromServer(restOperation: RestOperation): IOperation {
     return {
       ...restOperation,
-      dateEffet: restOperation.dateEffet ? dayjs(restOperation.dateEffet) : undefined,
+      dateEffetOperation: restOperation.dateEffetOperation ? dayjs(restOperation.dateEffetOperation) : undefined,
+      dateDemandeOperation: restOperation.dateDemandeOperation ? dayjs(restOperation.dateDemandeOperation) : undefined,
+      dateCreation: restOperation.dateCreation ? dayjs(restOperation.dateCreation) : undefined,
     };
   }
 

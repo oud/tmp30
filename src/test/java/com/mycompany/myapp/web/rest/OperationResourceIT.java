@@ -36,14 +36,26 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class OperationResourceIT {
 
-    private static final String DEFAULT_TYPE_MEG = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE_MEG = "BBBBBBBBBB";
+    private static final String DEFAULT_NUMERO_OPERATION_NIVEAU_0 = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO_OPERATION_NIVEAU_0 = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODE_OFFRE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE_OFFRE = "BBBBBBBBBB";
+    private static final String DEFAULT_ETAT_OPERATION = "AAAAAAAAAA";
+    private static final String UPDATED_ETAT_OPERATION = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_DATE_EFFET = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_EFFET = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDate DEFAULT_DATE_EFFET_OPERATION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_EFFET_OPERATION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_DEMANDE_OPERATION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_DEMANDE_OPERATION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_CREATION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_CREATION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_CODE_ACTE_GESTION = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_ACTE_GESTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMERO_OPERATION_ANNULEE = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO_OPERATION_ANNULEE = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/operations";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,7 +89,14 @@ class OperationResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Operation createEntity() {
-        return new Operation().typeMEG(DEFAULT_TYPE_MEG).codeOffre(DEFAULT_CODE_OFFRE).dateEffet(DEFAULT_DATE_EFFET);
+        return new Operation()
+            .numeroOperationNiveau0(DEFAULT_NUMERO_OPERATION_NIVEAU_0)
+            .etatOperation(DEFAULT_ETAT_OPERATION)
+            .dateEffetOperation(DEFAULT_DATE_EFFET_OPERATION)
+            .dateDemandeOperation(DEFAULT_DATE_DEMANDE_OPERATION)
+            .dateCreation(DEFAULT_DATE_CREATION)
+            .codeActeGestion(DEFAULT_CODE_ACTE_GESTION)
+            .numeroOperationAnnulee(DEFAULT_NUMERO_OPERATION_ANNULEE);
     }
 
     /**
@@ -87,7 +106,14 @@ class OperationResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Operation createUpdatedEntity() {
-        return new Operation().typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        return new Operation()
+            .numeroOperationNiveau0(UPDATED_NUMERO_OPERATION_NIVEAU_0)
+            .etatOperation(UPDATED_ETAT_OPERATION)
+            .dateEffetOperation(UPDATED_DATE_EFFET_OPERATION)
+            .dateDemandeOperation(UPDATED_DATE_DEMANDE_OPERATION)
+            .dateCreation(UPDATED_DATE_CREATION)
+            .codeActeGestion(UPDATED_CODE_ACTE_GESTION)
+            .numeroOperationAnnulee(UPDATED_NUMERO_OPERATION_ANNULEE);
     }
 
     @BeforeEach
@@ -147,10 +173,10 @@ class OperationResourceIT {
 
     @Test
     @Transactional
-    void checkTypeMEGIsRequired() throws Exception {
+    void checkNumeroOperationNiveau0IsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        operation.setTypeMEG(null);
+        operation.setNumeroOperationNiveau0(null);
 
         // Create the Operation, which fails.
         OperationDTO operationDTO = operationMapper.toDto(operation);
@@ -164,10 +190,10 @@ class OperationResourceIT {
 
     @Test
     @Transactional
-    void checkCodeOffreIsRequired() throws Exception {
+    void checkEtatOperationIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        operation.setCodeOffre(null);
+        operation.setEtatOperation(null);
 
         // Create the Operation, which fails.
         OperationDTO operationDTO = operationMapper.toDto(operation);
@@ -181,10 +207,44 @@ class OperationResourceIT {
 
     @Test
     @Transactional
-    void checkDateEffetIsRequired() throws Exception {
+    void checkDateEffetOperationIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        operation.setDateEffet(null);
+        operation.setDateEffetOperation(null);
+
+        // Create the Operation, which fails.
+        OperationDTO operationDTO = operationMapper.toDto(operation);
+
+        restOperationMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(operationDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkDateCreationIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        operation.setDateCreation(null);
+
+        // Create the Operation, which fails.
+        OperationDTO operationDTO = operationMapper.toDto(operation);
+
+        restOperationMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(operationDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeActeGestionIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        operation.setCodeActeGestion(null);
 
         // Create the Operation, which fails.
         OperationDTO operationDTO = operationMapper.toDto(operation);
@@ -208,9 +268,13 @@ class OperationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(operation.getId().intValue())))
-            .andExpect(jsonPath("$.[*].typeMEG").value(hasItem(DEFAULT_TYPE_MEG)))
-            .andExpect(jsonPath("$.[*].codeOffre").value(hasItem(DEFAULT_CODE_OFFRE)))
-            .andExpect(jsonPath("$.[*].dateEffet").value(hasItem(DEFAULT_DATE_EFFET.toString())));
+            .andExpect(jsonPath("$.[*].numeroOperationNiveau0").value(hasItem(DEFAULT_NUMERO_OPERATION_NIVEAU_0)))
+            .andExpect(jsonPath("$.[*].etatOperation").value(hasItem(DEFAULT_ETAT_OPERATION)))
+            .andExpect(jsonPath("$.[*].dateEffetOperation").value(hasItem(DEFAULT_DATE_EFFET_OPERATION.toString())))
+            .andExpect(jsonPath("$.[*].dateDemandeOperation").value(hasItem(DEFAULT_DATE_DEMANDE_OPERATION.toString())))
+            .andExpect(jsonPath("$.[*].dateCreation").value(hasItem(DEFAULT_DATE_CREATION.toString())))
+            .andExpect(jsonPath("$.[*].codeActeGestion").value(hasItem(DEFAULT_CODE_ACTE_GESTION)))
+            .andExpect(jsonPath("$.[*].numeroOperationAnnulee").value(hasItem(DEFAULT_NUMERO_OPERATION_ANNULEE)));
     }
 
     @Test
@@ -225,9 +289,13 @@ class OperationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(operation.getId().intValue()))
-            .andExpect(jsonPath("$.typeMEG").value(DEFAULT_TYPE_MEG))
-            .andExpect(jsonPath("$.codeOffre").value(DEFAULT_CODE_OFFRE))
-            .andExpect(jsonPath("$.dateEffet").value(DEFAULT_DATE_EFFET.toString()));
+            .andExpect(jsonPath("$.numeroOperationNiveau0").value(DEFAULT_NUMERO_OPERATION_NIVEAU_0))
+            .andExpect(jsonPath("$.etatOperation").value(DEFAULT_ETAT_OPERATION))
+            .andExpect(jsonPath("$.dateEffetOperation").value(DEFAULT_DATE_EFFET_OPERATION.toString()))
+            .andExpect(jsonPath("$.dateDemandeOperation").value(DEFAULT_DATE_DEMANDE_OPERATION.toString()))
+            .andExpect(jsonPath("$.dateCreation").value(DEFAULT_DATE_CREATION.toString()))
+            .andExpect(jsonPath("$.codeActeGestion").value(DEFAULT_CODE_ACTE_GESTION))
+            .andExpect(jsonPath("$.numeroOperationAnnulee").value(DEFAULT_NUMERO_OPERATION_ANNULEE));
     }
 
     @Test
@@ -249,7 +317,14 @@ class OperationResourceIT {
         Operation updatedOperation = operationRepository.findById(operation.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedOperation are not directly saved in db
         em.detach(updatedOperation);
-        updatedOperation.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        updatedOperation
+            .numeroOperationNiveau0(UPDATED_NUMERO_OPERATION_NIVEAU_0)
+            .etatOperation(UPDATED_ETAT_OPERATION)
+            .dateEffetOperation(UPDATED_DATE_EFFET_OPERATION)
+            .dateDemandeOperation(UPDATED_DATE_DEMANDE_OPERATION)
+            .dateCreation(UPDATED_DATE_CREATION)
+            .codeActeGestion(UPDATED_CODE_ACTE_GESTION)
+            .numeroOperationAnnulee(UPDATED_NUMERO_OPERATION_ANNULEE);
         OperationDTO operationDTO = operationMapper.toDto(updatedOperation);
 
         restOperationMockMvc
@@ -339,7 +414,10 @@ class OperationResourceIT {
         Operation partialUpdatedOperation = new Operation();
         partialUpdatedOperation.setId(operation.getId());
 
-        partialUpdatedOperation.codeOffre(UPDATED_CODE_OFFRE);
+        partialUpdatedOperation
+            .etatOperation(UPDATED_ETAT_OPERATION)
+            .dateCreation(UPDATED_DATE_CREATION)
+            .codeActeGestion(UPDATED_CODE_ACTE_GESTION);
 
         restOperationMockMvc
             .perform(
@@ -370,7 +448,14 @@ class OperationResourceIT {
         Operation partialUpdatedOperation = new Operation();
         partialUpdatedOperation.setId(operation.getId());
 
-        partialUpdatedOperation.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedOperation
+            .numeroOperationNiveau0(UPDATED_NUMERO_OPERATION_NIVEAU_0)
+            .etatOperation(UPDATED_ETAT_OPERATION)
+            .dateEffetOperation(UPDATED_DATE_EFFET_OPERATION)
+            .dateDemandeOperation(UPDATED_DATE_DEMANDE_OPERATION)
+            .dateCreation(UPDATED_DATE_CREATION)
+            .codeActeGestion(UPDATED_CODE_ACTE_GESTION)
+            .numeroOperationAnnulee(UPDATED_NUMERO_OPERATION_ANNULEE);
 
         restOperationMockMvc
             .perform(

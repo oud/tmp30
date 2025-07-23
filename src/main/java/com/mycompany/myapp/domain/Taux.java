@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,19 +25,22 @@ public class Taux implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "type_meg", nullable = false)
-    private String typeMEG;
+    @Column(name = "code_variable_declarative", nullable = false)
+    private String codeVariableDeclarative;
 
     @NotNull
-    @Column(name = "code_offre", nullable = false)
-    private String codeOffre;
+    @Column(name = "unite_variable_declarative", nullable = false)
+    private String uniteVariableDeclarative;
+
+    @Column(name = "valeur_facteur_montant")
+    private String valeurFacteurMontant;
 
     @NotNull
-    @Column(name = "date_effet", nullable = false)
-    private LocalDate dateEffet;
+    @Column(name = "valeur_facteur_taux", nullable = false)
+    private String valeurFacteurTaux;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "produit" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "tauxes", "produit" }, allowSetters = true)
     private Garantie garantie;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -56,43 +58,56 @@ public class Taux implements Serializable {
         this.id = id;
     }
 
-    public String getTypeMEG() {
-        return this.typeMEG;
+    public String getCodeVariableDeclarative() {
+        return this.codeVariableDeclarative;
     }
 
-    public Taux typeMEG(String typeMEG) {
-        this.setTypeMEG(typeMEG);
+    public Taux codeVariableDeclarative(String codeVariableDeclarative) {
+        this.setCodeVariableDeclarative(codeVariableDeclarative);
         return this;
     }
 
-    public void setTypeMEG(String typeMEG) {
-        this.typeMEG = typeMEG;
+    public void setCodeVariableDeclarative(String codeVariableDeclarative) {
+        this.codeVariableDeclarative = codeVariableDeclarative;
     }
 
-    public String getCodeOffre() {
-        return this.codeOffre;
+    public String getUniteVariableDeclarative() {
+        return this.uniteVariableDeclarative;
     }
 
-    public Taux codeOffre(String codeOffre) {
-        this.setCodeOffre(codeOffre);
+    public Taux uniteVariableDeclarative(String uniteVariableDeclarative) {
+        this.setUniteVariableDeclarative(uniteVariableDeclarative);
         return this;
     }
 
-    public void setCodeOffre(String codeOffre) {
-        this.codeOffre = codeOffre;
+    public void setUniteVariableDeclarative(String uniteVariableDeclarative) {
+        this.uniteVariableDeclarative = uniteVariableDeclarative;
     }
 
-    public LocalDate getDateEffet() {
-        return this.dateEffet;
+    public String getValeurFacteurMontant() {
+        return this.valeurFacteurMontant;
     }
 
-    public Taux dateEffet(LocalDate dateEffet) {
-        this.setDateEffet(dateEffet);
+    public Taux valeurFacteurMontant(String valeurFacteurMontant) {
+        this.setValeurFacteurMontant(valeurFacteurMontant);
         return this;
     }
 
-    public void setDateEffet(LocalDate dateEffet) {
-        this.dateEffet = dateEffet;
+    public void setValeurFacteurMontant(String valeurFacteurMontant) {
+        this.valeurFacteurMontant = valeurFacteurMontant;
+    }
+
+    public String getValeurFacteurTaux() {
+        return this.valeurFacteurTaux;
+    }
+
+    public Taux valeurFacteurTaux(String valeurFacteurTaux) {
+        this.setValeurFacteurTaux(valeurFacteurTaux);
+        return this;
+    }
+
+    public void setValeurFacteurTaux(String valeurFacteurTaux) {
+        this.valeurFacteurTaux = valeurFacteurTaux;
     }
 
     public Garantie getGarantie() {
@@ -132,9 +147,10 @@ public class Taux implements Serializable {
     public String toString() {
         return "Taux{" +
             "id=" + getId() +
-            ", typeMEG='" + getTypeMEG() + "'" +
-            ", codeOffre='" + getCodeOffre() + "'" +
-            ", dateEffet='" + getDateEffet() + "'" +
+            ", codeVariableDeclarative='" + getCodeVariableDeclarative() + "'" +
+            ", uniteVariableDeclarative='" + getUniteVariableDeclarative() + "'" +
+            ", valeurFacteurMontant='" + getValeurFacteurMontant() + "'" +
+            ", valeurFacteurTaux='" + getValeurFacteurTaux() + "'" +
             "}";
     }
 }

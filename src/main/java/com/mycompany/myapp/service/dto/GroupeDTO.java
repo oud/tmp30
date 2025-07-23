@@ -14,13 +14,22 @@ public class GroupeDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String typeMEG;
+    private String codeGroupeAssures;
 
     @NotNull
-    private String codeOffre;
+    private String codeGroupePopulation;
 
     @NotNull
-    private LocalDate dateEffet;
+    private String typeGroupeAssures;
+
+    @NotNull
+    private LocalDate dateDebutPeriodeGroupeAssures;
+
+    @NotNull
+    private String libelleGroupeAssuresTypeAutre;
+
+    @NotNull
+    private String codeEtatGroupeAssures;
 
     private ContratDTO contrat;
 
@@ -32,28 +41,52 @@ public class GroupeDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTypeMEG() {
-        return typeMEG;
+    public String getCodeGroupeAssures() {
+        return codeGroupeAssures;
     }
 
-    public void setTypeMEG(String typeMEG) {
-        this.typeMEG = typeMEG;
+    public void setCodeGroupeAssures(String codeGroupeAssures) {
+        this.codeGroupeAssures = codeGroupeAssures;
     }
 
-    public String getCodeOffre() {
-        return codeOffre;
+    public String getCodeGroupePopulation() {
+        return codeGroupePopulation;
     }
 
-    public void setCodeOffre(String codeOffre) {
-        this.codeOffre = codeOffre;
+    public void setCodeGroupePopulation(String codeGroupePopulation) {
+        this.codeGroupePopulation = codeGroupePopulation;
     }
 
-    public LocalDate getDateEffet() {
-        return dateEffet;
+    public String getTypeGroupeAssures() {
+        return typeGroupeAssures;
     }
 
-    public void setDateEffet(LocalDate dateEffet) {
-        this.dateEffet = dateEffet;
+    public void setTypeGroupeAssures(String typeGroupeAssures) {
+        this.typeGroupeAssures = typeGroupeAssures;
+    }
+
+    public LocalDate getDateDebutPeriodeGroupeAssures() {
+        return dateDebutPeriodeGroupeAssures;
+    }
+
+    public void setDateDebutPeriodeGroupeAssures(LocalDate dateDebutPeriodeGroupeAssures) {
+        this.dateDebutPeriodeGroupeAssures = dateDebutPeriodeGroupeAssures;
+    }
+
+    public String getLibelleGroupeAssuresTypeAutre() {
+        return libelleGroupeAssuresTypeAutre;
+    }
+
+    public void setLibelleGroupeAssuresTypeAutre(String libelleGroupeAssuresTypeAutre) {
+        this.libelleGroupeAssuresTypeAutre = libelleGroupeAssuresTypeAutre;
+    }
+
+    public String getCodeEtatGroupeAssures() {
+        return codeEtatGroupeAssures;
+    }
+
+    public void setCodeEtatGroupeAssures(String codeEtatGroupeAssures) {
+        this.codeEtatGroupeAssures = codeEtatGroupeAssures;
     }
 
     public ContratDTO getContrat() {
@@ -90,9 +123,12 @@ public class GroupeDTO implements Serializable {
     public String toString() {
         return "GroupeDTO{" +
             "id=" + getId() +
-            ", typeMEG='" + getTypeMEG() + "'" +
-            ", codeOffre='" + getCodeOffre() + "'" +
-            ", dateEffet='" + getDateEffet() + "'" +
+            ", codeGroupeAssures='" + getCodeGroupeAssures() + "'" +
+            ", codeGroupePopulation='" + getCodeGroupePopulation() + "'" +
+            ", typeGroupeAssures='" + getTypeGroupeAssures() + "'" +
+            ", dateDebutPeriodeGroupeAssures='" + getDateDebutPeriodeGroupeAssures() + "'" +
+            ", libelleGroupeAssuresTypeAutre='" + getLibelleGroupeAssuresTypeAutre() + "'" +
+            ", codeEtatGroupeAssures='" + getCodeEtatGroupeAssures() + "'" +
             ", contrat=" + getContrat() +
             "}";
     }

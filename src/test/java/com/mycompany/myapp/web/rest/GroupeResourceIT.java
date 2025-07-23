@@ -36,14 +36,23 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class GroupeResourceIT {
 
-    private static final String DEFAULT_TYPE_MEG = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE_MEG = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE_GROUPE_ASSURES = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_GROUPE_ASSURES = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODE_OFFRE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE_OFFRE = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE_GROUPE_POPULATION = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_GROUPE_POPULATION = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_DATE_EFFET = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_EFFET = LocalDate.now(ZoneId.systemDefault());
+    private static final String DEFAULT_TYPE_GROUPE_ASSURES = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE_GROUPE_ASSURES = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_DATE_DEBUT_PERIODE_GROUPE_ASSURES = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_DEBUT_PERIODE_GROUPE_ASSURES = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE = "AAAAAAAAAA";
+    private static final String UPDATED_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_ETAT_GROUPE_ASSURES = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_ETAT_GROUPE_ASSURES = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/groupes";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,7 +86,13 @@ class GroupeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Groupe createEntity() {
-        return new Groupe().typeMEG(DEFAULT_TYPE_MEG).codeOffre(DEFAULT_CODE_OFFRE).dateEffet(DEFAULT_DATE_EFFET);
+        return new Groupe()
+            .codeGroupeAssures(DEFAULT_CODE_GROUPE_ASSURES)
+            .codeGroupePopulation(DEFAULT_CODE_GROUPE_POPULATION)
+            .typeGroupeAssures(DEFAULT_TYPE_GROUPE_ASSURES)
+            .dateDebutPeriodeGroupeAssures(DEFAULT_DATE_DEBUT_PERIODE_GROUPE_ASSURES)
+            .libelleGroupeAssuresTypeAutre(DEFAULT_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE)
+            .codeEtatGroupeAssures(DEFAULT_CODE_ETAT_GROUPE_ASSURES);
     }
 
     /**
@@ -87,7 +102,13 @@ class GroupeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Groupe createUpdatedEntity() {
-        return new Groupe().typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        return new Groupe()
+            .codeGroupeAssures(UPDATED_CODE_GROUPE_ASSURES)
+            .codeGroupePopulation(UPDATED_CODE_GROUPE_POPULATION)
+            .typeGroupeAssures(UPDATED_TYPE_GROUPE_ASSURES)
+            .dateDebutPeriodeGroupeAssures(UPDATED_DATE_DEBUT_PERIODE_GROUPE_ASSURES)
+            .libelleGroupeAssuresTypeAutre(UPDATED_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE)
+            .codeEtatGroupeAssures(UPDATED_CODE_ETAT_GROUPE_ASSURES);
     }
 
     @BeforeEach
@@ -147,10 +168,10 @@ class GroupeResourceIT {
 
     @Test
     @Transactional
-    void checkTypeMEGIsRequired() throws Exception {
+    void checkCodeGroupeAssuresIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        groupe.setTypeMEG(null);
+        groupe.setCodeGroupeAssures(null);
 
         // Create the Groupe, which fails.
         GroupeDTO groupeDTO = groupeMapper.toDto(groupe);
@@ -164,10 +185,10 @@ class GroupeResourceIT {
 
     @Test
     @Transactional
-    void checkCodeOffreIsRequired() throws Exception {
+    void checkCodeGroupePopulationIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        groupe.setCodeOffre(null);
+        groupe.setCodeGroupePopulation(null);
 
         // Create the Groupe, which fails.
         GroupeDTO groupeDTO = groupeMapper.toDto(groupe);
@@ -181,10 +202,61 @@ class GroupeResourceIT {
 
     @Test
     @Transactional
-    void checkDateEffetIsRequired() throws Exception {
+    void checkTypeGroupeAssuresIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        groupe.setDateEffet(null);
+        groupe.setTypeGroupeAssures(null);
+
+        // Create the Groupe, which fails.
+        GroupeDTO groupeDTO = groupeMapper.toDto(groupe);
+
+        restGroupeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(groupeDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkDateDebutPeriodeGroupeAssuresIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        groupe.setDateDebutPeriodeGroupeAssures(null);
+
+        // Create the Groupe, which fails.
+        GroupeDTO groupeDTO = groupeMapper.toDto(groupe);
+
+        restGroupeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(groupeDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkLibelleGroupeAssuresTypeAutreIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        groupe.setLibelleGroupeAssuresTypeAutre(null);
+
+        // Create the Groupe, which fails.
+        GroupeDTO groupeDTO = groupeMapper.toDto(groupe);
+
+        restGroupeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(groupeDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeEtatGroupeAssuresIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        groupe.setCodeEtatGroupeAssures(null);
 
         // Create the Groupe, which fails.
         GroupeDTO groupeDTO = groupeMapper.toDto(groupe);
@@ -208,9 +280,12 @@ class GroupeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(groupe.getId().intValue())))
-            .andExpect(jsonPath("$.[*].typeMEG").value(hasItem(DEFAULT_TYPE_MEG)))
-            .andExpect(jsonPath("$.[*].codeOffre").value(hasItem(DEFAULT_CODE_OFFRE)))
-            .andExpect(jsonPath("$.[*].dateEffet").value(hasItem(DEFAULT_DATE_EFFET.toString())));
+            .andExpect(jsonPath("$.[*].codeGroupeAssures").value(hasItem(DEFAULT_CODE_GROUPE_ASSURES)))
+            .andExpect(jsonPath("$.[*].codeGroupePopulation").value(hasItem(DEFAULT_CODE_GROUPE_POPULATION)))
+            .andExpect(jsonPath("$.[*].typeGroupeAssures").value(hasItem(DEFAULT_TYPE_GROUPE_ASSURES)))
+            .andExpect(jsonPath("$.[*].dateDebutPeriodeGroupeAssures").value(hasItem(DEFAULT_DATE_DEBUT_PERIODE_GROUPE_ASSURES.toString())))
+            .andExpect(jsonPath("$.[*].libelleGroupeAssuresTypeAutre").value(hasItem(DEFAULT_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE)))
+            .andExpect(jsonPath("$.[*].codeEtatGroupeAssures").value(hasItem(DEFAULT_CODE_ETAT_GROUPE_ASSURES)));
     }
 
     @Test
@@ -225,9 +300,12 @@ class GroupeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(groupe.getId().intValue()))
-            .andExpect(jsonPath("$.typeMEG").value(DEFAULT_TYPE_MEG))
-            .andExpect(jsonPath("$.codeOffre").value(DEFAULT_CODE_OFFRE))
-            .andExpect(jsonPath("$.dateEffet").value(DEFAULT_DATE_EFFET.toString()));
+            .andExpect(jsonPath("$.codeGroupeAssures").value(DEFAULT_CODE_GROUPE_ASSURES))
+            .andExpect(jsonPath("$.codeGroupePopulation").value(DEFAULT_CODE_GROUPE_POPULATION))
+            .andExpect(jsonPath("$.typeGroupeAssures").value(DEFAULT_TYPE_GROUPE_ASSURES))
+            .andExpect(jsonPath("$.dateDebutPeriodeGroupeAssures").value(DEFAULT_DATE_DEBUT_PERIODE_GROUPE_ASSURES.toString()))
+            .andExpect(jsonPath("$.libelleGroupeAssuresTypeAutre").value(DEFAULT_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE))
+            .andExpect(jsonPath("$.codeEtatGroupeAssures").value(DEFAULT_CODE_ETAT_GROUPE_ASSURES));
     }
 
     @Test
@@ -249,7 +327,13 @@ class GroupeResourceIT {
         Groupe updatedGroupe = groupeRepository.findById(groupe.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedGroupe are not directly saved in db
         em.detach(updatedGroupe);
-        updatedGroupe.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        updatedGroupe
+            .codeGroupeAssures(UPDATED_CODE_GROUPE_ASSURES)
+            .codeGroupePopulation(UPDATED_CODE_GROUPE_POPULATION)
+            .typeGroupeAssures(UPDATED_TYPE_GROUPE_ASSURES)
+            .dateDebutPeriodeGroupeAssures(UPDATED_DATE_DEBUT_PERIODE_GROUPE_ASSURES)
+            .libelleGroupeAssuresTypeAutre(UPDATED_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE)
+            .codeEtatGroupeAssures(UPDATED_CODE_ETAT_GROUPE_ASSURES);
         GroupeDTO groupeDTO = groupeMapper.toDto(updatedGroupe);
 
         restGroupeMockMvc
@@ -335,7 +419,7 @@ class GroupeResourceIT {
         Groupe partialUpdatedGroupe = new Groupe();
         partialUpdatedGroupe.setId(groupe.getId());
 
-        partialUpdatedGroupe.dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedGroupe.typeGroupeAssures(UPDATED_TYPE_GROUPE_ASSURES).codeEtatGroupeAssures(UPDATED_CODE_ETAT_GROUPE_ASSURES);
 
         restGroupeMockMvc
             .perform(
@@ -363,7 +447,13 @@ class GroupeResourceIT {
         Groupe partialUpdatedGroupe = new Groupe();
         partialUpdatedGroupe.setId(groupe.getId());
 
-        partialUpdatedGroupe.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedGroupe
+            .codeGroupeAssures(UPDATED_CODE_GROUPE_ASSURES)
+            .codeGroupePopulation(UPDATED_CODE_GROUPE_POPULATION)
+            .typeGroupeAssures(UPDATED_TYPE_GROUPE_ASSURES)
+            .dateDebutPeriodeGroupeAssures(UPDATED_DATE_DEBUT_PERIODE_GROUPE_ASSURES)
+            .libelleGroupeAssuresTypeAutre(UPDATED_LIBELLE_GROUPE_ASSURES_TYPE_AUTRE)
+            .codeEtatGroupeAssures(UPDATED_CODE_ETAT_GROUPE_ASSURES);
 
         restGroupeMockMvc
             .perform(

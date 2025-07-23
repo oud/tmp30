@@ -61,6 +61,18 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.Adresse.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Telephone.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Email.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Contrat.class.getName() + ".groupes");
+            createCache(cm, com.mycompany.myapp.domain.Contrat.class.getName() + ".operations");
+            createCache(cm, com.mycompany.myapp.domain.Groupe.class.getName() + ".pmEtablissements");
+            createCache(cm, com.mycompany.myapp.domain.Groupe.class.getName() + ".produits");
+            createCache(cm, com.mycompany.myapp.domain.Produit.class.getName() + ".garanties");
+            createCache(cm, com.mycompany.myapp.domain.Garantie.class.getName() + ".tauxes");
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName() + ".adresses");
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName() + ".emails");
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName() + ".telephones");
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName() + ".adresses");
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName() + ".emails");
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName() + ".telephones");
             // jhipster-needle-ehcache-add-entry
         };
     }

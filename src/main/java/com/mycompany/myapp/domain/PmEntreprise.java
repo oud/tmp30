@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -123,7 +125,22 @@ public class PmEntreprise implements Serializable {
     @Column(name = "checked")
     private Boolean checked;
 
-    @JsonIgnoreProperties(value = { "pmEntreprise" }, allowSetters = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pmEntreprise")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "pmEntreprise", "pmEtablissement" }, allowSetters = true)
+    private Set<Adresse> adresses = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pmEntreprise")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "pmEntreprise", "pmEtablissement" }, allowSetters = true)
+    private Set<Email> emails = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pmEntreprise")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "pmEntreprise", "pmEtablissement" }, allowSetters = true)
+    private Set<Telephone> telephones = new HashSet<>();
+
+    @JsonIgnoreProperties(value = { "pmEntreprise", "groupes", "operations" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "pmEntreprise")
     private Contrat contrat;
 
@@ -465,6 +482,99 @@ public class PmEntreprise implements Serializable {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
+    }
+
+    public Set<Adresse> getAdresses() {
+        return this.adresses;
+    }
+
+    public void setAdresses(Set<Adresse> adresses) {
+        if (this.adresses != null) {
+            this.adresses.forEach(i -> i.setPmEntreprise(null));
+        }
+        if (adresses != null) {
+            adresses.forEach(i -> i.setPmEntreprise(this));
+        }
+        this.adresses = adresses;
+    }
+
+    public PmEntreprise adresses(Set<Adresse> adresses) {
+        this.setAdresses(adresses);
+        return this;
+    }
+
+    public PmEntreprise addAdresse(Adresse adresse) {
+        this.adresses.add(adresse);
+        adresse.setPmEntreprise(this);
+        return this;
+    }
+
+    public PmEntreprise removeAdresse(Adresse adresse) {
+        this.adresses.remove(adresse);
+        adresse.setPmEntreprise(null);
+        return this;
+    }
+
+    public Set<Email> getEmails() {
+        return this.emails;
+    }
+
+    public void setEmails(Set<Email> emails) {
+        if (this.emails != null) {
+            this.emails.forEach(i -> i.setPmEntreprise(null));
+        }
+        if (emails != null) {
+            emails.forEach(i -> i.setPmEntreprise(this));
+        }
+        this.emails = emails;
+    }
+
+    public PmEntreprise emails(Set<Email> emails) {
+        this.setEmails(emails);
+        return this;
+    }
+
+    public PmEntreprise addEmail(Email email) {
+        this.emails.add(email);
+        email.setPmEntreprise(this);
+        return this;
+    }
+
+    public PmEntreprise removeEmail(Email email) {
+        this.emails.remove(email);
+        email.setPmEntreprise(null);
+        return this;
+    }
+
+    public Set<Telephone> getTelephones() {
+        return this.telephones;
+    }
+
+    public void setTelephones(Set<Telephone> telephones) {
+        if (this.telephones != null) {
+            this.telephones.forEach(i -> i.setPmEntreprise(null));
+        }
+        if (telephones != null) {
+            telephones.forEach(i -> i.setPmEntreprise(this));
+        }
+        this.telephones = telephones;
+    }
+
+    public PmEntreprise telephones(Set<Telephone> telephones) {
+        this.setTelephones(telephones);
+        return this;
+    }
+
+    public PmEntreprise addTelephone(Telephone telephone) {
+        this.telephones.add(telephone);
+        telephone.setPmEntreprise(this);
+        return this;
+    }
+
+    public PmEntreprise removeTelephone(Telephone telephone) {
+        this.telephones.remove(telephone);
+        telephone.setPmEntreprise(null);
+        return this;
     }
 
     public Contrat getContrat() {

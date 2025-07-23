@@ -2,15 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 
-import { DATE_FORMAT } from 'app/config/input.constants';
 import { ITaux } from '../taux.model';
 import { sampleWithFullData, sampleWithNewData, sampleWithPartialData, sampleWithRequiredData } from '../taux.test-samples';
 
-import { RestTaux, TauxService } from './taux.service';
+import { TauxService } from './taux.service';
 
-const requireRestSample: RestTaux = {
+const requireRestSample: ITaux = {
   ...sampleWithRequiredData,
-  dateEffet: sampleWithRequiredData.dateEffet?.format(DATE_FORMAT),
 };
 
 describe('Taux Service', () => {

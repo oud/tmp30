@@ -4,29 +4,41 @@ import { IGroupe, NewGroupe } from './groupe.model';
 
 export const sampleWithRequiredData: IGroupe = {
   id: 17940,
-  typeMEG: 'yuck eggplant terrorise',
-  codeOffre: 'overreact bemuse',
-  dateEffet: dayjs('2025-07-21'),
+  codeGroupeAssures: 'yuck eggplant terrorise',
+  codeGroupePopulation: 'overreact bemuse',
+  typeGroupeAssures: 'provided',
+  dateDebutPeriodeGroupeAssures: dayjs('2025-07-22'),
+  libelleGroupeAssuresTypeAutre: 'toothpick hence',
+  codeEtatGroupeAssures: 'annex questionably',
 };
 
 export const sampleWithPartialData: IGroupe = {
   id: 18816,
-  typeMEG: 'properly bicycle thump',
-  codeOffre: 'around',
-  dateEffet: dayjs('2025-07-22'),
+  codeGroupeAssures: 'properly bicycle thump',
+  codeGroupePopulation: 'around',
+  typeGroupeAssures: 'porter upbeat wide-eyed',
+  dateDebutPeriodeGroupeAssures: dayjs('2025-07-21'),
+  libelleGroupeAssuresTypeAutre: 'promptly slimy deafening',
+  codeEtatGroupeAssures: 'notwithstanding',
 };
 
 export const sampleWithFullData: IGroupe = {
   id: 9586,
-  typeMEG: 'nab',
-  codeOffre: 'excepting',
-  dateEffet: dayjs('2025-07-21'),
+  codeGroupeAssures: 'nab',
+  codeGroupePopulation: 'excepting',
+  typeGroupeAssures: 'formamide',
+  dateDebutPeriodeGroupeAssures: dayjs('2025-07-21'),
+  libelleGroupeAssuresTypeAutre: 'sense',
+  codeEtatGroupeAssures: 'unfit yippee',
 };
 
 export const sampleWithNewData: NewGroupe = {
-  typeMEG: 'coordination harmful guilty',
-  codeOffre: 'wherever where',
-  dateEffet: dayjs('2025-07-21'),
+  codeGroupeAssures: 'coordination harmful guilty',
+  codeGroupePopulation: 'wherever where',
+  typeGroupeAssures: 'mantua',
+  dateDebutPeriodeGroupeAssures: dayjs('2025-07-22'),
+  libelleGroupeAssuresTypeAutre: 'engage',
+  codeEtatGroupeAssures: 'consequently circa',
   id: null,
 };
 

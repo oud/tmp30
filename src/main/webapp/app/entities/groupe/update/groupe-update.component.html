@@ -15,51 +15,143 @@
           </div>
         }
 
-        @let typeMEGRef = editForm.get('typeMEG')!;
+        @let codeGroupeAssuresRef = editForm.get('codeGroupeAssures')!;
         <div class="mb-3">
-          <label class="form-label" for="field_typeMEG" jhiTranslate="tmp30App.groupe.typeMEG">Type MEG</label>
-          <input type="text" class="form-control" name="typeMEG" id="field_typeMEG" data-cy="typeMEG" formControlName="typeMEG" />
-          @if (typeMEGRef.invalid && (typeMEGRef.dirty || typeMEGRef.touched)) {
+          <label class="form-label" for="field_codeGroupeAssures" jhiTranslate="tmp30App.groupe.codeGroupeAssures"
+            >Code Groupe Assures</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeGroupeAssures"
+            id="field_codeGroupeAssures"
+            data-cy="codeGroupeAssures"
+            formControlName="codeGroupeAssures"
+          />
+          @if (codeGroupeAssuresRef.invalid && (codeGroupeAssuresRef.dirty || codeGroupeAssuresRef.touched)) {
             <div>
-              @if (editForm.get('typeMEG')?.errors?.required) {
+              @if (editForm.get('codeGroupeAssures')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
-        @let codeOffreRef = editForm.get('codeOffre')!;
+        @let codeGroupePopulationRef = editForm.get('codeGroupePopulation')!;
         <div class="mb-3">
-          <label class="form-label" for="field_codeOffre" jhiTranslate="tmp30App.groupe.codeOffre">Code Offre</label>
-          <input type="text" class="form-control" name="codeOffre" id="field_codeOffre" data-cy="codeOffre" formControlName="codeOffre" />
-          @if (codeOffreRef.invalid && (codeOffreRef.dirty || codeOffreRef.touched)) {
+          <label class="form-label" for="field_codeGroupePopulation" jhiTranslate="tmp30App.groupe.codeGroupePopulation"
+            >Code Groupe Population</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeGroupePopulation"
+            id="field_codeGroupePopulation"
+            data-cy="codeGroupePopulation"
+            formControlName="codeGroupePopulation"
+          />
+          @if (codeGroupePopulationRef.invalid && (codeGroupePopulationRef.dirty || codeGroupePopulationRef.touched)) {
             <div>
-              @if (editForm.get('codeOffre')?.errors?.required) {
+              @if (editForm.get('codeGroupePopulation')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
-        @let dateEffetRef = editForm.get('dateEffet')!;
+        @let typeGroupeAssuresRef = editForm.get('typeGroupeAssures')!;
         <div class="mb-3">
-          <label class="form-label" for="field_dateEffet" jhiTranslate="tmp30App.groupe.dateEffet">Date Effet</label>
+          <label class="form-label" for="field_typeGroupeAssures" jhiTranslate="tmp30App.groupe.typeGroupeAssures"
+            >Type Groupe Assures</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="typeGroupeAssures"
+            id="field_typeGroupeAssures"
+            data-cy="typeGroupeAssures"
+            formControlName="typeGroupeAssures"
+          />
+          @if (typeGroupeAssuresRef.invalid && (typeGroupeAssuresRef.dirty || typeGroupeAssuresRef.touched)) {
+            <div>
+              @if (editForm.get('typeGroupeAssures')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let dateDebutPeriodeGroupeAssuresRef = editForm.get('dateDebutPeriodeGroupeAssures')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dateDebutPeriodeGroupeAssures" jhiTranslate="tmp30App.groupe.dateDebutPeriodeGroupeAssures"
+            >Date Debut Periode Groupe Assures</label
+          >
           <div class="input-group">
             <input
-              id="field_dateEffet"
-              data-cy="dateEffet"
+              id="field_dateDebutPeriodeGroupeAssures"
+              data-cy="dateDebutPeriodeGroupeAssures"
               type="text"
               class="form-control"
-              name="dateEffet"
+              name="dateDebutPeriodeGroupeAssures"
               ngbDatepicker
-              #dateEffetDp="ngbDatepicker"
-              formControlName="dateEffet"
+              #dateDebutPeriodeGroupeAssuresDp="ngbDatepicker"
+              formControlName="dateDebutPeriodeGroupeAssures"
             />
-            <button type="button" class="btn btn-secondary" (click)="dateEffetDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            <button type="button" class="btn btn-secondary" (click)="dateDebutPeriodeGroupeAssuresDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
           </div>
-          @if (dateEffetRef.invalid && (dateEffetRef.dirty || dateEffetRef.touched)) {
+          @if (
+            dateDebutPeriodeGroupeAssuresRef.invalid && (dateDebutPeriodeGroupeAssuresRef.dirty || dateDebutPeriodeGroupeAssuresRef.touched)
+          ) {
             <div>
-              @if (editForm.get('dateEffet')?.errors?.required) {
+              @if (editForm.get('dateDebutPeriodeGroupeAssures')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let libelleGroupeAssuresTypeAutreRef = editForm.get('libelleGroupeAssuresTypeAutre')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_libelleGroupeAssuresTypeAutre" jhiTranslate="tmp30App.groupe.libelleGroupeAssuresTypeAutre"
+            >Libelle Groupe Assures Type Autre</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="libelleGroupeAssuresTypeAutre"
+            id="field_libelleGroupeAssuresTypeAutre"
+            data-cy="libelleGroupeAssuresTypeAutre"
+            formControlName="libelleGroupeAssuresTypeAutre"
+          />
+          @if (
+            libelleGroupeAssuresTypeAutreRef.invalid && (libelleGroupeAssuresTypeAutreRef.dirty || libelleGroupeAssuresTypeAutreRef.touched)
+          ) {
+            <div>
+              @if (editForm.get('libelleGroupeAssuresTypeAutre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codeEtatGroupeAssuresRef = editForm.get('codeEtatGroupeAssures')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codeEtatGroupeAssures" jhiTranslate="tmp30App.groupe.codeEtatGroupeAssures"
+            >Code Etat Groupe Assures</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeEtatGroupeAssures"
+            id="field_codeEtatGroupeAssures"
+            data-cy="codeEtatGroupeAssures"
+            formControlName="codeEtatGroupeAssures"
+          />
+          @if (codeEtatGroupeAssuresRef.invalid && (codeEtatGroupeAssuresRef.dirty || codeEtatGroupeAssuresRef.touched)) {
+            <div>
+              @if (editForm.get('codeEtatGroupeAssures')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>

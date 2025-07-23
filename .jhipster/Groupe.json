@@ -6,28 +6,49 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "typeMEG",
+      "fieldName": "codeGroupeAssures",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "codeOffre",
+      "fieldName": "codeGroupePopulation",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateEffet",
+      "fieldName": "typeGroupeAssures",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDebutPeriodeGroupeAssures",
       "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "libelleGroupeAssuresTypeAutre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeEtatGroupeAssures",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     }
   ],
   "name": "Groupe",
   "relationships": [
     {
-      "otherEntityName": "contrat",
-      "relationshipName": "contrat",
+      "otherEntityName": "pmEtablissement",
+      "relationshipName": "pmEtablissement",
       "relationshipSide": "left",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "produit",
+      "relationshipName": "produit",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

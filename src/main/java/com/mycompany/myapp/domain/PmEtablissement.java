@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -119,8 +121,23 @@ public class PmEtablissement implements Serializable {
     @Column(name = "checked")
     private Boolean checked;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pmEtablissement")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "pmEntreprise", "pmEtablissement" }, allowSetters = true)
+    private Set<Adresse> adresses = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pmEtablissement")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "pmEntreprise", "pmEtablissement" }, allowSetters = true)
+    private Set<Email> emails = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pmEtablissement")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "pmEntreprise", "pmEtablissement" }, allowSetters = true)
+    private Set<Telephone> telephones = new HashSet<>();
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "contrat" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "pmEtablissements", "produits", "contrat" }, allowSetters = true)
     private Groupe groupe;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -448,6 +465,99 @@ public class PmEtablissement implements Serializable {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
+    }
+
+    public Set<Adresse> getAdresses() {
+        return this.adresses;
+    }
+
+    public void setAdresses(Set<Adresse> adresses) {
+        if (this.adresses != null) {
+            this.adresses.forEach(i -> i.setPmEtablissement(null));
+        }
+        if (adresses != null) {
+            adresses.forEach(i -> i.setPmEtablissement(this));
+        }
+        this.adresses = adresses;
+    }
+
+    public PmEtablissement adresses(Set<Adresse> adresses) {
+        this.setAdresses(adresses);
+        return this;
+    }
+
+    public PmEtablissement addAdresse(Adresse adresse) {
+        this.adresses.add(adresse);
+        adresse.setPmEtablissement(this);
+        return this;
+    }
+
+    public PmEtablissement removeAdresse(Adresse adresse) {
+        this.adresses.remove(adresse);
+        adresse.setPmEtablissement(null);
+        return this;
+    }
+
+    public Set<Email> getEmails() {
+        return this.emails;
+    }
+
+    public void setEmails(Set<Email> emails) {
+        if (this.emails != null) {
+            this.emails.forEach(i -> i.setPmEtablissement(null));
+        }
+        if (emails != null) {
+            emails.forEach(i -> i.setPmEtablissement(this));
+        }
+        this.emails = emails;
+    }
+
+    public PmEtablissement emails(Set<Email> emails) {
+        this.setEmails(emails);
+        return this;
+    }
+
+    public PmEtablissement addEmail(Email email) {
+        this.emails.add(email);
+        email.setPmEtablissement(this);
+        return this;
+    }
+
+    public PmEtablissement removeEmail(Email email) {
+        this.emails.remove(email);
+        email.setPmEtablissement(null);
+        return this;
+    }
+
+    public Set<Telephone> getTelephones() {
+        return this.telephones;
+    }
+
+    public void setTelephones(Set<Telephone> telephones) {
+        if (this.telephones != null) {
+            this.telephones.forEach(i -> i.setPmEtablissement(null));
+        }
+        if (telephones != null) {
+            telephones.forEach(i -> i.setPmEtablissement(this));
+        }
+        this.telephones = telephones;
+    }
+
+    public PmEtablissement telephones(Set<Telephone> telephones) {
+        this.setTelephones(telephones);
+        return this;
+    }
+
+    public PmEtablissement addTelephone(Telephone telephone) {
+        this.telephones.add(telephone);
+        telephone.setPmEtablissement(this);
+        return this;
+    }
+
+    public PmEtablissement removeTelephone(Telephone telephone) {
+        this.telephones.remove(telephone);
+        telephone.setPmEtablissement(null);
+        return this;
     }
 
     public Groupe getGroupe() {

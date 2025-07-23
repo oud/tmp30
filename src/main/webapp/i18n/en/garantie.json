@@ -18,9 +18,20 @@
         "title": "Garantie"
       },
       "id": "ID",
-      "typeMEG": "Type MEG",
-      "codeOffre": "Code Offre",
-      "dateEffet": "Date Effet",
+      "codeGarantieTechnique": "Code Garantie Technique",
+      "codeEtatGarantie": "Code Etat Garantie",
+      "dateAdhesionGarantie": "Date Adhesion Garantie",
+      "dateRadiationGarantie": "Date Radiation Garantie",
+      "codeAssureur": "Code Assureur",
+      "codeFormule": "Code Formule",
+      "codePack": "Code Pack",
+      "typePack": "Type Pack",
+      "titrePack": "Titre Pack",
+      "codeSousPack": "Code Sous Pack",
+      "typeSousPack": "Type Sous Pack",
+      "titreSousPack": "Titre Sous Pack",
+      "codeTypePrestations": "Code Type Prestations",
+      "taux": "Taux",
       "produit": "Produit"
     }
   }

@@ -3,9 +3,14 @@ import { IGroupe } from 'app/entities/groupe/groupe.model';
 
 export interface IProduit {
   id: number;
-  typeMEG?: string | null;
-  codeOffre?: string | null;
-  dateEffet?: dayjs.Dayjs | null;
+  codeProduit?: string | null;
+  dateAdhesionProduit?: dayjs.Dayjs | null;
+  dateRadiationProduit?: dayjs.Dayjs | null;
+  codeFormule?: string | null;
+  codeFamilleRisqueFormule?: string | null;
+  titreFormule?: string | null;
+  typeFormule?: string | null;
+  codeEtat?: string | null;
   groupe?: Pick<IGroupe, 'id'> | null;
 }
 

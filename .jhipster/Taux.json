@@ -6,30 +6,27 @@
   "dto": "mapstruct",
   "fields": [
     {
-      "fieldName": "typeMEG",
+      "fieldName": "codeVariableDeclarative",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "codeOffre",
+      "fieldName": "uniteVariableDeclarative",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateEffet",
-      "fieldType": "LocalDate",
+      "fieldName": "valeurFacteurMontant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valeurFacteurTaux",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     }
   ],
   "name": "Taux",
-  "relationships": [
-    {
-      "otherEntityName": "garantie",
-      "relationshipName": "garantie",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

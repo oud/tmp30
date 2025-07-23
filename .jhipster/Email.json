@@ -27,20 +27,7 @@
     }
   ],
   "name": "Email",
-  "relationships": [
-    {
-      "otherEntityName": "pmEntreprise",
-      "relationshipName": "pmEntreprise",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    },
-    {
-      "otherEntityName": "pmEtablissement",
-      "relationshipName": "pmEtablissement",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

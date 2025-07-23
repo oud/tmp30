@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,19 +28,43 @@ public class Produit implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "type_meg", nullable = false)
-    private String typeMEG;
+    @Column(name = "code_produit", nullable = false)
+    private String codeProduit;
 
     @NotNull
-    @Column(name = "code_offre", nullable = false)
-    private String codeOffre;
+    @Column(name = "date_adhesion_produit", nullable = false)
+    private LocalDate dateAdhesionProduit;
+
+    @Column(name = "date_radiation_produit")
+    private LocalDate dateRadiationProduit;
 
     @NotNull
-    @Column(name = "date_effet", nullable = false)
-    private LocalDate dateEffet;
+    @Column(name = "code_formule", nullable = false)
+    private String codeFormule;
+
+    @NotNull
+    @Column(name = "code_famille_risque_formule", nullable = false)
+    private String codeFamilleRisqueFormule;
+
+    @NotNull
+    @Column(name = "titre_formule", nullable = false)
+    private String titreFormule;
+
+    @NotNull
+    @Column(name = "type_formule", nullable = false)
+    private String typeFormule;
+
+    @NotNull
+    @Column(name = "code_etat", nullable = false)
+    private String codeEtat;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "tauxes", "produit" }, allowSetters = true)
+    private Set<Garantie> garanties = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "contrat" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "pmEtablissements", "produits", "contrat" }, allowSetters = true)
     private Groupe groupe;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -56,43 +82,139 @@ public class Produit implements Serializable {
         this.id = id;
     }
 
-    public String getTypeMEG() {
-        return this.typeMEG;
+    public String getCodeProduit() {
+        return this.codeProduit;
     }
 
-    public Produit typeMEG(String typeMEG) {
-        this.setTypeMEG(typeMEG);
+    public Produit codeProduit(String codeProduit) {
+        this.setCodeProduit(codeProduit);
         return this;
     }
 
-    public void setTypeMEG(String typeMEG) {
-        this.typeMEG = typeMEG;
+    public void setCodeProduit(String codeProduit) {
+        this.codeProduit = codeProduit;
     }
 
-    public String getCodeOffre() {
-        return this.codeOffre;
+    public LocalDate getDateAdhesionProduit() {
+        return this.dateAdhesionProduit;
     }
 
-    public Produit codeOffre(String codeOffre) {
-        this.setCodeOffre(codeOffre);
+    public Produit dateAdhesionProduit(LocalDate dateAdhesionProduit) {
+        this.setDateAdhesionProduit(dateAdhesionProduit);
         return this;
     }
 
-    public void setCodeOffre(String codeOffre) {
-        this.codeOffre = codeOffre;
+    public void setDateAdhesionProduit(LocalDate dateAdhesionProduit) {
+        this.dateAdhesionProduit = dateAdhesionProduit;
     }
 
-    public LocalDate getDateEffet() {
-        return this.dateEffet;
+    public LocalDate getDateRadiationProduit() {
+        return this.dateRadiationProduit;
     }
 
-    public Produit dateEffet(LocalDate dateEffet) {
-        this.setDateEffet(dateEffet);
+    public Produit dateRadiationProduit(LocalDate dateRadiationProduit) {
+        this.setDateRadiationProduit(dateRadiationProduit);
         return this;
     }
 
-    public void setDateEffet(LocalDate dateEffet) {
-        this.dateEffet = dateEffet;
+    public void setDateRadiationProduit(LocalDate dateRadiationProduit) {
+        this.dateRadiationProduit = dateRadiationProduit;
+    }
+
+    public String getCodeFormule() {
+        return this.codeFormule;
+    }
+
+    public Produit codeFormule(String codeFormule) {
+        this.setCodeFormule(codeFormule);
+        return this;
+    }
+
+    public void setCodeFormule(String codeFormule) {
+        this.codeFormule = codeFormule;
+    }
+
+    public String getCodeFamilleRisqueFormule() {
+        return this.codeFamilleRisqueFormule;
+    }
+
+    public Produit codeFamilleRisqueFormule(String codeFamilleRisqueFormule) {
+        this.setCodeFamilleRisqueFormule(codeFamilleRisqueFormule);
+        return this;
+    }
+
+    public void setCodeFamilleRisqueFormule(String codeFamilleRisqueFormule) {
+        this.codeFamilleRisqueFormule = codeFamilleRisqueFormule;
+    }
+
+    public String getTitreFormule() {
+        return this.titreFormule;
+    }
+
+    public Produit titreFormule(String titreFormule) {
+        this.setTitreFormule(titreFormule);
+        return this;
+    }
+
+    public void setTitreFormule(String titreFormule) {
+        this.titreFormule = titreFormule;
+    }
+
+    public String getTypeFormule() {
+        return this.typeFormule;
+    }
+
+    public Produit typeFormule(String typeFormule) {
+        this.setTypeFormule(typeFormule);
+        return this;
+    }
+
+    public void setTypeFormule(String typeFormule) {
+        this.typeFormule = typeFormule;
+    }
+
+    public String getCodeEtat() {
+        return this.codeEtat;
+    }
+
+    public Produit codeEtat(String codeEtat) {
+        this.setCodeEtat(codeEtat);
+        return this;
+    }
+
+    public void setCodeEtat(String codeEtat) {
+        this.codeEtat = codeEtat;
+    }
+
+    public Set<Garantie> getGaranties() {
+        return this.garanties;
+    }
+
+    public void setGaranties(Set<Garantie> garanties) {
+        if (this.garanties != null) {
+            this.garanties.forEach(i -> i.setProduit(null));
+        }
+        if (garanties != null) {
+            garanties.forEach(i -> i.setProduit(this));
+        }
+        this.garanties = garanties;
+    }
+
+    public Produit garanties(Set<Garantie> garanties) {
+        this.setGaranties(garanties);
+        return this;
+    }
+
+    public Produit addGarantie(Garantie garantie) {
+        this.garanties.add(garantie);
+        garantie.setProduit(this);
+        return this;
+    }
+
+    public Produit removeGarantie(Garantie garantie) {
+        this.garanties.remove(garantie);
+        garantie.setProduit(null);
+        return this;
     }
 
     public Groupe getGroupe() {
@@ -132,9 +254,14 @@ public class Produit implements Serializable {
     public String toString() {
         return "Produit{" +
             "id=" + getId() +
-            ", typeMEG='" + getTypeMEG() + "'" +
-            ", codeOffre='" + getCodeOffre() + "'" +
-            ", dateEffet='" + getDateEffet() + "'" +
+            ", codeProduit='" + getCodeProduit() + "'" +
+            ", dateAdhesionProduit='" + getDateAdhesionProduit() + "'" +
+            ", dateRadiationProduit='" + getDateRadiationProduit() + "'" +
+            ", codeFormule='" + getCodeFormule() + "'" +
+            ", codeFamilleRisqueFormule='" + getCodeFamilleRisqueFormule() + "'" +
+            ", titreFormule='" + getTitreFormule() + "'" +
+            ", typeFormule='" + getTypeFormule() + "'" +
+            ", codeEtat='" + getCodeEtat() + "'" +
             "}";
     }
 }

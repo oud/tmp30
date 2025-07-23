@@ -14,13 +14,16 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="type_meg" type="varchar(255)">
+            <column name="code_variable_declarative" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="code_offre" type="varchar(255)">
+            <column name="unite_variable_declarative" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="date_effet" type="date">
+            <column name="valeur_facteur_montant" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="valeur_facteur_taux" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="garantie_id" type="bigint">
@@ -47,9 +50,10 @@
                   tableName="taux"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="type_meg" type="string"/>
-            <column name="code_offre" type="string"/>
-            <column name="date_effet" type="date"/>
+            <column name="code_variable_declarative" type="string"/>
+            <column name="unite_variable_declarative" type="string"/>
+            <column name="valeur_facteur_montant" type="string"/>
+            <column name="valeur_facteur_taux" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

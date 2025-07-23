@@ -14,13 +14,23 @@ public class OperationDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String typeMEG;
+    private String numeroOperationNiveau0;
 
     @NotNull
-    private String codeOffre;
+    private String etatOperation;
 
     @NotNull
-    private LocalDate dateEffet;
+    private LocalDate dateEffetOperation;
+
+    private LocalDate dateDemandeOperation;
+
+    @NotNull
+    private LocalDate dateCreation;
+
+    @NotNull
+    private String codeActeGestion;
+
+    private String numeroOperationAnnulee;
 
     private ContratDTO contrat;
 
@@ -32,28 +42,60 @@ public class OperationDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTypeMEG() {
-        return typeMEG;
+    public String getNumeroOperationNiveau0() {
+        return numeroOperationNiveau0;
     }
 
-    public void setTypeMEG(String typeMEG) {
-        this.typeMEG = typeMEG;
+    public void setNumeroOperationNiveau0(String numeroOperationNiveau0) {
+        this.numeroOperationNiveau0 = numeroOperationNiveau0;
     }
 
-    public String getCodeOffre() {
-        return codeOffre;
+    public String getEtatOperation() {
+        return etatOperation;
     }
 
-    public void setCodeOffre(String codeOffre) {
-        this.codeOffre = codeOffre;
+    public void setEtatOperation(String etatOperation) {
+        this.etatOperation = etatOperation;
     }
 
-    public LocalDate getDateEffet() {
-        return dateEffet;
+    public LocalDate getDateEffetOperation() {
+        return dateEffetOperation;
     }
 
-    public void setDateEffet(LocalDate dateEffet) {
-        this.dateEffet = dateEffet;
+    public void setDateEffetOperation(LocalDate dateEffetOperation) {
+        this.dateEffetOperation = dateEffetOperation;
+    }
+
+    public LocalDate getDateDemandeOperation() {
+        return dateDemandeOperation;
+    }
+
+    public void setDateDemandeOperation(LocalDate dateDemandeOperation) {
+        this.dateDemandeOperation = dateDemandeOperation;
+    }
+
+    public LocalDate getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public String getCodeActeGestion() {
+        return codeActeGestion;
+    }
+
+    public void setCodeActeGestion(String codeActeGestion) {
+        this.codeActeGestion = codeActeGestion;
+    }
+
+    public String getNumeroOperationAnnulee() {
+        return numeroOperationAnnulee;
+    }
+
+    public void setNumeroOperationAnnulee(String numeroOperationAnnulee) {
+        this.numeroOperationAnnulee = numeroOperationAnnulee;
     }
 
     public ContratDTO getContrat() {
@@ -90,9 +132,13 @@ public class OperationDTO implements Serializable {
     public String toString() {
         return "OperationDTO{" +
             "id=" + getId() +
-            ", typeMEG='" + getTypeMEG() + "'" +
-            ", codeOffre='" + getCodeOffre() + "'" +
-            ", dateEffet='" + getDateEffet() + "'" +
+            ", numeroOperationNiveau0='" + getNumeroOperationNiveau0() + "'" +
+            ", etatOperation='" + getEtatOperation() + "'" +
+            ", dateEffetOperation='" + getDateEffetOperation() + "'" +
+            ", dateDemandeOperation='" + getDateDemandeOperation() + "'" +
+            ", dateCreation='" + getDateCreation() + "'" +
+            ", codeActeGestion='" + getCodeActeGestion() + "'" +
+            ", numeroOperationAnnulee='" + getNumeroOperationAnnulee() + "'" +
             ", contrat=" + getContrat() +
             "}";
     }

@@ -12,8 +12,9 @@ import { IGarantie, NewGarantie } from '../garantie.model';
 
 export type PartialUpdateGarantie = Partial<IGarantie> & Pick<IGarantie, 'id'>;
 
-type RestOf<T extends IGarantie | NewGarantie> = Omit<T, 'dateEffet'> & {
-  dateEffet?: string | null;
+type RestOf<T extends IGarantie | NewGarantie> = Omit<T, 'dateAdhesionGarantie' | 'dateRadiationGarantie'> & {
+  dateAdhesionGarantie?: string | null;
+  dateRadiationGarantie?: string | null;
 };
 
 export type RestGarantie = RestOf<IGarantie>;
@@ -101,14 +102,16 @@ export class GarantieService {
   protected convertDateFromClient<T extends IGarantie | NewGarantie | PartialUpdateGarantie>(garantie: T): RestOf<T> {
     return {
       ...garantie,
-      dateEffet: garantie.dateEffet?.format(DATE_FORMAT) ?? null,
+      dateAdhesionGarantie: garantie.dateAdhesionGarantie?.format(DATE_FORMAT) ?? null,
+      dateRadiationGarantie: garantie.dateRadiationGarantie?.format(DATE_FORMAT) ?? null,
     };
   }
 
   protected convertDateFromServer(restGarantie: RestGarantie): IGarantie {
     return {
       ...restGarantie,
-      dateEffet: restGarantie.dateEffet ? dayjs(restGarantie.dateEffet) : undefined,
+      dateAdhesionGarantie: restGarantie.dateAdhesionGarantie ? dayjs(restGarantie.dateAdhesionGarantie) : undefined,
+      dateRadiationGarantie: restGarantie.dateRadiationGarantie ? dayjs(restGarantie.dateRadiationGarantie) : undefined,
     };
   }
 

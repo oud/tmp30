@@ -36,14 +36,44 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class GarantieResourceIT {
 
-    private static final String DEFAULT_TYPE_MEG = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE_MEG = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE_GARANTIE_TECHNIQUE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_GARANTIE_TECHNIQUE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODE_OFFRE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE_OFFRE = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE_ETAT_GARANTIE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_ETAT_GARANTIE = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_DATE_EFFET = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_EFFET = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDate DEFAULT_DATE_ADHESION_GARANTIE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_ADHESION_GARANTIE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_RADIATION_GARANTIE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RADIATION_GARANTIE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_CODE_ASSUREUR = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_ASSUREUR = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_FORMULE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_FORMULE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_PACK = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_PACK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TYPE_PACK = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE_PACK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITRE_PACK = "AAAAAAAAAA";
+    private static final String UPDATED_TITRE_PACK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_SOUS_PACK = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_SOUS_PACK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TYPE_SOUS_PACK = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE_SOUS_PACK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITRE_SOUS_PACK = "AAAAAAAAAA";
+    private static final String UPDATED_TITRE_SOUS_PACK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE_TYPE_PRESTATIONS = "AAAAAAAAAA";
+    private static final String UPDATED_CODE_TYPE_PRESTATIONS = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/garanties";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,7 +107,20 @@ class GarantieResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Garantie createEntity() {
-        return new Garantie().typeMEG(DEFAULT_TYPE_MEG).codeOffre(DEFAULT_CODE_OFFRE).dateEffet(DEFAULT_DATE_EFFET);
+        return new Garantie()
+            .codeGarantieTechnique(DEFAULT_CODE_GARANTIE_TECHNIQUE)
+            .codeEtatGarantie(DEFAULT_CODE_ETAT_GARANTIE)
+            .dateAdhesionGarantie(DEFAULT_DATE_ADHESION_GARANTIE)
+            .dateRadiationGarantie(DEFAULT_DATE_RADIATION_GARANTIE)
+            .codeAssureur(DEFAULT_CODE_ASSUREUR)
+            .codeFormule(DEFAULT_CODE_FORMULE)
+            .codePack(DEFAULT_CODE_PACK)
+            .typePack(DEFAULT_TYPE_PACK)
+            .titrePack(DEFAULT_TITRE_PACK)
+            .codeSousPack(DEFAULT_CODE_SOUS_PACK)
+            .typeSousPack(DEFAULT_TYPE_SOUS_PACK)
+            .titreSousPack(DEFAULT_TITRE_SOUS_PACK)
+            .codeTypePrestations(DEFAULT_CODE_TYPE_PRESTATIONS);
     }
 
     /**
@@ -87,7 +130,20 @@ class GarantieResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Garantie createUpdatedEntity() {
-        return new Garantie().typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        return new Garantie()
+            .codeGarantieTechnique(UPDATED_CODE_GARANTIE_TECHNIQUE)
+            .codeEtatGarantie(UPDATED_CODE_ETAT_GARANTIE)
+            .dateAdhesionGarantie(UPDATED_DATE_ADHESION_GARANTIE)
+            .dateRadiationGarantie(UPDATED_DATE_RADIATION_GARANTIE)
+            .codeAssureur(UPDATED_CODE_ASSUREUR)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codePack(UPDATED_CODE_PACK)
+            .typePack(UPDATED_TYPE_PACK)
+            .titrePack(UPDATED_TITRE_PACK)
+            .codeSousPack(UPDATED_CODE_SOUS_PACK)
+            .typeSousPack(UPDATED_TYPE_SOUS_PACK)
+            .titreSousPack(UPDATED_TITRE_SOUS_PACK)
+            .codeTypePrestations(UPDATED_CODE_TYPE_PRESTATIONS);
     }
 
     @BeforeEach
@@ -147,10 +203,10 @@ class GarantieResourceIT {
 
     @Test
     @Transactional
-    void checkTypeMEGIsRequired() throws Exception {
+    void checkCodeGarantieTechniqueIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        garantie.setTypeMEG(null);
+        garantie.setCodeGarantieTechnique(null);
 
         // Create the Garantie, which fails.
         GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
@@ -164,10 +220,10 @@ class GarantieResourceIT {
 
     @Test
     @Transactional
-    void checkCodeOffreIsRequired() throws Exception {
+    void checkCodeEtatGarantieIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        garantie.setCodeOffre(null);
+        garantie.setCodeEtatGarantie(null);
 
         // Create the Garantie, which fails.
         GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
@@ -181,10 +237,180 @@ class GarantieResourceIT {
 
     @Test
     @Transactional
-    void checkDateEffetIsRequired() throws Exception {
+    void checkDateAdhesionGarantieIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        garantie.setDateEffet(null);
+        garantie.setDateAdhesionGarantie(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkDateRadiationGarantieIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setDateRadiationGarantie(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeAssureurIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setCodeAssureur(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeFormuleIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setCodeFormule(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodePackIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setCodePack(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTypePackIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setTypePack(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTitrePackIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setTitrePack(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeSousPackIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setCodeSousPack(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTypeSousPackIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setTypeSousPack(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTitreSousPackIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setTitreSousPack(null);
+
+        // Create the Garantie, which fails.
+        GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
+
+        restGarantieMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(garantieDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCodeTypePrestationsIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        garantie.setCodeTypePrestations(null);
 
         // Create the Garantie, which fails.
         GarantieDTO garantieDTO = garantieMapper.toDto(garantie);
@@ -208,9 +434,19 @@ class GarantieResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(garantie.getId().intValue())))
-            .andExpect(jsonPath("$.[*].typeMEG").value(hasItem(DEFAULT_TYPE_MEG)))
-            .andExpect(jsonPath("$.[*].codeOffre").value(hasItem(DEFAULT_CODE_OFFRE)))
-            .andExpect(jsonPath("$.[*].dateEffet").value(hasItem(DEFAULT_DATE_EFFET.toString())));
+            .andExpect(jsonPath("$.[*].codeGarantieTechnique").value(hasItem(DEFAULT_CODE_GARANTIE_TECHNIQUE)))
+            .andExpect(jsonPath("$.[*].codeEtatGarantie").value(hasItem(DEFAULT_CODE_ETAT_GARANTIE)))
+            .andExpect(jsonPath("$.[*].dateAdhesionGarantie").value(hasItem(DEFAULT_DATE_ADHESION_GARANTIE.toString())))
+            .andExpect(jsonPath("$.[*].dateRadiationGarantie").value(hasItem(DEFAULT_DATE_RADIATION_GARANTIE.toString())))
+            .andExpect(jsonPath("$.[*].codeAssureur").value(hasItem(DEFAULT_CODE_ASSUREUR)))
+            .andExpect(jsonPath("$.[*].codeFormule").value(hasItem(DEFAULT_CODE_FORMULE)))
+            .andExpect(jsonPath("$.[*].codePack").value(hasItem(DEFAULT_CODE_PACK)))
+            .andExpect(jsonPath("$.[*].typePack").value(hasItem(DEFAULT_TYPE_PACK)))
+            .andExpect(jsonPath("$.[*].titrePack").value(hasItem(DEFAULT_TITRE_PACK)))
+            .andExpect(jsonPath("$.[*].codeSousPack").value(hasItem(DEFAULT_CODE_SOUS_PACK)))
+            .andExpect(jsonPath("$.[*].typeSousPack").value(hasItem(DEFAULT_TYPE_SOUS_PACK)))
+            .andExpect(jsonPath("$.[*].titreSousPack").value(hasItem(DEFAULT_TITRE_SOUS_PACK)))
+            .andExpect(jsonPath("$.[*].codeTypePrestations").value(hasItem(DEFAULT_CODE_TYPE_PRESTATIONS)));
     }
 
     @Test
@@ -225,9 +461,19 @@ class GarantieResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(garantie.getId().intValue()))
-            .andExpect(jsonPath("$.typeMEG").value(DEFAULT_TYPE_MEG))
-            .andExpect(jsonPath("$.codeOffre").value(DEFAULT_CODE_OFFRE))
-            .andExpect(jsonPath("$.dateEffet").value(DEFAULT_DATE_EFFET.toString()));
+            .andExpect(jsonPath("$.codeGarantieTechnique").value(DEFAULT_CODE_GARANTIE_TECHNIQUE))
+            .andExpect(jsonPath("$.codeEtatGarantie").value(DEFAULT_CODE_ETAT_GARANTIE))
+            .andExpect(jsonPath("$.dateAdhesionGarantie").value(DEFAULT_DATE_ADHESION_GARANTIE.toString()))
+            .andExpect(jsonPath("$.dateRadiationGarantie").value(DEFAULT_DATE_RADIATION_GARANTIE.toString()))
+            .andExpect(jsonPath("$.codeAssureur").value(DEFAULT_CODE_ASSUREUR))
+            .andExpect(jsonPath("$.codeFormule").value(DEFAULT_CODE_FORMULE))
+            .andExpect(jsonPath("$.codePack").value(DEFAULT_CODE_PACK))
+            .andExpect(jsonPath("$.typePack").value(DEFAULT_TYPE_PACK))
+            .andExpect(jsonPath("$.titrePack").value(DEFAULT_TITRE_PACK))
+            .andExpect(jsonPath("$.codeSousPack").value(DEFAULT_CODE_SOUS_PACK))
+            .andExpect(jsonPath("$.typeSousPack").value(DEFAULT_TYPE_SOUS_PACK))
+            .andExpect(jsonPath("$.titreSousPack").value(DEFAULT_TITRE_SOUS_PACK))
+            .andExpect(jsonPath("$.codeTypePrestations").value(DEFAULT_CODE_TYPE_PRESTATIONS));
     }
 
     @Test
@@ -249,7 +495,20 @@ class GarantieResourceIT {
         Garantie updatedGarantie = garantieRepository.findById(garantie.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedGarantie are not directly saved in db
         em.detach(updatedGarantie);
-        updatedGarantie.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        updatedGarantie
+            .codeGarantieTechnique(UPDATED_CODE_GARANTIE_TECHNIQUE)
+            .codeEtatGarantie(UPDATED_CODE_ETAT_GARANTIE)
+            .dateAdhesionGarantie(UPDATED_DATE_ADHESION_GARANTIE)
+            .dateRadiationGarantie(UPDATED_DATE_RADIATION_GARANTIE)
+            .codeAssureur(UPDATED_CODE_ASSUREUR)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codePack(UPDATED_CODE_PACK)
+            .typePack(UPDATED_TYPE_PACK)
+            .titrePack(UPDATED_TITRE_PACK)
+            .codeSousPack(UPDATED_CODE_SOUS_PACK)
+            .typeSousPack(UPDATED_TYPE_SOUS_PACK)
+            .titreSousPack(UPDATED_TITRE_SOUS_PACK)
+            .codeTypePrestations(UPDATED_CODE_TYPE_PRESTATIONS);
         GarantieDTO garantieDTO = garantieMapper.toDto(updatedGarantie);
 
         restGarantieMockMvc
@@ -339,7 +598,14 @@ class GarantieResourceIT {
         Garantie partialUpdatedGarantie = new Garantie();
         partialUpdatedGarantie.setId(garantie.getId());
 
-        partialUpdatedGarantie.dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedGarantie
+            .dateAdhesionGarantie(UPDATED_DATE_ADHESION_GARANTIE)
+            .dateRadiationGarantie(UPDATED_DATE_RADIATION_GARANTIE)
+            .codeAssureur(UPDATED_CODE_ASSUREUR)
+            .typePack(UPDATED_TYPE_PACK)
+            .titrePack(UPDATED_TITRE_PACK)
+            .titreSousPack(UPDATED_TITRE_SOUS_PACK)
+            .codeTypePrestations(UPDATED_CODE_TYPE_PRESTATIONS);
 
         restGarantieMockMvc
             .perform(
@@ -367,7 +633,20 @@ class GarantieResourceIT {
         Garantie partialUpdatedGarantie = new Garantie();
         partialUpdatedGarantie.setId(garantie.getId());
 
-        partialUpdatedGarantie.typeMEG(UPDATED_TYPE_MEG).codeOffre(UPDATED_CODE_OFFRE).dateEffet(UPDATED_DATE_EFFET);
+        partialUpdatedGarantie
+            .codeGarantieTechnique(UPDATED_CODE_GARANTIE_TECHNIQUE)
+            .codeEtatGarantie(UPDATED_CODE_ETAT_GARANTIE)
+            .dateAdhesionGarantie(UPDATED_DATE_ADHESION_GARANTIE)
+            .dateRadiationGarantie(UPDATED_DATE_RADIATION_GARANTIE)
+            .codeAssureur(UPDATED_CODE_ASSUREUR)
+            .codeFormule(UPDATED_CODE_FORMULE)
+            .codePack(UPDATED_CODE_PACK)
+            .typePack(UPDATED_TYPE_PACK)
+            .titrePack(UPDATED_TITRE_PACK)
+            .codeSousPack(UPDATED_CODE_SOUS_PACK)
+            .typeSousPack(UPDATED_TYPE_SOUS_PACK)
+            .titreSousPack(UPDATED_TITRE_SOUS_PACK)
+            .codeTypePrestations(UPDATED_CODE_TYPE_PRESTATIONS);
 
         restGarantieMockMvc
             .perform(
